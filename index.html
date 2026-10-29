@@ -931,10 +931,52 @@ html,body{overflow-x:clip}
 .stk-5{left:-44px;top:34%;bottom:auto}
 .stk-4{top:62%}
 @media (max-width:980px){.stk-5{left:0}}
+/* ===== Demo booking ===== */
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.demo-card{background:#fff;border-radius:26px;padding:28px;box-shadow:0 30px 70px rgba(10,26,58,.14);border:1px solid #E3E9F3;position:sticky;top:100px;overflow:hidden}
+.demo-card:before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--violet),var(--accent-2),var(--cyan),var(--green),var(--sun))}
+.dm-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.dm-head b{font-family:var(--display);font-size:1.5rem;font-weight:600}
+.dm-free{background:var(--mint);color:#0b6b48;font-weight:900;font-size:.78rem;border-radius:99px;padding:5px 12px;letter-spacing:.06em}
+#demoForm{display:grid;gap:10px}
+#demoForm>label{font-weight:800;font-size:.9rem;margin-top:6px}
+#demoForm>label small{font-weight:600;color:var(--muted)}
+.dm-days{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:thin}
+.dm-day{flex:0 0 68px;border:2px solid #E3E9F3;background:#fff;border-radius:16px;padding:10px 4px;text-align:center;cursor:pointer;font:inherit;color:var(--ink);transition:.2s}
+.dm-day small{display:block;font-size:.72rem;font-weight:700;color:var(--muted)}
+.dm-day b{display:block;font-size:1.3rem;font-family:var(--display)}
+.dm-day:hover{border-color:var(--violet)}
+.dm-day.sel{background:linear-gradient(135deg,var(--violet),var(--accent));border-color:transparent;color:#fff}
+.dm-day.sel small{color:rgba(255,255,255,.8)}
+.dm-slots{display:flex;flex-wrap:wrap;gap:8px}
+.dm-slot{border:2px solid #E3E9F3;background:#fff;border-radius:99px;padding:9px 16px;font:inherit;font-weight:700;cursor:pointer;color:var(--ink);transition:.2s}
+.dm-slot:hover{border-color:var(--violet)}
+.dm-slot.sel{background:var(--lilac);border-color:var(--violet);color:#5235d6}
+.dm-done{text-align:center;display:grid;gap:12px;justify-items:center;padding:12px 0;animation:resIn .6s cubic-bezier(.3,1.4,.5,1)}
+.dm-done h3{font-family:var(--display);font-size:1.8rem}
+.dm-ticket{background:var(--paper);border:2px dashed #C9D6EE;border-radius:18px;padding:16px 20px;display:grid;gap:4px;min-width:min(320px,100%)}
+.dm-ticket b{font-size:1.1rem}
+.counsellor{display:flex;gap:16px;align-items:flex-start;background:linear-gradient(135deg,var(--lilac),var(--sky));border-radius:22px;padding:22px;margin-top:30px}
+.cs-avatar{flex:0 0 64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--accent));color:#fff;font-weight:800;display:grid;place-items:center;font-size:1.3rem;box-shadow:0 0 0 4px #fff}
+.counsellor small{font-weight:700;color:var(--teal)}
+.counsellor b{display:block;font-family:var(--display);font-size:1.3rem;font-weight:600}
+.counsellor span{display:block;font-size:.88rem;color:var(--ink-2);font-weight:600;margin-bottom:6px}
+.counsellor p{font-size:.92rem;color:var(--ink-2)}
+@media (max-width:980px){.demo-grid{grid-template-columns:1fr}.demo-card{position:static}}
+.dm-day.sel b{color:#fff}
+/* top announcement bar */
+.topbar{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;padding:9px 16px;background:linear-gradient(90deg,var(--violet),var(--accent-2),var(--cyan));color:#fff;font-size:.9rem;text-align:center;position:relative;z-index:60}
+.topbar b{font-weight:800}
+.tb-txt{opacity:.9}
+.tb-cta{background:#fff;color:var(--accent);font-weight:800;border-radius:99px;padding:4px 12px;font-size:.82rem;transition:transform .2s}
+.topbar:hover .tb-cta{transform:translateX(3px)}
+.tb-dot{width:8px;height:8px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 0 rgba(232,192,125,.8);animation:ping 2s infinite}
+@media (max-width:560px){.tb-txt{display:none}.topbar{font-size:.85rem;gap:8px}}
 
 </style>
 </head>
 <body>
+<a class="topbar" href="free-ielts-demo.html"><span class="tb-dot"></span><b>Free IELTS demo class</b><span class="tb-txt">Level check + strategies with the EDURO IELTS team</span><span class="tb-cta">Book your slot</span></a>
 <header class="nav">
   <div class="wrap">
     <a href="index.html" class="logo"><svg class="mark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="eg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E5BD8"/><stop offset="1" stop-color="#1B3A8C"/></linearGradient></defs><rect width="100" height="100" rx="30" fill="url(#eg)"/><path d="M72 54 H30 C31 68 40 76 52 76 C60 76 66 72 70 66" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 54 C30 40 39 30 51 30 C63 30 72 40 72 54" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/><circle cx="76" cy="24" r="8" fill="#E8C07D"/></svg><span class="lw">eduro<i></i><small>GLOBAL ADMISSIONS</small></span></a>
@@ -1170,7 +1212,7 @@ html,body{overflow-x:clip}
       <a class="bx bx-lg b-sky" href="universities.html"><div><h3>University shortlist</h3><p>Dream, target and safe universities matched to your profile and budget.</p><span class="bx-link">Get your shortlist</span></div>
         <div class="anim-list" aria-hidden="true"><span><i>🇬🇧</i>University of Leeds<em>Target</em></span><span><i>🇮🇪</i>University of Limerick<em>Safe</em></span><span><i>🇺🇸</i>Arizona State University<em>Target</em></span><span><i>🇩🇪</i>KIT<em>Dream</em></span></div></a>
       <a class="bx b-butter" href="scholarships.html"><h3>Scholarships</h3><p>Fully funded &amp; merit awards you're eligible for.</p><div class="anim-coins" aria-hidden="true"><i>🪙</i><i>🪙</i><i>🪙</i><span>💰</span></div></a>
-      <a class="bx b-mint" href="ielts.html"><h3>IELTS coaching</h3><p>Mock tests and band-by-band feedback.</p><div class="anim-score" aria-hidden="true"><b data-to="7.5">5.0</b><small>Target band</small></div></a>
+      <a class="bx b-mint" href="free-ielts-demo.html"><h3>IELTS coaching</h3><p>Try a free demo class first.</p><div class="anim-score" aria-hidden="true"><b data-to="7.5">5.0</b><small>Target band</small></div></a>
       <a class="bx b-lilac" href="career-counselling.html"><h3>Career test</h3><p>Know your strengths before you choose.</p><div class="anim-bars" aria-hidden="true"><i style="--h:70%"></i><i style="--h:45%"></i><i style="--h:90%"></i><i style="--h:60%"></i><i style="--h:80%"></i></div></a>
       <a class="bx b-peach" href="services.html#visa"><h3>Visa &amp; beyond</h3><p>Documents, mock interview, pre-departure.</p><div class="anim-stamp" aria-hidden="true"><span>APPROVED</span></div></a>
       <a class="bx bx-wide b-rose" href="services.html#sop-lor"><div><h3>Applications, SOP &amp; LOR</h3><p>Your story, told the right way — in your own words.</p></div><div class="anim-type" aria-hidden="true"><span>"I want to study data science because…"</span></div></a>
@@ -1254,7 +1296,7 @@ html,body{overflow-x:clip}
     <div class="cards stagger">
       <div class="card event"><div class="ev-top"><span class="ev-tag">Scholarships</span><span class="ev-live">● FREE</span></div><div class="ico">🇰🇷</div><h3>GKS scholarship masterclass</h3><p>Eligibility, documents, study plan and common mistakes — for UG, master's and PhD.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next GKS masterclass.">Notify me</a></div>
       <div class="card event"><div class="ev-top"><span class="ev-tag">Europe</span><span class="ev-live">● FREE</span></div><div class="ico">🇩🇪</div><h3>Study in Europe on a budget</h3><p>Low-tuition public universities in Germany, France and Hungary — and how to apply.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next Study in Europe webinar.">Notify me</a></div>
-      <div class="card event"><div class="ev-top"><span class="ev-tag">IELTS</span><span class="ev-live">● FREE</span></div><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h3>IELTS band 7 strategies</h3><p>Module-wise tips from our IELTS team, with a live speaking demo.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next IELTS strategy session.">Notify me</a></div>
+      <div class="card event"><div class="ev-top"><span class="ev-tag">IELTS</span><span class="ev-live">● FREE</span></div><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h3>Free IELTS demo class</h3><p>Level check, band-boosting strategies and speaking practice — pick your own slot.</p><a class="btn btn-primary" href="free-ielts-demo.html">Book my slot</a></div>
       <div class="card event"><div class="ev-top"><span class="ev-tag">Careers</span><span class="ev-live">● FREE</span></div><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8 14.1 14.1 7.8 16.2 9.9 9.9z"/></svg></div><h3>What after 12th?</h3><p>For students and parents — choosing the right stream, course and career path.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next career guidance session.">Notify me</a></div>
     </div>
   </div>
@@ -1348,6 +1390,7 @@ html,body{overflow-x:clip}
         <li><a href="services.html">Admissions &amp; visa</a></li>
         <li><a href="scholarships.html">Scholarships</a></li>
         <li><a href="ielts.html">IELTS coaching</a></li>
+        <li><a href="free-ielts-demo.html">Free IELTS demo class</a></li>
         <li><a href="india-admissions.html">India admissions</a></li>
         <li><a href="#" data-shortlist>Free shortlist</a></li>
       </ul></div>
@@ -1586,6 +1629,37 @@ document.addEventListener("DOMContentLoaded", () => {
       st++; if (st > 3) { st = 0; ti = (ti + 1) % T.length; setTimeout(() => { $("#trUni").textContent = T[ti][0]; $("#trFlag").textContent = T[ti][1]; }, 1300); }
     };
     setTimeout(() => { tick(); setInterval(tick, 1500); }, 2200);
+  }
+
+  // ===== Free IELTS demo booking =====
+  const dmForm = $("#demoForm");
+  if (dmForm) {
+    const SLOTS = CONFIG.demoSlots || ["10:00 AM", "4:00 PM", "7:30 PM"], TZ = CONFIG.demoTimezone || "IST";
+    const CLOSED = CONFIG.demoClosedDays || [0], AHEAD = CONFIG.demoDaysAhead || 14;
+    $("#dmTz").textContent = `(${TZ})`;
+    const days = []; const d0 = new Date(); d0.setHours(0, 0, 0, 0);
+    for (let i = 1; days.length < AHEAD && i < 40; i++) { const d = new Date(d0); d.setDate(d0.getDate() + i); if (!CLOSED.includes(d.getDay())) days.push(d); }
+    const fmt = (d, o) => d.toLocaleDateString("en-IN", o);
+    $("#dmDays").innerHTML = days.map((d, i) => `<button type="button" class="dm-day" data-i="${i}"><small>${fmt(d, { weekday: "short" })}</small><b>${d.getDate()}</b><small>${fmt(d, { month: "short" })}</small></button>`).join("");
+    $("#dmSlots").innerHTML = SLOTS.map((s) => `<button type="button" class="dm-slot" data-s="${s}">${s}</button>`).join("");
+    let day = null, slot = null;
+    $$(".dm-day").forEach((b) => b.addEventListener("click", () => { $$(".dm-day").forEach((x) => x.classList.remove("sel")); b.classList.add("sel"); day = days[+b.dataset.i]; }));
+    $$(".dm-slot").forEach((b) => b.addEventListener("click", () => { $$(".dm-slot").forEach((x) => x.classList.remove("sel")); b.classList.add("sel"); slot = b.dataset.s; }));
+    dmForm.addEventListener("submit", (e) => {
+      e.preventDefault(); const f = new FormData(dmForm), err = $("#dmErr");
+      if (!day) return (err.textContent = "Please choose a date.");
+      if (!slot) return (err.textContent = "Please choose a time.");
+      const ph = String(f.get("phone")).replace(/\D/g, "");
+      if (ph.length < 6 || ph.length > 15) return (err.textContent = "Enter a valid WhatsApp number (6–15 digits).");
+      err.textContent = "";
+      const when = `${fmt(day, { weekday: "long", day: "numeric", month: "long", year: "numeric" })}, ${slot} ${TZ}`;
+      const d = { type: "IELTS demo", name: f.get("name"), phone: f.get("cc") + " " + ph, email: f.get("email"), interest: "IELTS demo class", level: f.get("type"), details: `${when} | target ${f.get("target") || "-"}` };
+      const saved = sendLead(d);
+      const msg = `Hi EDURO! I'd like to book a FREE IELTS demo class 🎧\n\nName: ${d.name}\nWhatsApp: ${d.phone}\nEmail: ${d.email || "-"}\nPreferred slot: ${when}\nTest: ${d.level}\nTarget band: ${f.get("target") || "-"}`;
+      if (!saved) window.open(waLink(msg), "_blank");
+      const cal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("EDURO free IELTS demo class")}&details=${encodeURIComponent("Requested slot: " + when + ". The EDURO team will confirm on WhatsApp and send the joining link.")}`;
+      $("#demoBook").innerHTML = `<div class="dm-done"><div class="su-check"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div><h3>Demo requested!</h3><div class="dm-ticket"><small>Free IELTS demo class</small><b>${esc(when)}</b><small>For ${esc(d.name)} · ${esc(d.level)}</small></div><p>${saved ? "Our team will confirm your slot and send the joining link on WhatsApp." : "Send the WhatsApp message that opened — we'll confirm your slot and send the joining link."}</p><div class="qz-btns"><a class="btn btn-ghost" href="${cal}" target="_blank" rel="noopener">Add to Google Calendar</a><a class="btn btn-primary" href="${waLink(msg)}" target="_blank" rel="noopener">Message us on WhatsApp</a></div></div>`;
+    });
   }
 
   // ===== Home: globe =====
