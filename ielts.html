@@ -530,9 +530,453 @@ body.sl-lock{overflow:hidden}
 @keyframes blink{50%{opacity:.3}}
 @media (max-width:980px){.globe-grid,.calc,.tab-panel{grid-template-columns:1fr}.calc{padding:32px 22px}.tab-panel{padding:28px 22px}.tab-art{font-size:4rem}.globe-box{max-width:380px}}
 
+/* ================= POLISH LAYER ================= */
+:root{--r-sm:10px;--r-md:16px;--r-lg:26px;--sh-1:0 1px 2px rgba(10,26,58,.05),0 4px 14px rgba(10,26,58,.05);--sh-2:0 2px 4px rgba(10,26,58,.06),0 18px 40px rgba(10,26,58,.10)}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{letter-spacing:-.015em}
+h2{font-weight:600}
+::selection{background:var(--sun);color:var(--ink)}
+:focus-visible{outline:3px solid var(--accent-2);outline-offset:3px;border-radius:6px}
+/* section labels: sentence case with a gold rule */
+.eyebrow{text-transform:none;letter-spacing:0;font-size:.95rem;font-weight:600;color:var(--teal);display:inline-flex;align-items:center;gap:10px}
+.eyebrow:before{content:"";width:22px;height:2px;background:var(--sun);border-radius:2px}
+.page-hero .eyebrow,.tool .eyebrow,.calc .eyebrow{color:var(--sun)}
+.page-hero .eyebrow:before,.tool .eyebrow:before,.calc .eyebrow:before{background:currentColor}
+.lead{line-height:1.7}
+/* buttons */
+.btn{letter-spacing:.005em;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,color .2s}
+.btn-primary{box-shadow:0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px rgba(27,58,140,.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(27,58,140,.32)}
+.btn-primary:after,.hero-cta .btn-primary{animation:none!important}
+.btn-primary:after{display:none}
+.btn .arr{display:inline-block;transition:transform .25s}
+.btn:hover .arr{transform:translateX(4px)}
+/* calm the noise */
+.wa-float,.m-logo,.ev-live,.stamp,.portrait,.big-ico,.svc-art,.tab-art,.tab-art span,.globe-badge,.page-hero .ph-icons span{animation:none!important}
+.svc-art:before{animation:none!important}
+.chip{animation:none}
+/* icons */
+svg.i{width:26px;height:26px;display:block}
+.card .ico,.svc .ico{width:52px;height:52px;border-radius:14px;background:#EAF0FB;color:var(--accent);font-size:0}
+.svc:nth-child(3n+2) .ico,.svc:nth-child(3n) .ico{background:#EAF0FB}
+.card .ico:has(> :not(svg)),.card .ico{font-size:1.7rem}
+.card:hover .ico{transform:none;background:var(--accent);color:#fff}
+.svc:hover .ico{transform:none;background:var(--accent);color:#fff}
+.big-ico{background:#fff;color:var(--accent);box-shadow:var(--sh-1)}
+.big-ico svg.i{width:40px;height:40px}
+.cred .ic{width:40px;height:40px;border-radius:12px;background:#EAF0FB;color:var(--accent);display:grid;place-items:center;flex:0 0 auto}
+.cred .ic svg.i{width:22px;height:22px}
+.svc-art{background:radial-gradient(120% 120% at 20% 10%,#3a66e0,var(--accent) 55%,var(--ink));color:#fff}
+.svc-art svg.i{width:42%;height:42%;stroke-width:1.2}
+.svc-art:before{border-color:rgba(232,192,125,.5)}
+.tab-art{color:var(--accent);display:grid;place-items:center}
+.tab-art>svg.i{width:150px;height:150px;stroke-width:1}
+.tab-art span{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:#fff;box-shadow:var(--sh-1);color:var(--teal)}
+.tab-art span svg.i{width:30px;height:30px}
+/* cards */
+.card,.svc,.feat,.fact,.tl,.cred,.country,.statstrip div{box-shadow:var(--sh-1);border-color:#E3E9F3}
+.card{border-radius:var(--r-md)}
+.card:after{display:none}
+.card:hover,.svc:hover,.feat:hover,.country:hover{transform:translateY(-3px);box-shadow:var(--sh-2);border-color:#C9D6EE}
+.fact:hover{transform:none;box-shadow:var(--sh-1);border-color:#E3E9F3}
+.country .arrow{display:none}
+.country:hover .flag{transform:scale(1.12)}
+.feat:hover .ff{transform:none}
+.m-item{box-shadow:none}
+.statstrip b{color:var(--ink)}
+.stat b{font-weight:600}
+/* reveal: subtler */
+.reveal{transform:translateY(14px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.stagger>*{transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+/* section rhythm */
+section{padding:104px 0}
+@media (max-width:760px){section{padding:72px 0}}
+.journey{background:#fff}
+footer{background:#071330}
+/* HOME HERO — one orchestrated entrance */
+.hero{padding:72px 0 96px}
+.hero h1{font-weight:600;letter-spacing:-.025em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln>span{display:inline-block;transform:translateY(105%);animation:lineUp 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.15s}
+@keyframes lineUp{to{transform:none}}
+.hero h1 em{font-style:normal;color:inherit}
+.hero .eyebrow,.hero p.lead,.hero .chips,.hero .hero-cta,.hero .trust{opacity:0;animation:heroFade .8s ease forwards}
+.hero .eyebrow{animation-delay:.05s}.hero p.lead{animation-delay:.45s}.hero .chips{animation-delay:.6s}.hero .hero-cta{animation-delay:.75s}.hero .trust{animation-delay:.9s}
+@keyframes heroFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pass{opacity:0;animation:passIn 1.2s .5s cubic-bezier(.2,.8,.2,1) forwards,floaty 9s 2s ease-in-out infinite;box-shadow:0 40px 80px rgba(10,26,58,.28)}
+@keyframes passIn{from{opacity:0;transform:translateY(70px) rotate(9deg)}to{opacity:1;transform:rotate(2deg)}}
+@keyframes floaty{0%,100%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(1deg) translateY(-8px)}}
+.stamp{opacity:0;animation:stampIn .5s 1.7s cubic-bezier(.3,1.6,.5,1) forwards!important}
+@keyframes stampIn{from{opacity:0;transform:rotate(-20deg) scale(1.8)}to{opacity:1;transform:rotate(-6deg) scale(1)}}
+.flight path{stroke-dasharray:6 10}
+.flight .reveal-mask path{stroke-dasharray:1;stroke-dashoffset:1;animation:drawLine 2.2s .9s ease forwards}
+@keyframes drawLine{to{stroke-dashoffset:0}}
+.flight{color:rgba(27,58,140,.22)}
+.flight .plane-g{color:var(--accent)}
+.rot-wrap{color:var(--accent)}
+.rot-wrap:after{animation:none;transform:none;opacity:.55}
+.blob{opacity:.35}
+/* PAGE HERO illustration */
+.page-hero{background:radial-gradient(90% 120% at 85% 20%,#1d3f99 0%,transparent 60%),linear-gradient(160deg,#071330 0%,#0d2257 60%,#14317e 100%);padding:96px 0 84px}
+.page-hero h1{font-weight:600}
+.page-hero h1 em{font-style:normal;color:inherit}
+.page-hero .ph-blob{opacity:.25}
+.ph-art{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:min(520px,44vw);pointer-events:none}
+.ph-art .rt{fill:none;stroke:#E8C07D;stroke-width:1.6;stroke-dasharray:4 8;opacity:.75}
+.ph-art .mk path{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;animation:drawLine 1.8s ease forwards}
+.ph-art .mk path:nth-child(2){animation-delay:.3s}.ph-art .mk path:nth-child(3){animation-delay:.6s}
+.ph-art .node{fill:#E8C07D}
+.ph-art .hub{fill:rgba(255,255,255,.06);stroke:rgba(232,192,125,.6);stroke-width:1.4}
+.ph-art .hub2{fill:none;stroke:rgba(255,255,255,.12);stroke-width:1}
+.ph-art .hub-i{color:#fff}
+.ph-art .pl{color:#E8C07D}
+.ph-art .hubg{opacity:0;transform-origin:380px 150px;animation:hubIn .9s 1.2s cubic-bezier(.3,1.4,.5,1) forwards}
+@keyframes hubIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@media (max-width:980px){.ph-art{display:none}}
+.page-hero .w{animation-duration:.9s}
+.subnav a{font-weight:600}
+.subnav a.on{box-shadow:0 6px 16px rgba(27,58,140,.25)}
+/* cta strip / calc refined */
+.cta-strip{background:radial-gradient(80% 140% at 90% 0%,#1d3f99,transparent 60%),linear-gradient(120deg,#071330,#14317e)}
+.cta{background:radial-gradient(80% 140% at 90% 0%,#2E5BD8,transparent 60%),linear-gradient(120deg,#0d2257,var(--accent))}
+.cta h2{color:#fff}
+.band.a{background:linear-gradient(140deg,#14317e,#2E5BD8)}
+.band.b{background:linear-gradient(140deg,#5c4210,#8A6420)}
+.band:hover{transform:translateY(-4px)}
+.dream:before{animation:none}
+/* events */
+.ev-live{color:var(--teal)}
+/* respect reduced motion */
+@media (prefers-reduced-motion:reduce){.hero h1 .ln>span{transform:none}.hero .eyebrow,.hero p.lead,.hero .chips,.hero .hero-cta,.hero .trust,.pass,.stamp,.ph-art .hubg{opacity:1!important}.flight .reveal-mask path,.ph-art .mk path{stroke-dashoffset:0}}
+.tab-art{position:relative;min-height:230px}
+.tab-art span{position:absolute}
+.tab-art span:nth-of-type(1){left:6%;top:4%}
+.tab-art span:nth-of-type(2){right:6%;bottom:4%}
+/* ===== University logos ===== */
+.m-logo,.wl-logo{display:grid;place-items:center;border-radius:50%;background:var(--c);color:#fff;font-weight:800;letter-spacing:.02em;position:relative;flex:0 0 auto}
+.m-logo.has-img,.wl-logo.has-img{background:#fff;box-shadow:inset 0 0 0 1px #E3E9F3}
+.m-logo img,.wl-logo img{width:70%;height:70%;object-fit:contain;border-radius:4px}
+.m-logo{width:40px;height:40px;font-size:.72rem}
+.m-item{padding:8px 18px 8px 8px;font-size:.9rem}
+.m-row{animation-timing-function:linear}
+#marquee:hover .m-row{animation-play-state:paused}
+.m-item:hover{transform:translateY(-3px);box-shadow:var(--sh-2);border-color:#C9D6EE}
+/* logo wall */
+.logo-wall{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:34px;perspective:1200px}
+.wl-tile{position:relative;aspect-ratio:1/0.9;display:block;opacity:0;transform:translateY(18px) scale(.94);transition:opacity .6s var(--d) ease,transform .7s var(--d) cubic-bezier(.2,.8,.2,1)}
+.logo-wall.in .wl-tile{opacity:1;transform:none}
+.wl-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.3,.9,.2,1)}
+.wl-tile.flipped .wl-inner{transform:rotateY(180deg)}
+.wl-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fff;border:1px solid #E3E9F3;border-radius:18px;box-shadow:var(--sh-1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px 12px;text-align:center;transition:box-shadow .3s,border-color .3s}
+.wl-back{transform:rotateY(180deg)}
+.wl-tile:hover .wl-face{box-shadow:var(--sh-2);border-color:#C9D6EE}
+.wl-logo{width:68px;height:68px;font-size:1.05rem}
+.wl-logo.has-img{background:#fff;box-shadow:none}
+.wl-logo img{width:100%;height:100%;border-radius:10px}
+.wl-name{font-size:.82rem;font-weight:700;line-height:1.3;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wl-flag{position:absolute;top:10px;right:12px;font-size:1rem}
+.wl-tile:focus-visible{outline:none}.wl-tile:focus-visible .wl-face{outline:3px solid var(--accent-2);outline-offset:2px}
+.uni-strip-note{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:-10px 0 18px;color:var(--muted);font-size:.92rem}
+@media (max-width:980px){.logo-wall{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:560px){.logo-wall{grid-template-columns:repeat(3,1fr);gap:10px}.wl-logo{width:48px;height:48px}.wl-name{font-size:.72rem}.wl-face{padding:10px 6px;gap:8px;border-radius:14px}}
+@media (prefers-reduced-motion:reduce){.wl-tile{opacity:1;transform:none}.wl-inner{transition:none}}
+@media (max-width:560px){.wl-tile{aspect-ratio:1/1.12}.wl-tile:nth-child(n+13){display:none}.wl-flag{top:7px;right:8px;font-size:.85rem}}
+/* ===== Sign up ===== */
+.nav-signup{padding:11px 18px;border-width:1.5px}
+.nav-signup.hi{border-color:var(--sun);background:#fff8ea}
+.su-box{width:min(860px,100%);padding:0;display:grid;grid-template-columns:.85fr 1.15fr;overflow:hidden}
+.su-side{background:radial-gradient(120% 100% at 0% 0%,#2E5BD8,transparent 60%),linear-gradient(160deg,#0d2257,#071330);color:#fff;padding:40px 32px;display:flex;flex-direction:column;gap:18px}
+.su-brand{font-weight:800;font-size:1.7rem;letter-spacing:-.03em}.su-brand i{display:inline-block;width:.32em;height:.32em;border-radius:50%;background:var(--sun);margin-left:2px}
+.su-side h3{font-family:var(--display);font-size:1.6rem;line-height:1.2}
+.su-side ul{list-style:none;display:grid;gap:10px;color:rgba(255,255,255,.82);font-size:.95rem}
+.su-side li:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--sun);margin-right:10px;vertical-align:middle}
+.su-main{padding:36px 32px 28px;display:grid;gap:14px;align-content:start}
+.su-step{display:grid;gap:10px;animation:slup .35s ease}
+.su-step[hidden]{display:none}
+.su-step h3{font-family:var(--display);font-size:1.6rem}
+.su-step p{color:var(--muted);margin-bottom:6px}
+.su-step label{font-size:.85rem;font-weight:700;color:var(--ink-2);margin-top:4px}
+.su-phone{display:grid;grid-template-columns:120px 1fr;gap:8px}
+.su-err{color:#b42318;min-height:1em;font-weight:600}
+.su-legal{color:var(--muted);font-size:.76rem;line-height:1.5}
+.su-chips{display:flex;flex-wrap:wrap;gap:8px}
+.su-chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-weight:600;font-size:.88rem;cursor:pointer;color:var(--ink);transition:.15s}
+.su-chip.sel{background:var(--accent);border-color:var(--accent);color:#fff}
+.su-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.su-done{text-align:center;justify-items:center;padding:20px 0}
+.su-check svg{width:76px;height:76px;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.su-check circle{stroke:#0f7a3d;stroke-dasharray:160;stroke-dashoffset:160;animation:drawC .6s ease forwards}
+.su-check path{stroke:#0f7a3d;stroke-dasharray:40;stroke-dashoffset:40;animation:drawC .4s .5s ease forwards}
+@keyframes drawC{to{stroke-dashoffset:0}}
+@media (max-width:760px){.su-box{grid-template-columns:1fr}.su-side{display:none}.su-main{padding:30px 20px 22px}}
+/* ===== Hero tracker ===== */
+.tracker{margin:38px 0 0 auto;max-width:400px;background:#fff;border:1px solid #E3E9F3;border-radius:18px;padding:16px 18px;box-shadow:var(--sh-2);opacity:0;animation:heroFade .8s 2s ease forwards;position:relative;z-index:2}
+.tr-head{display:flex;justify-content:space-between;align-items:center;font-size:.95rem;margin-bottom:12px}
+.tr-steps{display:grid;grid-template-columns:repeat(4,1fr);font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:8px}
+.tr-steps span{transition:color .3s}.tr-steps span.on{color:var(--accent)}
+.tr-bar{height:6px;border-radius:6px;background:var(--paper);overflow:hidden}
+.tr-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent-2),var(--accent));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.tracker small{display:block;margin-top:10px;color:var(--ink-2);font-weight:600;font-size:.84rem}
+@media (max-width:980px){.tracker{margin:28px auto 0}}
+/* ===== Journey path ===== */
+.path-sec{background:#fff}
+.path-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.path-intro{position:sticky;top:120px}
+.path-meter{display:flex;align-items:baseline;gap:10px;margin:26px 0 22px}
+.path-meter b{font-family:var(--display);font-size:3rem;color:var(--accent);font-weight:600;min-width:3ch}
+.path-meter span{color:var(--muted)}
+.path{list-style:none;position:relative;padding-left:44px;display:grid;gap:22px;--p:0}
+.path:before,.path:after{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:3px;border-radius:3px}
+.path:before{background:#E3E9F3}
+.path:after{background:linear-gradient(var(--accent-2),var(--accent) 70%,var(--sun));transform-origin:top;transform:scaleY(var(--p))}
+.path li{position:relative;background:var(--paper);border:1px solid #E3E9F3;border-radius:18px;padding:20px 22px;transition:background .5s,border-color .5s,box-shadow .5s,transform .5s;opacity:.55}
+.path li.on{background:#fff;border-color:#C9D6EE;box-shadow:var(--sh-1);opacity:1}
+.path .dot{position:absolute;left:-37px;top:22px;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid #C9D6EE;z-index:1;transition:.4s}
+.path li.on .dot{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 6px rgba(46,91,216,.15)}
+.path small{font-weight:700;color:var(--teal);font-size:.8rem}
+.path h3{font-family:var(--body);font-size:1.08rem;margin:2px 0 4px}
+.path p{color:var(--muted);font-size:.93rem}
+@media (max-width:980px){.path-grid{grid-template-columns:1fr;gap:30px}.path-intro{position:static}}
+/* ===== Ticket CTA ===== */
+.ticket{display:grid;grid-template-columns:1.5fr .9fr;border-radius:28px;overflow:hidden;box-shadow:0 30px 70px rgba(10,26,58,.25);position:relative}
+.ticket-main{background:radial-gradient(90% 140% at 100% 0%,#1d3f99,transparent 60%),linear-gradient(130deg,#071330,#14317e);color:#fff;padding:46px 48px}
+.tk-top{display:flex;justify-content:space-between;font-size:.82rem;color:rgba(255,255,255,.65);margin-bottom:18px}
+.tk-status{display:inline-flex;align-items:center;gap:8px;color:var(--sun);font-weight:700}
+.tk-status i{width:8px;height:8px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 0 rgba(232,192,125,.7);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px rgba(232,192,125,0)}100%{box-shadow:0 0 0 0 rgba(232,192,125,0)}}
+.ticket-main h2{color:#fff;font-size:clamp(2rem,4vw,2.8rem)}
+.ticket-main p{color:rgba(255,255,255,.75);margin:10px 0 22px;max-width:520px}
+.tk-form{display:grid;grid-template-columns:120px 1fr auto;gap:10px;max-width:600px}
+.tk-form .field{background:#fff;border-color:#fff}
+.tk-form .btn-primary{background:var(--sun);color:var(--ink)}
+.tk-note{display:block;margin-top:12px;color:rgba(255,255,255,.55)}
+.ticket-stub{background:#fff;padding:40px 32px;display:grid;gap:16px;align-content:center;border-left:2px dashed #C9D6EE;position:relative}
+.ticket-stub:before,.ticket-stub:after{content:"";position:absolute;left:-14px;width:26px;height:26px;border-radius:50%;background:var(--paper)}
+.ticket-stub:before{top:-13px}.ticket-stub:after{bottom:-13px}
+.ticket-stub small{display:block;font-size:.72rem;font-weight:700;color:var(--muted)}
+.ticket-stub b{font-family:var(--display);font-size:1.3rem;font-weight:600}
+.tk-plane{color:var(--accent);font-size:1.4rem;animation:tkfly 3s ease-in-out infinite}
+@keyframes tkfly{0%,100%{transform:translateX(0)}50%{transform:translateX(18px)}}
+.tk-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px dashed #C9D6EE;padding-top:14px}
+.tk-row b{font-family:var(--body);font-size:.98rem;font-weight:800;color:var(--accent)}
+.tk-bar{height:38px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 6px,transparent 6px 9px);opacity:.85;border-radius:2px}
+@media (max-width:860px){.ticket{grid-template-columns:1fr}.ticket-stub{border-left:0;border-top:2px dashed #C9D6EE}.ticket-stub:before,.ticket-stub:after{display:none}.ticket-main{padding:34px 22px}.tk-form{grid-template-columns:110px 1fr}.tk-form .btn{grid-column:1/-1}}
+@media (prefers-reduced-motion:reduce){.path:after{transform:none}.path li{opacity:1}.tracker{opacity:1}}
+.tr-head{gap:10px}.tr-head b{flex:1}
+.tr-tag{font-size:.68rem;font-weight:700;color:var(--teal);background:#f6e8cc;border-radius:99px;padding:3px 8px;white-space:nowrap}
+
+/* ================= COLOUR & PLAY LAYER ================= */
+:root{--sky:#E3EEFF;--sky2:#DDF3FF;--mint:#DDF5EA;--peach:#FFE7DA;--lilac:#ECE6FF;--butter:#FFF1C9;--rose:#FFE3EC;
+--violet:#7B61FF;--coral:#FF7A59;--green:#19B37D;--pink:#FF5C8A;--cyan:#1FB6FF}
+/* hero mesh */
+.hero{background:radial-gradient(40% 50% at 8% 10%,#E8E1FF 0,transparent 70%),radial-gradient(35% 45% at 95% 15%,#FFE7DA 0,transparent 70%),radial-gradient(40% 50% at 70% 95%,#DDF3FF 0,transparent 70%),radial-gradient(30% 40% at 30% 90%,#DDF5EA 0,transparent 70%),var(--paper)}
+.blob{display:none}
+.rot-wrap{color:var(--rc,var(--accent));transition:color .4s}
+.rot-wrap:after{background:var(--rc,var(--sun));opacity:.22;height:.32em;bottom:.08em;border-radius:6px}
+.fun-chips .chip{border:0;font-weight:700;padding:9px 14px;box-shadow:0 2px 0 rgba(10,26,58,.06)}
+.fun-chips .chip b{margin-right:4px}
+.c1{background:var(--sky)}.c2{background:var(--butter)}.c3{background:var(--mint)}.c4{background:var(--lilac)}.c5{background:var(--peach)}
+.fun-chips .chip{opacity:0;animation:chipPop .6s cubic-bezier(.3,1.5,.5,1) forwards}
+.fun-chips .chip:nth-child(1){animation-delay:.7s}.fun-chips .chip:nth-child(2){animation-delay:.82s}.fun-chips .chip:nth-child(3){animation-delay:.94s}.fun-chips .chip:nth-child(4){animation-delay:1.06s}.fun-chips .chip:nth-child(5){animation-delay:1.18s}
+@keyframes chipPop{from{opacity:0;transform:translateY(14px) scale(.8)}to{opacity:1;transform:none}}
+.hero .chips{opacity:1!important;animation:none!important}
+/* hero stage + stickers */
+.stage{position:relative;padding:40px 10px 0}
+.stk{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;background:#fff;border-radius:16px;padding:10px 14px 10px 10px;box-shadow:0 14px 34px rgba(10,26,58,.14);font-size:.86rem;white-space:nowrap;opacity:0;animation:stkIn .7s cubic-bezier(.3,1.5,.5,1) forwards,bob 5s ease-in-out infinite;transition:translate .25s ease-out}
+.stk b{display:block;font-size:.88rem}.stk small{display:block;color:var(--muted);font-size:.74rem}
+.stk .em{font-style:normal;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:1.15rem}
+.stk-1{left:-28px;top:0;animation-delay:1.6s,2.3s}.stk-1 .em{background:var(--mint)}
+.stk-2{right:-6px;top:-14px;padding:6px;gap:0;animation-delay:1.8s,2.5s}
+.stk-2 .fl{font-style:normal;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid #fff;margin-left:-8px;font-size:1.1rem;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.stk-2 .fl:first-child{margin-left:0}
+.stk-3{right:-34px;top:46%;animation-delay:2s,2.7s}.stk-3 .em{background:var(--butter)}
+.stk-4{left:-40px;top:58%;animation-delay:2.2s,2.9s}.stk-4 .em{background:var(--lilac)}
+.stk-4 .score{font-family:var(--display);font-size:1.15rem!important;color:var(--violet)!important;font-weight:600}
+.stk-5{left:12%;bottom:-6px;animation-delay:2.4s,3.1s;padding-right:16px}.stk-5 .em{background:var(--peach)}
+@keyframes stkIn{from{opacity:0;transform:scale(.6) translateY(20px)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{margin-top:0}50%{margin-top:-10px}}
+.spark{position:absolute;color:var(--sun);font-size:1.4rem;animation:twinkle 2.4s ease-in-out infinite}
+.sp1{left:6%;top:30%;color:var(--violet)}.sp2{right:12%;top:8%;animation-delay:.8s}.sp3{right:4%;bottom:22%;color:var(--pink);animation-delay:1.6s}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.6) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(45deg)}}
+.stage .tracker{margin-top:44px}
+@media (max-width:980px){.stk-1{left:0}.stk-3{right:0}.stk-4{left:0}.stk-2{right:0}}
+@media (max-width:560px){.stk-3,.stk-4{display:none}.stk{font-size:.78rem}.stage{padding-top:56px}}
+/* ribbon */
+.ribbon{background:linear-gradient(90deg,var(--violet),var(--accent-2) 40%,var(--cyan) 70%,var(--green));transform:rotate(-1.6deg);margin:-30px -20px 30px;padding:14px 0;overflow:hidden;position:relative;z-index:2;box-shadow:0 10px 30px rgba(46,91,216,.25)}
+.rb-track{display:flex;gap:14px;width:max-content;animation:mscroll 40s linear infinite}
+.rb-track span{color:#fff;font-weight:700;white-space:nowrap;font-size:.98rem;display:inline-flex;align-items:center;gap:14px}
+.rb-track span:after{content:"✦";color:var(--sun)}
+/* quiz */
+.quiz-sec{position:relative;background:radial-gradient(50% 60% at 0% 100%,#ECE6FF,transparent 70%),radial-gradient(40% 60% at 100% 0%,#DDF5EA,transparent 70%),#fff;overflow:hidden}
+.quiz-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+.quiz-floaters{position:relative;height:120px;margin-top:20px}
+.quiz-floaters span{position:absolute;width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:1.7rem;box-shadow:var(--sh-2);animation:bob 4s ease-in-out infinite}
+.quiz-floaters span:nth-child(1){left:0;top:10px}.quiz-floaters span:nth-child(2){left:70px;top:50px;animation-delay:-.7s}.quiz-floaters span:nth-child(3){left:140px;top:0;animation-delay:-1.4s}.quiz-floaters span:nth-child(4){left:210px;top:46px;animation-delay:-2.1s}.quiz-floaters span:nth-child(5){left:280px;top:6px;animation-delay:-2.8s}.quiz-floaters span:nth-child(6){left:350px;top:52px;animation-delay:-3.5s}
+.quiz-card{background:#fff;border-radius:28px;padding:32px;box-shadow:0 30px 70px rgba(10,26,58,.14);border:1px solid #E3E9F3;min-height:380px;position:relative;overflow:hidden}
+.quiz-card:before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--violet),var(--accent-2),var(--cyan),var(--green),var(--sun))}
+.qz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-weight:700;color:var(--muted);font-size:.88rem}
+.qz-dots{display:flex;gap:6px}.qz-dots i{width:26px;height:6px;border-radius:6px;background:#E3E9F3;transition:.3s}.qz-dots i.on{background:var(--violet)}
+.qz-q{font-family:var(--display);font-size:1.6rem;margin-bottom:18px;animation:slup .4s ease}
+.qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qz-opt{border:2px solid #E3E9F3;background:#fff;border-radius:18px;padding:16px;font:inherit;font-weight:700;cursor:pointer;text-align:left;display:flex;gap:12px;align-items:center;color:var(--ink);transition:transform .2s,border-color .2s,background .2s;animation:slup .4s ease both}
+.qz-opt:nth-child(2){animation-delay:.05s}.qz-opt:nth-child(3){animation-delay:.1s}.qz-opt:nth-child(4){animation-delay:.15s}
+.qz-opt i{font-style:normal;font-size:1.5rem;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;flex:0 0 auto}
+.qz-opt:nth-child(1) i{background:var(--sky)}.qz-opt:nth-child(2) i{background:var(--butter)}.qz-opt:nth-child(3) i{background:var(--mint)}.qz-opt:nth-child(4) i{background:var(--peach)}
+.qz-opt:hover{transform:translateY(-3px);border-color:var(--violet)}
+.qz-opt.sel{background:var(--lilac);border-color:var(--violet)}
+.qz-res{text-align:center;animation:resIn .7s cubic-bezier(.3,1.4,.5,1)}
+@keyframes resIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+.qz-flag{font-size:4.4rem;line-height:1;display:inline-block;animation:flagSpin 1s cubic-bezier(.3,1.4,.5,1)}
+@keyframes flagSpin{from{transform:rotateY(180deg) scale(.4)}to{transform:none}}
+.qz-res h3{font-family:var(--display);font-size:2rem;margin:10px 0 4px}
+.qz-match{display:inline-block;background:var(--mint);color:#0b6b48;font-weight:800;border-radius:99px;padding:5px 12px;font-size:.85rem;margin-bottom:14px}
+.qz-why{list-style:none;display:grid;gap:8px;text-align:left;max-width:420px;margin:0 auto 16px}
+.qz-why li{background:var(--paper);border-radius:12px;padding:10px 14px;font-size:.92rem}
+.qz-alt{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+.qz-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+#confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+@media (max-width:980px){.quiz-grid{grid-template-columns:1fr}.quiz-floaters{display:none}}
+@media (max-width:560px){.qz-opts{grid-template-columns:1fr}.quiz-card{padding:24px 18px}}
+/* did you know */
+.facts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fcard{border:0;background:none;padding:0;height:220px;perspective:1000px;cursor:pointer;font:inherit;text-align:left}
+.fc-in{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,1.3,.5,1)}
+.fcard.open .fc-in{transform:rotateY(180deg)}
+.fc-front,.fc-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.fc-front i{font-style:normal;font-size:2rem}
+.fc-front b{font-size:1.05rem;line-height:1.35;color:var(--ink)}
+.fc-front small{margin-top:auto;font-weight:700;color:var(--ink-2);display:inline-flex;gap:6px;align-items:center}
+.fc-front small:after{content:"↻";animation:spinHint 2.5s ease-in-out infinite;display:inline-block}
+@keyframes spinHint{0%,70%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.fc-back{transform:rotateY(180deg);color:#fff;justify-content:center}
+.fc-back b{font-family:var(--display);font-size:1.9rem;font-weight:600}
+.fc-back span{opacity:.92}
+.f1 .fc-front{background:var(--sky)}.f1 .fc-back{background:linear-gradient(135deg,#2E5BD8,#1B3A8C)}
+.f2 .fc-front{background:var(--peach)}.f2 .fc-back{background:linear-gradient(135deg,#FF7A59,#d9482b)}
+.f3 .fc-front{background:var(--mint)}.f3 .fc-back{background:linear-gradient(135deg,#19B37D,#0d7f57)}
+.f4 .fc-front{background:var(--lilac)}.f4 .fc-back{background:linear-gradient(135deg,#7B61FF,#5235d6)}
+.f5 .fc-front{background:var(--butter)}.f5 .fc-back{background:linear-gradient(135deg,#E8A92B,#a8730c)}
+.f6 .fc-front{background:var(--rose)}.f6 .fc-back{background:linear-gradient(135deg,#FF5C8A,#c92f5c)}
+.fcard:hover .fc-in{transform:rotateY(8deg)}.fcard.open:hover .fc-in{transform:rotateY(180deg)}
+@media (max-width:980px){.facts-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.facts-grid{grid-template-columns:1fr}.fcard{height:190px}}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(210px,auto);gap:16px}
+.bx{border-radius:24px;padding:26px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.3,1.4,.5,1),box-shadow .3s}
+.bx:hover{transform:translateY(-6px) rotate(-.4deg);box-shadow:0 22px 40px rgba(10,26,58,.14)}
+.bx h3{font-family:var(--body);font-size:1.15rem}
+.bx p{color:var(--ink-2);font-size:.92rem;max-width:280px}
+.bx-lg{grid-column:span 2;grid-row:span 2;display:grid;grid-template-rows:auto 1fr;gap:18px}
+.bx-lg h3{font-family:var(--display);font-size:1.9rem;font-weight:600}
+.bx-wide{grid-column:span 2;flex-direction:row;align-items:center;gap:20px}
+.bx-link{display:inline-block;margin-top:10px;font-weight:800;color:var(--accent);border-bottom:2px solid currentColor}
+.b-sky{background:var(--sky)}.b-butter{background:var(--butter)}.b-mint{background:var(--mint)}.b-lilac{background:var(--lilac)}.b-peach{background:var(--peach)}.b-rose{background:var(--rose)}.b-sky2{background:var(--sky2)}
+.anim-list{display:grid;gap:10px;align-content:end}
+.anim-list span{background:#fff;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:.92rem;box-shadow:var(--sh-1);opacity:0;transform:translateX(-30px)}
+.anim-list i{font-style:normal}.anim-list em{margin-left:auto;font-style:normal;font-size:.72rem;font-weight:800;border-radius:99px;padding:3px 9px;background:var(--mint);color:#0b6b48}
+.anim-list span:nth-child(4) em{background:var(--lilac);color:#5235d6}.anim-list span:nth-child(2) em{background:var(--sky);color:var(--accent)}
+.bento.in .anim-list span{animation:listIn 6s infinite}
+.bento.in .anim-list span:nth-child(2){animation-delay:.35s}.bento.in .anim-list span:nth-child(3){animation-delay:.7s}.bento.in .anim-list span:nth-child(4){animation-delay:1.05s}
+@keyframes listIn{0%{opacity:0;transform:translateX(-30px)}10%,80%{opacity:1;transform:none}92%,100%{opacity:0;transform:translateX(30px)}}
+.anim-coins{position:relative;height:70px;margin-top:auto}
+.anim-coins span{position:absolute;right:6px;bottom:0;font-size:2.6rem}
+.anim-coins i{position:absolute;font-style:normal;font-size:1.5rem;right:22px;top:-10px;opacity:0;animation:coin 2.4s infinite}
+.anim-coins i:nth-child(2){right:40px;animation-delay:.8s}.anim-coins i:nth-child(3){right:10px;animation-delay:1.6s}
+@keyframes coin{0%{opacity:0;transform:translateY(-20px) rotateY(0)}20%{opacity:1}70%{opacity:1;transform:translateY(40px) rotateY(720deg)}100%{opacity:0;transform:translateY(46px)}}
+.anim-score{margin-top:auto;display:flex;align-items:baseline;gap:8px}
+.anim-score b{font-family:var(--display);font-size:3rem;color:#0d7f57;font-weight:600}
+.anim-score small{font-weight:700;color:var(--ink-2)}
+.anim-bars{margin-top:auto;display:flex;align-items:flex-end;gap:8px;height:70px}
+.anim-bars i{flex:1;border-radius:8px 8px 4px 4px;background:linear-gradient(var(--violet),#a493ff);height:var(--h);transform-origin:bottom;animation:bar 3s ease-in-out infinite}
+.anim-bars i:nth-child(2){animation-delay:.2s}.anim-bars i:nth-child(3){animation-delay:.4s}.anim-bars i:nth-child(4){animation-delay:.6s}.anim-bars i:nth-child(5){animation-delay:.8s}
+@keyframes bar{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+.anim-stamp{margin-top:auto;height:70px;display:grid;place-items:center}
+.anim-stamp span{border:3px solid var(--coral);color:var(--coral);font-weight:900;letter-spacing:.12em;padding:6px 14px;border-radius:8px;transform:rotate(-12deg);animation:stampThud 3s infinite}
+@keyframes stampThud{0%,30%{opacity:0;transform:rotate(-12deg) scale(2.2)}40%{opacity:1;transform:rotate(-12deg) scale(.95)}45%,90%{opacity:1;transform:rotate(-12deg) scale(1)}100%{opacity:0}}
+.anim-type{flex:1;background:#fff;border-radius:14px;padding:16px;font-family:var(--display);font-style:italic;color:var(--ink-2);box-shadow:var(--sh-1);overflow:hidden;white-space:nowrap}
+.anim-type span{display:inline-block;overflow:hidden;border-right:2px solid var(--pink);animation:typing 5s steps(40) infinite;max-width:100%}
+@keyframes typing{0%{width:0}60%,90%{width:100%}100%{width:0}}
+.anim-meter{margin-top:auto;height:14px;border-radius:99px;background:#fff;overflow:hidden}
+.anim-meter i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--cyan),var(--accent-2));animation:meter 3.5s ease-in-out infinite}
+@keyframes meter{0%{width:5%}60%,85%{width:88%}100%{width:5%}}
+@media (max-width:980px){.bento{grid-template-columns:1fr 1fr}.bx-lg{grid-column:span 2;grid-row:auto}}
+@media (max-width:560px){.bento{grid-template-columns:1fr}.bx-lg,.bx-wide{grid-column:auto}.bx-wide{flex-direction:column;align-items:flex-start}.anim-type{width:100%}}
+/* pastel variety for cards across all pages */
+.cards>.card:nth-child(6n+1) .ico{background:var(--sky);color:#1B3A8C}
+.cards>.card:nth-child(6n+2) .ico{background:var(--mint);color:#0d7f57}
+.cards>.card:nth-child(6n+3) .ico{background:var(--peach);color:#c2401f}
+.cards>.card:nth-child(6n+4) .ico{background:var(--lilac);color:#5235d6}
+.cards>.card:nth-child(6n+5) .ico{background:var(--butter);color:#8a5a00}
+.cards>.card:nth-child(6n+6) .ico{background:var(--rose);color:#c92f5c}
+.card:hover .ico{transform:scale(1.08) rotate(-4deg)!important;background:inherit}
+.country:nth-child(6n+1){background:linear-gradient(180deg,#fff 60%,var(--sky))}.country:nth-child(6n+2){background:linear-gradient(180deg,#fff 60%,var(--mint))}.country:nth-child(6n+3){background:linear-gradient(180deg,#fff 60%,var(--peach))}.country:nth-child(6n+4){background:linear-gradient(180deg,#fff 60%,var(--lilac))}.country:nth-child(6n+5){background:linear-gradient(180deg,#fff 60%,var(--butter))}.country:nth-child(6n+6){background:linear-gradient(180deg,#fff 60%,var(--rose))}
+.country:hover .flag{transform:scale(1.25) rotate(-8deg)!important}
+.fact:nth-child(6n+1){background:var(--sky)!important}.fact:nth-child(6n+2){background:var(--mint)!important}.fact:nth-child(6n+3){background:var(--peach)!important}.fact:nth-child(6n+4){background:var(--lilac)!important}.fact:nth-child(6n+5){background:var(--butter)!important}.fact:nth-child(6n+6){background:var(--rose)!important}
+.fact{border-color:transparent!important}
+/* colourful inner page heroes */
+.page-hero{background:radial-gradient(45% 70% at 90% 10%,rgba(123,97,255,.55),transparent 70%),radial-gradient(35% 60% at 70% 100%,rgba(31,182,255,.35),transparent 70%),radial-gradient(30% 50% at 10% 100%,rgba(255,122,89,.25),transparent 70%),linear-gradient(160deg,#071330 0%,#0d2257 60%,#14317e 100%)}
+.svc-art{background:radial-gradient(120% 120% at 20% 10%,#7B61FF,#2E5BD8 55%,#1B3A8C)}
+.block:nth-of-type(3n) .svc-art{background:radial-gradient(120% 120% at 20% 10%,#1FB6FF,#2E5BD8 60%,#1B3A8C)}
+.block:nth-of-type(3n+1) .svc-art{background:radial-gradient(120% 120% at 20% 10%,#FF7A59,#e0533a 50%,#7A2E3A)}
+.subnav a.on{background:linear-gradient(90deg,var(--violet),var(--accent-2));border-color:transparent}
+.btn-primary{background:linear-gradient(135deg,#2E5BD8,#1B3A8C 60%)}
+.btn-primary:hover{background:linear-gradient(135deg,#3a66e0,#7B61FF)}
+.scroll-bar{background:linear-gradient(90deg,var(--violet),var(--cyan),var(--green),var(--sun))!important}
+.tab.on{background:linear-gradient(135deg,var(--violet),var(--accent))}
+.wl-face{background:#fff}
+@media (prefers-reduced-motion:reduce){.stk,.fun-chips .chip{opacity:1;animation:none}.anim-list span{opacity:1;transform:none}.rb-track{animation:none}}
+html,body{overflow-x:clip}
+.ribbon{margin:-30px 0 30px;width:104%;left:-2%}
+.stk-5{left:-44px;top:34%;bottom:auto}
+.stk-4{top:62%}
+@media (max-width:980px){.stk-5{left:0}}
+/* ===== Demo booking ===== */
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.demo-card{background:#fff;border-radius:26px;padding:28px;box-shadow:0 30px 70px rgba(10,26,58,.14);border:1px solid #E3E9F3;position:sticky;top:100px;overflow:hidden}
+.demo-card:before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--violet),var(--accent-2),var(--cyan),var(--green),var(--sun))}
+.dm-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.dm-head b{font-family:var(--display);font-size:1.5rem;font-weight:600}
+.dm-free{background:var(--mint);color:#0b6b48;font-weight:900;font-size:.78rem;border-radius:99px;padding:5px 12px;letter-spacing:.06em}
+#demoForm{display:grid;gap:10px}
+#demoForm>label{font-weight:800;font-size:.9rem;margin-top:6px}
+#demoForm>label small{font-weight:600;color:var(--muted)}
+.dm-days{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:thin}
+.dm-day{flex:0 0 68px;border:2px solid #E3E9F3;background:#fff;border-radius:16px;padding:10px 4px;text-align:center;cursor:pointer;font:inherit;color:var(--ink);transition:.2s}
+.dm-day small{display:block;font-size:.72rem;font-weight:700;color:var(--muted)}
+.dm-day b{display:block;font-size:1.3rem;font-family:var(--display)}
+.dm-day:hover{border-color:var(--violet)}
+.dm-day.sel{background:linear-gradient(135deg,var(--violet),var(--accent));border-color:transparent;color:#fff}
+.dm-day.sel small{color:rgba(255,255,255,.8)}
+.dm-slots{display:flex;flex-wrap:wrap;gap:8px}
+.dm-slot{border:2px solid #E3E9F3;background:#fff;border-radius:99px;padding:9px 16px;font:inherit;font-weight:700;cursor:pointer;color:var(--ink);transition:.2s}
+.dm-slot:hover{border-color:var(--violet)}
+.dm-slot.sel{background:var(--lilac);border-color:var(--violet);color:#5235d6}
+.dm-done{text-align:center;display:grid;gap:12px;justify-items:center;padding:12px 0;animation:resIn .6s cubic-bezier(.3,1.4,.5,1)}
+.dm-done h3{font-family:var(--display);font-size:1.8rem}
+.dm-ticket{background:var(--paper);border:2px dashed #C9D6EE;border-radius:18px;padding:16px 20px;display:grid;gap:4px;min-width:min(320px,100%)}
+.dm-ticket b{font-size:1.1rem}
+.counsellor{display:flex;gap:16px;align-items:flex-start;background:linear-gradient(135deg,var(--lilac),var(--sky));border-radius:22px;padding:22px;margin-top:30px}
+.cs-avatar{flex:0 0 64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--accent));color:#fff;font-weight:800;display:grid;place-items:center;font-size:1.3rem;box-shadow:0 0 0 4px #fff}
+.counsellor small{font-weight:700;color:var(--teal)}
+.counsellor b{display:block;font-family:var(--display);font-size:1.3rem;font-weight:600}
+.counsellor span{display:block;font-size:.88rem;color:var(--ink-2);font-weight:600;margin-bottom:6px}
+.counsellor p{font-size:.92rem;color:var(--ink-2)}
+@media (max-width:980px){.demo-grid{grid-template-columns:1fr}.demo-card{position:static}}
+.dm-day.sel b{color:#fff}
+/* top announcement bar */
+.topbar{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;padding:9px 16px;background:linear-gradient(90deg,var(--violet),var(--accent-2),var(--cyan));color:#fff;font-size:.9rem;text-align:center;position:relative;z-index:60}
+.topbar b{font-weight:800}
+.tb-txt{opacity:.9}
+.tb-cta{background:#fff;color:var(--accent);font-weight:800;border-radius:99px;padding:4px 12px;font-size:.82rem;transition:transform .2s}
+.topbar:hover .tb-cta{transform:translateX(3px)}
+.tb-dot{width:8px;height:8px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 0 rgba(232,192,125,.8);animation:ping 2s infinite}
+@media (max-width:560px){.tb-txt{display:none}.topbar{font-size:.85rem;gap:8px}}
+
 </style>
 </head>
 <body>
+<a class="topbar" href="free-ielts-demo.html"><span class="tb-dot"></span><b>Free IELTS demo class</b><span class="tb-txt">Level check + strategies with the EDURO IELTS team</span><span class="tb-cta">Book your slot</span></a>
 <header class="nav">
   <div class="wrap">
     <a href="index.html" class="logo"><svg class="mark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="eg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E5BD8"/><stop offset="1" stop-color="#1B3A8C"/></linearGradient></defs><rect width="100" height="100" rx="30" fill="url(#eg)"/><path d="M72 54 H30 C31 68 40 76 52 76 C60 76 66 72 70 66" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 54 C30 40 39 30 51 30 C63 30 72 40 72 54" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/><circle cx="76" cy="24" r="8" fill="#E8C07D"/></svg><span class="lw">eduro<i></i><small>GLOBAL ADMISSIONS</small></span></a>
@@ -545,6 +989,7 @@ body.sl-lock{overflow:hidden}
       <a href="ielts.html">IELTS</a>
       <a href="india-admissions.html">India</a>
       <a href="about.html">About</a>
+      <button class="btn btn-ghost nav-signup" type="button" data-signup>Sign up</button>
       <a class="btn btn-primary" data-wa="Hi EDURO, I'd like to book a consultation.">Book Consultation</a>
     </nav>
     <button class="burger" aria-label="Menu">☰</button>
@@ -553,22 +998,27 @@ body.sl-lock{overflow:hidden}
 <div class="scroll-bar" id="scrollBar"></div>
 <section class="page-hero">
   <span class="ph-blob p1"></span><span class="ph-blob p2"></span>
-  <div class="ph-icons" aria-hidden="true"><span>🎧</span><span>📖</span><span>✍️</span><span>🗣️</span></div>
+  <svg class="ph-art" viewBox="0 0 520 380" aria-hidden="true"><defs><mask id="m0" maskUnits="userSpaceOnUse" x="0" y="0" width="520" height="380"><g class="mk"><path pathLength="1" d="M20 330 C 140 210, 250 300, 380 150" style="animation-delay:0.0s"/></g></mask><mask id="m1" maskUnits="userSpaceOnUse" x="0" y="0" width="520" height="380"><g class="mk"><path pathLength="1" d="M40 40 C 170 30, 300 70, 380 150" style="animation-delay:0.3s"/></g></mask><mask id="m2" maskUnits="userSpaceOnUse" x="0" y="0" width="520" height="380"><g class="mk"><path pathLength="1" d="M150 370 C 250 340, 330 260, 380 150" style="animation-delay:0.6s"/></g></mask></defs><path class="rt" d="M20 330 C 140 210, 250 300, 380 150" mask="url(#m0)"/><path class="rt" d="M40 40 C 170 30, 300 70, 380 150" mask="url(#m1)"/><path class="rt" d="M150 370 C 250 340, 330 260, 380 150" mask="url(#m2)"/>
+<circle class="node" cx="20" cy="330" r="4"/><circle class="node" cx="40" cy="40" r="4"/><circle class="node" cx="150" cy="370" r="4"/>
+<g class="hubg"><circle class="hub2" cx="380" cy="150" r="96"/><circle class="hub" cx="380" cy="150" r="66"/>
+<svg class="hub-i" x="350" y="120" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"/></svg></g>
+<g class="pl"><svg x="-11" y="-11" width="22" height="22" viewBox="0 0 24 24" fill="#E8C07D" stroke="#E8C07D" stroke-width="1"><g transform="rotate(45 12 12)"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></g></svg><animateMotion dur="7s" begin="2s" repeatCount="indefinite" rotate="auto" path="M20 330 C 140 210, 250 300, 380 150"/></g>
+</svg>
   <div class="wrap">
     <div class="crumbs"><a href="index.html">Home</a> / IELTS</div>
     <span class="eyebrow">IELTS coaching</span>
     <h1>Get the band score <em>your university needs</em></h1>
     <p class="lead">Structured online IELTS coaching with mock tests and personal feedback from our IELTS team — for admissions, visas and scholarships.</p>
-<div class="hero-cta"><a class="btn btn-primary" data-wa="Hi EDURO! I'd like to join IELTS coaching. Can I get a free level check?">Book a free level check →</a><a class="btn btn-ghost" href="#format">See the test format</a></div>
+<div class="hero-cta"><a class="btn btn-primary" href="free-ielts-demo.html">Book a free demo class</a><a class="btn btn-ghost" href="#format">See the test format</a></div>
   </div>
 </section>
 <section id="format"><div class="wrap">
   <div class="sec-title reveal"><span class="eyebrow">The test</span><h2>IELTS in 4 modules</h2><p class="lead">Listening, Reading and Writing are taken together; Speaking is a face-to-face interview. Total test time is about 2 hours 45 minutes.</p></div>
   <div class="cards stagger">
-    <div class="card tilt"><div class="ico">🎧</div><h3>Listening</h3><p>4 recordings · 40 questions</p><div class="meta"><span class="gold">≈ 30 minutes</span></div></div>
-    <div class="card tilt"><div class="ico">📖</div><h3>Reading</h3><p>3 long passages · 40 questions</p><div class="meta"><span class="gold">60 minutes</span></div></div>
-    <div class="card tilt"><div class="ico">✍️</div><h3>Writing</h3><p>Task 1 (graph / letter) + Task 2 (essay)</p><div class="meta"><span class="gold">60 minutes</span></div></div>
-    <div class="card tilt"><div class="ico">🗣️</div><h3>Speaking</h3><p>3-part interview with an examiner</p><div class="meta"><span class="gold">11–14 minutes</span></div></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"/></svg></div><h3>Listening</h3><p>4 recordings · 40 questions</p><div class="meta"><span class="gold">≈ 30 minutes</span></div></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg></div><h3>Reading</h3><p>3 long passages · 40 questions</p><div class="meta"><span class="gold">60 minutes</span></div></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div><h3>Writing</h3><p>Task 1 (graph / letter) + Task 2 (essay)</p><div class="meta"><span class="gold">60 minutes</span></div></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg></div><h3>Speaking</h3><p>3-part interview with an examiner</p><div class="meta"><span class="gold">11–14 minutes</span></div></div>
   </div>
 </div></section>
 <section class="journey"><div class="wrap two">
@@ -582,25 +1032,25 @@ body.sl-lock{overflow:hidden}
 <section><div class="wrap">
   <div class="sec-title reveal"><span class="eyebrow">Our coaching</span><h2>What you get with EDURO IELTS</h2></div>
   <div class="cards stagger">
-    <div class="card"><div class="ico">🩺</div><h3>Free level check</h3><p>A diagnostic test to find your current band and the gap to your target.</p></div>
-    <div class="card"><div class="ico">💻</div><h3>Live online classes</h3><p>Strategies and practice for all 4 modules, from anywhere.</p></div>
-    <div class="card"><div class="ico">📝</div><h3>Full mock tests</h3><p>Real exam-style tests under timed conditions.</p></div>
-    <div class="card"><div class="ico">🔍</div><h3>Writing feedback</h3><p>Your essays marked against the official band descriptors.</p></div>
-    <div class="card"><div class="ico">🎙️</div><h3>Speaking practice</h3><p>Mock interviews with feedback on fluency, vocabulary and pronunciation.</p></div>
-    <div class="card"><div class="ico">📅</div><h3>Flexible plans</h3><p>Self-paced and guided options to fit school, college or work.</p></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3v6a5 5 0 0 0 10 0V3M10 14v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="12" r="2"/></svg></div><h3>Free level check</h3><p>A diagnostic test to find your current band and the gap to your target.</p></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Live online classes</h3><p>Strategies and practice for all 4 modules, from anywhere.</p></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div><h3>Full mock tests</h3><p>Real exam-style tests under timed conditions.</p></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg></div><h3>Writing feedback</h3><p>Your essays marked against the official band descriptors.</p></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg></div><h3>Speaking practice</h3><p>Mock interviews with feedback on fluency, vocabulary and pronunciation.</p></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><h3>Flexible plans</h3><p>Self-paced and guided options to fit school, college or work.</p></div>
   </div>
 </div></section>
 <section class="journey"><div class="wrap">
   <div class="sec-title reveal"><span class="eyebrow">Quick tips</span><h2>Mistakes that cost bands</h2></div>
   <div class="cards stagger">
-    <div class="card"><div class="ico">🔤</div><h3>Spelling in Listening</h3><p>A misspelled answer is marked wrong — even if you heard it correctly.</p></div>
-    <div class="card"><div class="ico">⏱️</div><h3>Too much time on Task 1</h3><p>Task 2 carries more marks. Aim for about 20 minutes on Task 1 and 40 on Task 2.</p></div>
-    <div class="card"><div class="ico">📏</div><h3>Ignoring word limits</h3><p>Writing under 150 / 250 words, or breaking "no more than two words" rules, loses marks.</p></div>
-    <div class="card"><div class="ico">🤐</div><h3>Short speaking answers</h3><p>Extend your answers with reasons and examples — the examiner needs to hear your range.</p></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></div><h3>Spelling in Listening</h3><p>A misspelled answer is marked wrong — even if you heard it correctly.</p></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Too much time on Task 1</h3><p>Task 2 carries more marks. Aim for about 20 minutes on Task 1 and 40 on Task 2.</p></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></div><h3>Ignoring word limits</h3><p>Writing under 150 / 250 words, or breaking "no more than two words" rules, loses marks.</p></div>
+    <div class="card"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-12 7l-6 2 2-5.5A8 8 0 1 1 21 12z"/></svg></div><h3>Short speaking answers</h3><p>Extend your answers with reasons and examples — the examiner needs to hear your range.</p></div>
   </div>
 </div></section>
 <section style="padding-top:64px"><div class="wrap"><div class="cta-strip reveal">
-  <div><h2>Ready to start your IELTS prep?</h2><p>Book a free level check and get a study plan for your target band.</p></div>
+  <div><h2>Ready to start your IELTS prep?</h2><p>Book a free demo class with the EDURO IELTS team — level check, strategies and a study plan.</p></div>
   <div class="btn-row"><button class="btn btn-primary" type="button" data-shortlist>Get my free shortlist</button><a class="btn btn-ghost" data-wa="Hi EDURO! I'd like to join IELTS coaching. Can I get a free level check?">Chat on WhatsApp</a></div>
 </div></div></section>
 <footer>
@@ -621,13 +1071,14 @@ body.sl-lock{overflow:hidden}
         <li><a href="destinations.html#ireland">Ireland</a></li>
         <li><a href="destinations.html#germany">Germany</a></li>
         <li><a href="destinations.html#south-korea">South Korea</a></li>
-        <li><a href="destinations.html">All destinations →</a></li>
+        <li><a href="destinations.html">All destinations</a></li>
       </ul></div>
       <div><h4>Services</h4><ul>
         <li><a href="career-counselling.html">Career counselling</a></li>
         <li><a href="services.html">Admissions &amp; visa</a></li>
         <li><a href="scholarships.html">Scholarships</a></li>
         <li><a href="ielts.html">IELTS coaching</a></li>
+        <li><a href="free-ielts-demo.html">Free IELTS demo class</a></li>
         <li><a href="india-admissions.html">India admissions</a></li>
         <li><a href="#" data-shortlist>Free shortlist</a></li>
       </ul></div>
@@ -659,10 +1110,51 @@ body.sl-lock{overflow:hidden}
   </div>
 </div>
 
+
+<!-- ================= SIGN UP ================= -->
+<div class="sl-overlay" id="suModal" aria-hidden="true">
+  <div class="sl-box su-box" role="dialog" aria-modal="true" aria-labelledby="suTitle">
+    <button class="sl-close su-close" type="button" aria-label="Close">✕</button>
+    <div class="su-side">
+      <div class="su-brand">eduro<i></i></div>
+      <h3>Your study-abroad journey, planned with you.</h3>
+      <ul><li>Free first consultation</li><li>Personal university shortlist</li><li>Scholarship &amp; visa guidance</li><li>One counsellor from start to finish</li></ul>
+    </div>
+    <div class="su-main">
+      <div class="sl-bar"><i id="suBar"></i></div>
+      <form class="su-step" data-step="1" id="suForm1">
+        <h3 id="suTitle">Create your free profile</h3>
+        <p>Enter your WhatsApp number — your counsellor will contact you there.</p>
+        <label>WhatsApp number</label>
+        <div class="su-phone"><select class="field" id="suCC" data-cc aria-label="Country code"></select><input class="field" id="suPhone" inputmode="tel" required placeholder="98765 43210" aria-label="WhatsApp number"></div>
+        <small class="su-err" id="suErr1" role="alert"></small>
+        <button class="btn btn-primary" type="submit">Continue</button>
+        <small class="su-legal">By continuing you agree to be contacted by EDURO on WhatsApp, phone or email about your enquiry.</small>
+      </form>
+      <form class="su-step" data-step="2" id="suForm2" hidden>
+        <h3>Tell us about you</h3>
+        <label>Full name</label><input class="field" name="name" required placeholder="Your name" autocomplete="name">
+        <label>Email (optional)</label><input class="field" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+        <label>I'm interested in</label>
+        <div class="su-chips"><button type="button" class="su-chip" data-v="Study abroad">Study abroad</button><button type="button" class="su-chip" data-v="Scholarships">Scholarships</button><button type="button" class="su-chip" data-v="Career test">Career test</button><button type="button" class="su-chip" data-v="IELTS">IELTS</button><button type="button" class="su-chip" data-v="India admissions">India admissions</button></div>
+        <div class="row2"><div><label>Level</label><select class="field" name="level"><option>Bachelor's</option><option>Master's</option><option>MBA</option><option>PhD</option><option>Class 8–12</option><option>Not sure</option></select></div>
+        <div><label>Preferred country</label><select class="field" name="country" data-countries><option value="">Not sure yet</option></select></div></div>
+        <div class="su-actions"><button class="btn btn-ghost" type="button" id="suBack">Back</button><button class="btn btn-primary" type="submit">Create my profile</button></div>
+      </form>
+      <div class="su-step su-done" data-step="3" hidden>
+        <div class="su-check"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+        <h3 id="suWelcome">Welcome aboard!</h3>
+        <p id="suDoneMsg"></p>
+        <div class="su-actions"><button class="btn btn-primary" type="button" id="suToShortlist">Get my free shortlist</button><a class="btn btn-ghost" data-wa="Hi EDURO! I just created my profile.">Chat on WhatsApp</a></div>
+      </div>
+    </div>
+  </div>
+</div>
 <a class="wa-float" data-wa="Hi EDURO, I'd like to book a consultation." target="_blank" rel="noopener">💬 <span>Chat on WhatsApp</span></a>
+<script src="config.js"></script>
 <script>
 /* ================= EDIT YOUR DETAILS HERE ================= */
-const CONFIG = {
+const CONFIG = Object.assign({
   whatsapp: "917708783084",          // country code + number, no "+" or spaces
   phoneDisplay: "+91 77087 83084",
   email: "",                         // e.g. "hello@eduro.in" — leave "" to hide
@@ -672,8 +1164,9 @@ const CONFIG = {
   youtube: "",                       // add your channel link, or leave ""
   registerLink: "https://eduro.edumilestones.com/login/global-admissions/",
   psychometricLink: "https://eduro.edumilestones.com/",
-  reviewsLink: "https://eduro.edumilestones.com/"
-};
+  reviewsLink: "https://eduro.edumilestones.com/",
+  signupEndpoint: ""
+}, window.EDURO_CONFIG || {});
 /* Countries shown as cards (flag, name, short line) */
 const COUNTRY_CARDS = [
   ["🇺🇸","USA","STEM, MS & MBA"],["🇬🇧","UK","1-year master's"],["🇮🇪","Ireland","Tech & pharma jobs"],["🇩🇪","Germany","Low / no tuition"],
@@ -750,6 +1243,111 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
+
+  // ===== Lead capture (Google Sheet via Apps Script, WhatsApp fallback) =====
+  const sendLead = (data) => {
+    data.page = location.pathname.split("/").pop() || "index.html"; data.time = new Date().toISOString();
+    if (!CONFIG.signupEndpoint) return false;
+    try { const fd = new FormData(); Object.entries(data).forEach(([k, v]) => fd.append(k, v || "")); fetch(CONFIG.signupEndpoint, { method: "POST", mode: "no-cors", body: fd }); return true; } catch (e) { return false; }
+  };
+  window.EDURO_sendLead = sendLead;
+  // ===== Country codes =====
+  const CC = [["🇮🇳","+91","India"],["🇵🇰","+92","Pakistan"],["🇧🇩","+880","Bangladesh"],["🇳🇵","+977","Nepal"],["🇱🇰","+94","Sri Lanka"],["🇦🇪","+971","UAE"],["🇸🇦","+966","Saudi Arabia"],["🇰🇷","+82","South Korea"],["🇺🇸","+1","USA / Canada"],["🇬🇧","+44","UK"],["🇲🇾","+60","Malaysia"],["🇸🇬","+65","Singapore"],["🇵🇭","+63","Philippines"],["🇮🇩","+62","Indonesia"],["🇳🇬","+234","Nigeria"],["🇰🇪","+254","Kenya"],["🇬🇭","+233","Ghana"],["🇷🇼","+250","Rwanda"],["🇿🇦","+27","South Africa"],["🇪🇬","+20","Egypt"],["🇲🇦","+212","Morocco"]];
+  $$("select[data-cc]").forEach((s) => (s.innerHTML = CC.map(([f, c, n]) => `<option value="${c}" title="${n}">${f} ${c}</option>`).join("")));
+  // ===== Sign up =====
+  const su = $("#suModal");
+  let suData = {};
+  const user = (() => { try { return JSON.parse(localStorage.getItem("eduroUser") || "null"); } catch (e) { return null; } })();
+  const greet = (u) => { $$("[data-signup].nav-signup").forEach((b) => { b.textContent = "Hi, " + u.name.split(" ")[0]; b.classList.add("hi"); }); };
+  if (user && user.name) greet(user);
+  const suOpen = (step = 1, preset = {}) => { if (!su) return; suData = Object.assign({}, preset); suStep(step); su.classList.add("open"); su.setAttribute("aria-hidden", "false"); document.body.classList.add("sl-lock"); setTimeout(() => su.querySelector(".su-step:not([hidden]) input")?.focus({ preventScroll: true }), 250); };
+  const suClose = () => { su.classList.remove("open"); su.setAttribute("aria-hidden", "true"); document.body.classList.remove("sl-lock"); };
+  function suStep(n) {
+    $$(".su-step", su).forEach((s) => s.hidden = +s.dataset.step !== n);
+    $("#suBar").style.width = (n / 3 * 100) + "%";
+    if (n === 1 && suData.phone) { $("#suPhone").value = suData.phone; $("#suCC").value = suData.cc || "+91"; }
+  }
+  $$("[data-signup]").forEach((b) => b.addEventListener("click", (e) => { e.preventDefault(); links?.classList.remove("open"); if (b.classList.contains("hi")) { window.open(waLink("Hi EDURO! I'd like to continue with my study plan."), "_blank"); return; } suOpen(1); }));
+  if (su) {
+    $(".su-close", su).addEventListener("click", suClose);
+    su.addEventListener("click", (e) => { if (e.target === su) suClose(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && su.classList.contains("open")) suClose(); });
+    $$(".su-chip", su).forEach((c) => c.addEventListener("click", () => c.classList.toggle("sel")));
+    $("#suForm1").addEventListener("submit", (e) => { e.preventDefault(); const p = $("#suPhone").value.replace(/\D/g, ""); if (p.length < 6 || p.length > 15) { $("#suErr1").textContent = "Enter a valid WhatsApp number (6–15 digits)."; return; } $("#suErr1").textContent = ""; suData.cc = $("#suCC").value; suData.phone = p; suStep(2); });
+    $("#suBack").addEventListener("click", () => suStep(1));
+    $("#suForm2").addEventListener("submit", (e) => {
+      e.preventDefault(); const f = new FormData(e.target);
+      const interest = $$(".su-chip.sel", su).map((c) => c.dataset.v).join(", ") || "Not sure yet";
+      const d = { type: "Sign up", name: f.get("name"), phone: suData.cc + " " + suData.phone, email: f.get("email"), interest, level: f.get("level"), details: f.get("country") };
+      const saved = sendLead(d);
+      try { localStorage.setItem("eduroUser", JSON.stringify({ name: d.name })); } catch (er) {}
+      greet({ name: d.name });
+      $("#suWelcome").textContent = `Welcome aboard, ${d.name.split(" ")[0]}!`;
+      $("#suDoneMsg").textContent = saved ? "Your profile is created. Our counsellor will message you on WhatsApp soon." : "Send the WhatsApp message that opened so our counsellor can reach you.";
+      if (!saved) window.open(waLink(`Hi EDURO! I just signed up 👋\n\nName: ${d.name}\nWhatsApp: ${d.phone}\nEmail: ${d.email || "-"}\nInterested in: ${interest}\nLevel: ${d.level}\nCountry: ${d.details || "-"}`), "_blank");
+      suStep(3);
+    });
+    $("#suToShortlist").addEventListener("click", () => { suClose(); $("[data-shortlist]")?.click(); });
+  }
+  $("#ticketForm")?.addEventListener("submit", (e) => { e.preventDefault(); const f = new FormData(e.target); const p = String(f.get("phone")).replace(/\D/g, ""); suOpen(2, { cc: f.get("cc"), phone: p }); });
+  // ===== Journey path (scroll-driven) =====
+  const path = $("#path");
+  if (path) {
+    const items = $$("li", path), pct = $("#pathPct");
+    const upd = () => {
+      const r = path.getBoundingClientRect(), mid = innerHeight * 0.6;
+      const p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
+      path.style.setProperty("--p", p);
+      items.forEach((li) => li.classList.toggle("on", li.getBoundingClientRect().top < mid));
+      if (pct) pct.textContent = Math.round(items.filter((li) => li.classList.contains("on")).length / items.length * 100) + "%";
+    };
+    addEventListener("scroll", upd, { passive: true }); upd();
+  }
+  // ===== Hero application tracker (illustrative) =====
+  const trBar = $("#trBar");
+  if (trBar) {
+    const T = [["The University of Manchester","🇬🇧"],["Trinity College Dublin","🇮🇪"],["Arizona State University","🇺🇸"],["Karlsruhe Institute of Technology","🇩🇪"],["Sejong University","🇰🇷"],["KU Leuven","🇧🇪"]];
+    const MSG = ["Shortlisted — matched to your profile","Applied — documents submitted","Admit received 🎉","Visa ready ✈️"];
+    let ti = 0, st = 0; const steps = $$(".tr-steps span");
+    const tick = () => {
+      steps.forEach((s, i) => s.classList.toggle("on", i <= st));
+      trBar.style.width = ((st + 1) / 4 * 100) + "%"; $("#trMsg").textContent = MSG[st];
+      st++; if (st > 3) { st = 0; ti = (ti + 1) % T.length; setTimeout(() => { $("#trUni").textContent = T[ti][0]; $("#trFlag").textContent = T[ti][1]; }, 1300); }
+    };
+    setTimeout(() => { tick(); setInterval(tick, 1500); }, 2200);
+  }
+
+  // ===== Free IELTS demo booking =====
+  const dmForm = $("#demoForm");
+  if (dmForm) {
+    const SLOTS = CONFIG.demoSlots || ["10:00 AM", "4:00 PM", "7:30 PM"], TZ = CONFIG.demoTimezone || "IST";
+    const CLOSED = CONFIG.demoClosedDays || [0], AHEAD = CONFIG.demoDaysAhead || 14;
+    $("#dmTz").textContent = `(${TZ})`;
+    const days = []; const d0 = new Date(); d0.setHours(0, 0, 0, 0);
+    for (let i = 1; days.length < AHEAD && i < 40; i++) { const d = new Date(d0); d.setDate(d0.getDate() + i); if (!CLOSED.includes(d.getDay())) days.push(d); }
+    const fmt = (d, o) => d.toLocaleDateString("en-IN", o);
+    $("#dmDays").innerHTML = days.map((d, i) => `<button type="button" class="dm-day" data-i="${i}"><small>${fmt(d, { weekday: "short" })}</small><b>${d.getDate()}</b><small>${fmt(d, { month: "short" })}</small></button>`).join("");
+    $("#dmSlots").innerHTML = SLOTS.map((s) => `<button type="button" class="dm-slot" data-s="${s}">${s}</button>`).join("");
+    let day = null, slot = null;
+    $$(".dm-day").forEach((b) => b.addEventListener("click", () => { $$(".dm-day").forEach((x) => x.classList.remove("sel")); b.classList.add("sel"); day = days[+b.dataset.i]; }));
+    $$(".dm-slot").forEach((b) => b.addEventListener("click", () => { $$(".dm-slot").forEach((x) => x.classList.remove("sel")); b.classList.add("sel"); slot = b.dataset.s; }));
+    dmForm.addEventListener("submit", (e) => {
+      e.preventDefault(); const f = new FormData(dmForm), err = $("#dmErr");
+      if (!day) return (err.textContent = "Please choose a date.");
+      if (!slot) return (err.textContent = "Please choose a time.");
+      const ph = String(f.get("phone")).replace(/\D/g, "");
+      if (ph.length < 6 || ph.length > 15) return (err.textContent = "Enter a valid WhatsApp number (6–15 digits).");
+      err.textContent = "";
+      const when = `${fmt(day, { weekday: "long", day: "numeric", month: "long", year: "numeric" })}, ${slot} ${TZ}`;
+      const d = { type: "IELTS demo", name: f.get("name"), phone: f.get("cc") + " " + ph, email: f.get("email"), interest: "IELTS demo class", level: f.get("type"), details: `${when} | target ${f.get("target") || "-"}` };
+      const saved = sendLead(d);
+      const msg = `Hi EDURO! I'd like to book a FREE IELTS demo class 🎧\n\nName: ${d.name}\nWhatsApp: ${d.phone}\nEmail: ${d.email || "-"}\nPreferred slot: ${when}\nTest: ${d.level}\nTarget band: ${f.get("target") || "-"}`;
+      if (!saved) window.open(waLink(msg), "_blank");
+      const cal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("EDURO free IELTS demo class")}&details=${encodeURIComponent("Requested slot: " + when + ". The EDURO team will confirm on WhatsApp and send the joining link.")}`;
+      $("#demoBook").innerHTML = `<div class="dm-done"><div class="su-check"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div><h3>Demo requested!</h3><div class="dm-ticket"><small>Free IELTS demo class</small><b>${esc(when)}</b><small>For ${esc(d.name)} · ${esc(d.level)}</small></div><p>${saved ? "Our team will confirm your slot and send the joining link on WhatsApp." : "Send the WhatsApp message that opened — we'll confirm your slot and send the joining link."}</p><div class="qz-btns"><a class="btn btn-ghost" href="${cal}" target="_blank" rel="noopener">Add to Google Calendar</a><a class="btn btn-primary" href="${waLink(msg)}" target="_blank" rel="noopener">Message us on WhatsApp</a></div></div>`;
+    });
+  }
+
   // ===== Page extras =====
   // active nav link
   const page = location.pathname.split("/").pop() || "index.html";
@@ -789,21 +1387,55 @@ document.addEventListener("DOMContentLoaded", () => {
   const bar = $("#scrollBar");
   if (bar) addEventListener("scroll", () => { const h = document.documentElement; bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + "%"; }, { passive: true });
 
+  // ===== University logos =====
+  const DOMAINS = window.EDURO_DOMAINS || {};
+  const STOPW = new Set(["of","the","and","&","de","des","du","di","la","in","at","for","-","–"]);
+  const COLS = ["#1B3A8C","#0A1A3A","#2E5BD8","#8A6420","#3B4F7A","#14532D","#7A2E3A"];
+  const initialsOf = (n) => n.replace(/\(.*?\)/g, "").split(/\s+/).filter((w) => w && !STOPW.has(w.toLowerCase()) && /[A-Za-zÀ-ž]/.test(w)).map((w) => w[0].toUpperCase()).join("").slice(0, 3);
+  const colorOf = (n) => COLS[[...n].reduce((a, c) => a + c.charCodeAt(0), 0) % COLS.length];
+  const logoSrc = (n) => LOGOS[n] || (DOMAINS[n] ? `https://www.google.com/s2/favicons?domain=${DOMAINS[n]}&sz=128` : "");
+  const logoBadge = (n, f, cls) => {
+    const src = logoSrc(n), ini = esc(initialsOf(n));
+    return `<span class="${cls} ${src ? "has-img" : ""}" style="--c:${colorOf(n)}" data-ini="${ini}">${src ? `<img src="${src}" alt="${esc(n)} logo" loading="lazy" decoding="async">` : ini}${f ? `<span class="fl">${f}</span>` : ""}</span>`;
+  };
+  // fall back to initials if a logo is missing or is only a tiny generic icon
+  document.addEventListener("load", (e) => { const im = e.target; if (im.tagName === "IMG" && im.closest(".has-img") && im.naturalWidth && im.naturalWidth < 32) fallback(im); }, true);
+  document.addEventListener("error", (e) => { const im = e.target; if (im.tagName === "IMG" && im.closest(".has-img")) fallback(im); }, true);
+  function fallback(im) { const b = im.closest(".has-img"); if (!b) return; b.classList.remove("has-img"); im.replaceWith(document.createTextNode(b.dataset.ini)); }
+
+  // ===== Logo wall (tiles flip to reveal more universities) =====
+  const wall = $("#logoWall");
+  if (wall && UNI_NAMES.length) {
+    const TOP = ["The University of Manchester","King's College London","The University of Edinburgh","University of Warwick","University of Bristol","University of Glasgow","University of Birmingham","University of Leeds","Trinity College Dublin","University College Dublin","Arizona State University","University of Arizona","San Jose State University","Karlsruhe Institute of Technology","École Polytechnique","KU Leuven","Eindhoven University of Technology","Aalto University","Heriot-Watt University","Sejong University","Durham University","University of Southampton","Newcastle University","Cardiff University","Queen Mary University of London","University of Nottingham","University of Sheffield","Colorado State University","University of Delaware","Temple University","Drexel University","Kent State University"];
+    const flagOf = Object.fromEntries(UNI_NAMES.map(([n, f]) => [n, f]));
+    const withLogo = UNI_NAMES.filter(([n]) => logoSrc(n)).map(([n]) => n);
+    const pool = [...TOP.filter((n) => flagOf[n]), ...withLogo.filter((n) => !TOP.includes(n)).sort(() => Math.random() - .5)];
+    const N = +wall.dataset.tiles || 18;
+    const face = (n) => `${logoBadge(n, "", "wl-logo")}<span class="wl-name">${esc(n)}</span><span class="wl-flag">${flagOf[n] || ""}</span>`;
+    let next = N;
+    wall.innerHTML = pool.slice(0, N).map((n, i) => `<a class="wl-tile" style="--d:${i * 45}ms" data-wa="Hi EDURO! I'm interested in ${esc(n)}. Can you guide me on courses, fees and eligibility?"><span class="wl-inner"><span class="wl-face wl-front">${face(n)}</span><span class="wl-face wl-back"></span></span></a>`).join("");
+    $$(".wl-tile", wall).forEach((t) => { t.href = waLink(t.dataset.wa); t.target = "_blank"; t.rel = "noopener"; });
+    const flip = () => {
+      if (document.hidden || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const tiles = $$(".wl-tile:not(:hover)", wall); if (!tiles.length) return;
+      const t = tiles[Math.floor(Math.random() * tiles.length)], n = pool[next++ % pool.length];
+      const showingBack = t.classList.contains("flipped");
+      (showingBack ? $(".wl-front", t) : $(".wl-back", t)).innerHTML = face(n);
+      t.classList.toggle("flipped");
+      t.href = waLink(`Hi EDURO! I'm interested in ${n}. Can you guide me on courses, fees and eligibility?`);
+    };
+    const wio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { wall.classList.add("in"); if (!wall._t) wall._t = setInterval(flip, 1400); } }), { threshold: .2 });
+    wio.observe(wall);
+  }
+
   // ===== University marquee =====
   if ($("#marquee")) (function () {
     const all = UNI_NAMES.slice();
     if ($("#uniCount")) $("#uniCount").textContent = Math.floor(all.length / 50) * 50 + "+";
     // mix countries so every row shows variety
     for (let i = all.length - 1; i > 0; i--) { const j = (i * 7919 + 13) % (i + 1); [all[i], all[j]] = [all[j], all[i]]; }
-    const ROWS = window.innerWidth < 760 ? 4 : 5, per = Math.ceil(all.length / ROWS);
-    const STOP = new Set(["of","the","and","&","de","des","du","di","la","in","at","for","-","–"]);
-    const COLORS = ["#1B3A8C","#0A1A3A","#2E5BD8","#8A6420","#3B4F7A","#14532D","#7A2E3A"];
-    const initials = (n) => n.replace(/\(.*?\)/g, "").split(/\s+/).filter((w) => w && !STOP.has(w.toLowerCase()) && /[A-Za-zÀ-ž]/.test(w)).map((w) => w[0].toUpperCase()).join("").slice(0, 3);
-    const color = (n) => COLORS[[...n].reduce((a, c) => a + c.charCodeAt(0), 0) % COLORS.length];
-    const item = ([n, f]) => {
-      const logo = LOGOS[n] ? `<img src="${esc(LOGOS[n])}" alt="" loading="lazy">` : esc(initials(n));
-      return `<span class="m-item"><span class="m-logo" style="background:${LOGOS[n] ? "#fff" : color(n)}">${logo}<span class="fl">${f}</span></span>${esc(n)}</span>`;
-    };
+    const ROWS = +($("#marquee").dataset.rows || (window.innerWidth < 760 ? 4 : 5)), per = Math.ceil(all.length / ROWS);
+    const item = ([n, f]) => `<span class="m-item">${logoBadge(n, f, "m-logo")}${esc(n)}</span>`;
     let html = "";
     for (let r = 0; r < ROWS; r++) {
       const chunk = all.slice(r * per, (r + 1) * per).map(item).join("");
@@ -850,12 +1482,13 @@ document.addEventListener("DOMContentLoaded", () => {
           <div><label>Your name</label><input class="field" name="name" required placeholder="Full name"></div>
           <div><label>WhatsApp number</label><input class="field" name="phone" required inputmode="tel" placeholder="+91 98765 43210"></div>
           <div><label>Latest score / CGPA (optional)</label><input class="field" name="score" placeholder="e.g. 8.2 CGPA, 78%, IELTS 7"></div>
-          <button class="btn btn-primary" type="submit" style="justify-content:center">Get my shortlist on WhatsApp →</button>
+          <button class="btn btn-primary" type="submit" style="justify-content:center">Get my shortlist on WhatsApp</button>
         </form>`;
       $("#slForm").addEventListener("submit", (e) => {
         e.preventDefault();
         const f = new FormData(e.target), d = sl.data;
         const msg = `Hi EDURO! Please shortlist universities for me 🎯\n\nName: ${f.get("name")}\nWhatsApp: ${f.get("phone")}\nCountry: ${d.country}\nLevel: ${d.level}\nField: ${d.field}\nIntake: ${d.intake}\nBudget: ${d.budget}\nScore: ${f.get("score") || "-"}`;
+        sendLead({ type: "Shortlist", name: f.get("name"), phone: f.get("phone"), email: "", interest: d.field, level: d.level, details: `${d.country} | ${d.intake} | ${d.budget} | score: ${f.get("score") || "-"}` });
         window.open(waLink(msg), "_blank");
         body.innerHTML = `<div class="sl-done"><div class="big">🎉</div><h3>You're all set, ${esc(f.get("name"))}!</h3><p>Send the WhatsApp message that just opened and our counsellor will share your shortlist soon.</p><button class="btn btn-primary" type="button" id="slOk">Done</button></div>`;
         $("#slBack").style.visibility = "hidden"; $("#slBar").style.width = "100%"; $("#slCount").textContent = "Completed";
