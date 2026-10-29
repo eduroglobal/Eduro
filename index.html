@@ -530,6 +530,408 @@ body.sl-lock{overflow:hidden}
 @keyframes blink{50%{opacity:.3}}
 @media (max-width:980px){.globe-grid,.calc,.tab-panel{grid-template-columns:1fr}.calc{padding:32px 22px}.tab-panel{padding:28px 22px}.tab-art{font-size:4rem}.globe-box{max-width:380px}}
 
+/* ================= POLISH LAYER ================= */
+:root{--r-sm:10px;--r-md:16px;--r-lg:26px;--sh-1:0 1px 2px rgba(10,26,58,.05),0 4px 14px rgba(10,26,58,.05);--sh-2:0 2px 4px rgba(10,26,58,.06),0 18px 40px rgba(10,26,58,.10)}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{letter-spacing:-.015em}
+h2{font-weight:600}
+::selection{background:var(--sun);color:var(--ink)}
+:focus-visible{outline:3px solid var(--accent-2);outline-offset:3px;border-radius:6px}
+/* section labels: sentence case with a gold rule */
+.eyebrow{text-transform:none;letter-spacing:0;font-size:.95rem;font-weight:600;color:var(--teal);display:inline-flex;align-items:center;gap:10px}
+.eyebrow:before{content:"";width:22px;height:2px;background:var(--sun);border-radius:2px}
+.page-hero .eyebrow,.tool .eyebrow,.calc .eyebrow{color:var(--sun)}
+.page-hero .eyebrow:before,.tool .eyebrow:before,.calc .eyebrow:before{background:currentColor}
+.lead{line-height:1.7}
+/* buttons */
+.btn{letter-spacing:.005em;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,color .2s}
+.btn-primary{box-shadow:0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px rgba(27,58,140,.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(27,58,140,.32)}
+.btn-primary:after,.hero-cta .btn-primary{animation:none!important}
+.btn-primary:after{display:none}
+.btn .arr{display:inline-block;transition:transform .25s}
+.btn:hover .arr{transform:translateX(4px)}
+/* calm the noise */
+.wa-float,.m-logo,.ev-live,.stamp,.portrait,.big-ico,.svc-art,.tab-art,.tab-art span,.globe-badge,.page-hero .ph-icons span{animation:none!important}
+.svc-art:before{animation:none!important}
+.chip{animation:none}
+/* icons */
+svg.i{width:26px;height:26px;display:block}
+.card .ico,.svc .ico{width:52px;height:52px;border-radius:14px;background:#EAF0FB;color:var(--accent);font-size:0}
+.svc:nth-child(3n+2) .ico,.svc:nth-child(3n) .ico{background:#EAF0FB}
+.card .ico:has(> :not(svg)),.card .ico{font-size:1.7rem}
+.card:hover .ico{transform:none;background:var(--accent);color:#fff}
+.svc:hover .ico{transform:none;background:var(--accent);color:#fff}
+.big-ico{background:#fff;color:var(--accent);box-shadow:var(--sh-1)}
+.big-ico svg.i{width:40px;height:40px}
+.cred .ic{width:40px;height:40px;border-radius:12px;background:#EAF0FB;color:var(--accent);display:grid;place-items:center;flex:0 0 auto}
+.cred .ic svg.i{width:22px;height:22px}
+.svc-art{background:radial-gradient(120% 120% at 20% 10%,#3a66e0,var(--accent) 55%,var(--ink));color:#fff}
+.svc-art svg.i{width:42%;height:42%;stroke-width:1.2}
+.svc-art:before{border-color:rgba(232,192,125,.5)}
+.tab-art{color:var(--accent);display:grid;place-items:center}
+.tab-art>svg.i{width:150px;height:150px;stroke-width:1}
+.tab-art span{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:#fff;box-shadow:var(--sh-1);color:var(--teal)}
+.tab-art span svg.i{width:30px;height:30px}
+/* cards */
+.card,.svc,.feat,.fact,.tl,.cred,.country,.statstrip div{box-shadow:var(--sh-1);border-color:#E3E9F3}
+.card{border-radius:var(--r-md)}
+.card:after{display:none}
+.card:hover,.svc:hover,.feat:hover,.country:hover{transform:translateY(-3px);box-shadow:var(--sh-2);border-color:#C9D6EE}
+.fact:hover{transform:none;box-shadow:var(--sh-1);border-color:#E3E9F3}
+.country .arrow{display:none}
+.country:hover .flag{transform:scale(1.12)}
+.feat:hover .ff{transform:none}
+.m-item{box-shadow:none}
+.statstrip b{color:var(--ink)}
+.stat b{font-weight:600}
+/* reveal: subtler */
+.reveal{transform:translateY(14px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.stagger>*{transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+/* section rhythm */
+section{padding:104px 0}
+@media (max-width:760px){section{padding:72px 0}}
+.journey{background:#fff}
+footer{background:#071330}
+/* HOME HERO — one orchestrated entrance */
+.hero{padding:72px 0 96px}
+.hero h1{font-weight:600;letter-spacing:-.025em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln>span{display:inline-block;transform:translateY(105%);animation:lineUp 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.15s}
+@keyframes lineUp{to{transform:none}}
+.hero h1 em{font-style:normal;color:inherit}
+.hero .eyebrow,.hero p.lead,.hero .chips,.hero .hero-cta,.hero .trust{opacity:0;animation:heroFade .8s ease forwards}
+.hero .eyebrow{animation-delay:.05s}.hero p.lead{animation-delay:.45s}.hero .chips{animation-delay:.6s}.hero .hero-cta{animation-delay:.75s}.hero .trust{animation-delay:.9s}
+@keyframes heroFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pass{opacity:0;animation:passIn 1.2s .5s cubic-bezier(.2,.8,.2,1) forwards,floaty 9s 2s ease-in-out infinite;box-shadow:0 40px 80px rgba(10,26,58,.28)}
+@keyframes passIn{from{opacity:0;transform:translateY(70px) rotate(9deg)}to{opacity:1;transform:rotate(2deg)}}
+@keyframes floaty{0%,100%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(1deg) translateY(-8px)}}
+.stamp{opacity:0;animation:stampIn .5s 1.7s cubic-bezier(.3,1.6,.5,1) forwards!important}
+@keyframes stampIn{from{opacity:0;transform:rotate(-20deg) scale(1.8)}to{opacity:1;transform:rotate(-6deg) scale(1)}}
+.flight path{stroke-dasharray:6 10}
+.flight .reveal-mask path{stroke-dasharray:1;stroke-dashoffset:1;animation:drawLine 2.2s .9s ease forwards}
+@keyframes drawLine{to{stroke-dashoffset:0}}
+.flight{color:rgba(27,58,140,.22)}
+.flight .plane-g{color:var(--accent)}
+.rot-wrap{color:var(--accent)}
+.rot-wrap:after{animation:none;transform:none;opacity:.55}
+.blob{opacity:.35}
+/* PAGE HERO illustration */
+.page-hero{background:radial-gradient(90% 120% at 85% 20%,#1d3f99 0%,transparent 60%),linear-gradient(160deg,#071330 0%,#0d2257 60%,#14317e 100%);padding:96px 0 84px}
+.page-hero h1{font-weight:600}
+.page-hero h1 em{font-style:normal;color:inherit}
+.page-hero .ph-blob{opacity:.25}
+.ph-art{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:min(520px,44vw);pointer-events:none}
+.ph-art .rt{fill:none;stroke:#E8C07D;stroke-width:1.6;stroke-dasharray:4 8;opacity:.75}
+.ph-art .mk path{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;animation:drawLine 1.8s ease forwards}
+.ph-art .mk path:nth-child(2){animation-delay:.3s}.ph-art .mk path:nth-child(3){animation-delay:.6s}
+.ph-art .node{fill:#E8C07D}
+.ph-art .hub{fill:rgba(255,255,255,.06);stroke:rgba(232,192,125,.6);stroke-width:1.4}
+.ph-art .hub2{fill:none;stroke:rgba(255,255,255,.12);stroke-width:1}
+.ph-art .hub-i{color:#fff}
+.ph-art .pl{color:#E8C07D}
+.ph-art .hubg{opacity:0;transform-origin:380px 150px;animation:hubIn .9s 1.2s cubic-bezier(.3,1.4,.5,1) forwards}
+@keyframes hubIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@media (max-width:980px){.ph-art{display:none}}
+.page-hero .w{animation-duration:.9s}
+.subnav a{font-weight:600}
+.subnav a.on{box-shadow:0 6px 16px rgba(27,58,140,.25)}
+/* cta strip / calc refined */
+.cta-strip{background:radial-gradient(80% 140% at 90% 0%,#1d3f99,transparent 60%),linear-gradient(120deg,#071330,#14317e)}
+.cta{background:radial-gradient(80% 140% at 90% 0%,#2E5BD8,transparent 60%),linear-gradient(120deg,#0d2257,var(--accent))}
+.cta h2{color:#fff}
+.band.a{background:linear-gradient(140deg,#14317e,#2E5BD8)}
+.band.b{background:linear-gradient(140deg,#5c4210,#8A6420)}
+.band:hover{transform:translateY(-4px)}
+.dream:before{animation:none}
+/* events */
+.ev-live{color:var(--teal)}
+/* respect reduced motion */
+@media (prefers-reduced-motion:reduce){.hero h1 .ln>span{transform:none}.hero .eyebrow,.hero p.lead,.hero .chips,.hero .hero-cta,.hero .trust,.pass,.stamp,.ph-art .hubg{opacity:1!important}.flight .reveal-mask path,.ph-art .mk path{stroke-dashoffset:0}}
+.tab-art{position:relative;min-height:230px}
+.tab-art span{position:absolute}
+.tab-art span:nth-of-type(1){left:6%;top:4%}
+.tab-art span:nth-of-type(2){right:6%;bottom:4%}
+/* ===== University logos ===== */
+.m-logo,.wl-logo{display:grid;place-items:center;border-radius:50%;background:var(--c);color:#fff;font-weight:800;letter-spacing:.02em;position:relative;flex:0 0 auto}
+.m-logo.has-img,.wl-logo.has-img{background:#fff;box-shadow:inset 0 0 0 1px #E3E9F3}
+.m-logo img,.wl-logo img{width:70%;height:70%;object-fit:contain;border-radius:4px}
+.m-logo{width:40px;height:40px;font-size:.72rem}
+.m-item{padding:8px 18px 8px 8px;font-size:.9rem}
+.m-row{animation-timing-function:linear}
+#marquee:hover .m-row{animation-play-state:paused}
+.m-item:hover{transform:translateY(-3px);box-shadow:var(--sh-2);border-color:#C9D6EE}
+/* logo wall */
+.logo-wall{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:34px;perspective:1200px}
+.wl-tile{position:relative;aspect-ratio:1/0.9;display:block;opacity:0;transform:translateY(18px) scale(.94);transition:opacity .6s var(--d) ease,transform .7s var(--d) cubic-bezier(.2,.8,.2,1)}
+.logo-wall.in .wl-tile{opacity:1;transform:none}
+.wl-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.3,.9,.2,1)}
+.wl-tile.flipped .wl-inner{transform:rotateY(180deg)}
+.wl-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fff;border:1px solid #E3E9F3;border-radius:18px;box-shadow:var(--sh-1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px 12px;text-align:center;transition:box-shadow .3s,border-color .3s}
+.wl-back{transform:rotateY(180deg)}
+.wl-tile:hover .wl-face{box-shadow:var(--sh-2);border-color:#C9D6EE}
+.wl-logo{width:68px;height:68px;font-size:1.05rem}
+.wl-logo.has-img{background:#fff;box-shadow:none}
+.wl-logo img{width:100%;height:100%;border-radius:10px}
+.wl-name{font-size:.82rem;font-weight:700;line-height:1.3;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wl-flag{position:absolute;top:10px;right:12px;font-size:1rem}
+.wl-tile:focus-visible{outline:none}.wl-tile:focus-visible .wl-face{outline:3px solid var(--accent-2);outline-offset:2px}
+.uni-strip-note{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:-10px 0 18px;color:var(--muted);font-size:.92rem}
+@media (max-width:980px){.logo-wall{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:560px){.logo-wall{grid-template-columns:repeat(3,1fr);gap:10px}.wl-logo{width:48px;height:48px}.wl-name{font-size:.72rem}.wl-face{padding:10px 6px;gap:8px;border-radius:14px}}
+@media (prefers-reduced-motion:reduce){.wl-tile{opacity:1;transform:none}.wl-inner{transition:none}}
+@media (max-width:560px){.wl-tile{aspect-ratio:1/1.12}.wl-tile:nth-child(n+13){display:none}.wl-flag{top:7px;right:8px;font-size:.85rem}}
+/* ===== Sign up ===== */
+.nav-signup{padding:11px 18px;border-width:1.5px}
+.nav-signup.hi{border-color:var(--sun);background:#fff8ea}
+.su-box{width:min(860px,100%);padding:0;display:grid;grid-template-columns:.85fr 1.15fr;overflow:hidden}
+.su-side{background:radial-gradient(120% 100% at 0% 0%,#2E5BD8,transparent 60%),linear-gradient(160deg,#0d2257,#071330);color:#fff;padding:40px 32px;display:flex;flex-direction:column;gap:18px}
+.su-brand{font-weight:800;font-size:1.7rem;letter-spacing:-.03em}.su-brand i{display:inline-block;width:.32em;height:.32em;border-radius:50%;background:var(--sun);margin-left:2px}
+.su-side h3{font-family:var(--display);font-size:1.6rem;line-height:1.2}
+.su-side ul{list-style:none;display:grid;gap:10px;color:rgba(255,255,255,.82);font-size:.95rem}
+.su-side li:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--sun);margin-right:10px;vertical-align:middle}
+.su-main{padding:36px 32px 28px;display:grid;gap:14px;align-content:start}
+.su-step{display:grid;gap:10px;animation:slup .35s ease}
+.su-step[hidden]{display:none}
+.su-step h3{font-family:var(--display);font-size:1.6rem}
+.su-step p{color:var(--muted);margin-bottom:6px}
+.su-step label{font-size:.85rem;font-weight:700;color:var(--ink-2);margin-top:4px}
+.su-phone{display:grid;grid-template-columns:120px 1fr;gap:8px}
+.su-err{color:#b42318;min-height:1em;font-weight:600}
+.su-legal{color:var(--muted);font-size:.76rem;line-height:1.5}
+.su-chips{display:flex;flex-wrap:wrap;gap:8px}
+.su-chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-weight:600;font-size:.88rem;cursor:pointer;color:var(--ink);transition:.15s}
+.su-chip.sel{background:var(--accent);border-color:var(--accent);color:#fff}
+.su-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.su-done{text-align:center;justify-items:center;padding:20px 0}
+.su-check svg{width:76px;height:76px;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.su-check circle{stroke:#0f7a3d;stroke-dasharray:160;stroke-dashoffset:160;animation:drawC .6s ease forwards}
+.su-check path{stroke:#0f7a3d;stroke-dasharray:40;stroke-dashoffset:40;animation:drawC .4s .5s ease forwards}
+@keyframes drawC{to{stroke-dashoffset:0}}
+@media (max-width:760px){.su-box{grid-template-columns:1fr}.su-side{display:none}.su-main{padding:30px 20px 22px}}
+/* ===== Hero tracker ===== */
+.tracker{margin:38px 0 0 auto;max-width:400px;background:#fff;border:1px solid #E3E9F3;border-radius:18px;padding:16px 18px;box-shadow:var(--sh-2);opacity:0;animation:heroFade .8s 2s ease forwards;position:relative;z-index:2}
+.tr-head{display:flex;justify-content:space-between;align-items:center;font-size:.95rem;margin-bottom:12px}
+.tr-steps{display:grid;grid-template-columns:repeat(4,1fr);font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:8px}
+.tr-steps span{transition:color .3s}.tr-steps span.on{color:var(--accent)}
+.tr-bar{height:6px;border-radius:6px;background:var(--paper);overflow:hidden}
+.tr-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent-2),var(--accent));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.tracker small{display:block;margin-top:10px;color:var(--ink-2);font-weight:600;font-size:.84rem}
+@media (max-width:980px){.tracker{margin:28px auto 0}}
+/* ===== Journey path ===== */
+.path-sec{background:#fff}
+.path-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.path-intro{position:sticky;top:120px}
+.path-meter{display:flex;align-items:baseline;gap:10px;margin:26px 0 22px}
+.path-meter b{font-family:var(--display);font-size:3rem;color:var(--accent);font-weight:600;min-width:3ch}
+.path-meter span{color:var(--muted)}
+.path{list-style:none;position:relative;padding-left:44px;display:grid;gap:22px;--p:0}
+.path:before,.path:after{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:3px;border-radius:3px}
+.path:before{background:#E3E9F3}
+.path:after{background:linear-gradient(var(--accent-2),var(--accent) 70%,var(--sun));transform-origin:top;transform:scaleY(var(--p))}
+.path li{position:relative;background:var(--paper);border:1px solid #E3E9F3;border-radius:18px;padding:20px 22px;transition:background .5s,border-color .5s,box-shadow .5s,transform .5s;opacity:.55}
+.path li.on{background:#fff;border-color:#C9D6EE;box-shadow:var(--sh-1);opacity:1}
+.path .dot{position:absolute;left:-37px;top:22px;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid #C9D6EE;z-index:1;transition:.4s}
+.path li.on .dot{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 6px rgba(46,91,216,.15)}
+.path small{font-weight:700;color:var(--teal);font-size:.8rem}
+.path h3{font-family:var(--body);font-size:1.08rem;margin:2px 0 4px}
+.path p{color:var(--muted);font-size:.93rem}
+@media (max-width:980px){.path-grid{grid-template-columns:1fr;gap:30px}.path-intro{position:static}}
+/* ===== Ticket CTA ===== */
+.ticket{display:grid;grid-template-columns:1.5fr .9fr;border-radius:28px;overflow:hidden;box-shadow:0 30px 70px rgba(10,26,58,.25);position:relative}
+.ticket-main{background:radial-gradient(90% 140% at 100% 0%,#1d3f99,transparent 60%),linear-gradient(130deg,#071330,#14317e);color:#fff;padding:46px 48px}
+.tk-top{display:flex;justify-content:space-between;font-size:.82rem;color:rgba(255,255,255,.65);margin-bottom:18px}
+.tk-status{display:inline-flex;align-items:center;gap:8px;color:var(--sun);font-weight:700}
+.tk-status i{width:8px;height:8px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 0 rgba(232,192,125,.7);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px rgba(232,192,125,0)}100%{box-shadow:0 0 0 0 rgba(232,192,125,0)}}
+.ticket-main h2{color:#fff;font-size:clamp(2rem,4vw,2.8rem)}
+.ticket-main p{color:rgba(255,255,255,.75);margin:10px 0 22px;max-width:520px}
+.tk-form{display:grid;grid-template-columns:120px 1fr auto;gap:10px;max-width:600px}
+.tk-form .field{background:#fff;border-color:#fff}
+.tk-form .btn-primary{background:var(--sun);color:var(--ink)}
+.tk-note{display:block;margin-top:12px;color:rgba(255,255,255,.55)}
+.ticket-stub{background:#fff;padding:40px 32px;display:grid;gap:16px;align-content:center;border-left:2px dashed #C9D6EE;position:relative}
+.ticket-stub:before,.ticket-stub:after{content:"";position:absolute;left:-14px;width:26px;height:26px;border-radius:50%;background:var(--paper)}
+.ticket-stub:before{top:-13px}.ticket-stub:after{bottom:-13px}
+.ticket-stub small{display:block;font-size:.72rem;font-weight:700;color:var(--muted)}
+.ticket-stub b{font-family:var(--display);font-size:1.3rem;font-weight:600}
+.tk-plane{color:var(--accent);font-size:1.4rem;animation:tkfly 3s ease-in-out infinite}
+@keyframes tkfly{0%,100%{transform:translateX(0)}50%{transform:translateX(18px)}}
+.tk-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px dashed #C9D6EE;padding-top:14px}
+.tk-row b{font-family:var(--body);font-size:.98rem;font-weight:800;color:var(--accent)}
+.tk-bar{height:38px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 6px,transparent 6px 9px);opacity:.85;border-radius:2px}
+@media (max-width:860px){.ticket{grid-template-columns:1fr}.ticket-stub{border-left:0;border-top:2px dashed #C9D6EE}.ticket-stub:before,.ticket-stub:after{display:none}.ticket-main{padding:34px 22px}.tk-form{grid-template-columns:110px 1fr}.tk-form .btn{grid-column:1/-1}}
+@media (prefers-reduced-motion:reduce){.path:after{transform:none}.path li{opacity:1}.tracker{opacity:1}}
+.tr-head{gap:10px}.tr-head b{flex:1}
+.tr-tag{font-size:.68rem;font-weight:700;color:var(--teal);background:#f6e8cc;border-radius:99px;padding:3px 8px;white-space:nowrap}
+
+/* ================= COLOUR & PLAY LAYER ================= */
+:root{--sky:#E3EEFF;--sky2:#DDF3FF;--mint:#DDF5EA;--peach:#FFE7DA;--lilac:#ECE6FF;--butter:#FFF1C9;--rose:#FFE3EC;
+--violet:#7B61FF;--coral:#FF7A59;--green:#19B37D;--pink:#FF5C8A;--cyan:#1FB6FF}
+/* hero mesh */
+.hero{background:radial-gradient(40% 50% at 8% 10%,#E8E1FF 0,transparent 70%),radial-gradient(35% 45% at 95% 15%,#FFE7DA 0,transparent 70%),radial-gradient(40% 50% at 70% 95%,#DDF3FF 0,transparent 70%),radial-gradient(30% 40% at 30% 90%,#DDF5EA 0,transparent 70%),var(--paper)}
+.blob{display:none}
+.rot-wrap{color:var(--rc,var(--accent));transition:color .4s}
+.rot-wrap:after{background:var(--rc,var(--sun));opacity:.22;height:.32em;bottom:.08em;border-radius:6px}
+.fun-chips .chip{border:0;font-weight:700;padding:9px 14px;box-shadow:0 2px 0 rgba(10,26,58,.06)}
+.fun-chips .chip b{margin-right:4px}
+.c1{background:var(--sky)}.c2{background:var(--butter)}.c3{background:var(--mint)}.c4{background:var(--lilac)}.c5{background:var(--peach)}
+.fun-chips .chip{opacity:0;animation:chipPop .6s cubic-bezier(.3,1.5,.5,1) forwards}
+.fun-chips .chip:nth-child(1){animation-delay:.7s}.fun-chips .chip:nth-child(2){animation-delay:.82s}.fun-chips .chip:nth-child(3){animation-delay:.94s}.fun-chips .chip:nth-child(4){animation-delay:1.06s}.fun-chips .chip:nth-child(5){animation-delay:1.18s}
+@keyframes chipPop{from{opacity:0;transform:translateY(14px) scale(.8)}to{opacity:1;transform:none}}
+.hero .chips{opacity:1!important;animation:none!important}
+/* hero stage + stickers */
+.stage{position:relative;padding:40px 10px 0}
+.stk{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;background:#fff;border-radius:16px;padding:10px 14px 10px 10px;box-shadow:0 14px 34px rgba(10,26,58,.14);font-size:.86rem;white-space:nowrap;opacity:0;animation:stkIn .7s cubic-bezier(.3,1.5,.5,1) forwards,bob 5s ease-in-out infinite;transition:translate .25s ease-out}
+.stk b{display:block;font-size:.88rem}.stk small{display:block;color:var(--muted);font-size:.74rem}
+.stk .em{font-style:normal;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:1.15rem}
+.stk-1{left:-28px;top:0;animation-delay:1.6s,2.3s}.stk-1 .em{background:var(--mint)}
+.stk-2{right:-6px;top:-14px;padding:6px;gap:0;animation-delay:1.8s,2.5s}
+.stk-2 .fl{font-style:normal;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid #fff;margin-left:-8px;font-size:1.1rem;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.stk-2 .fl:first-child{margin-left:0}
+.stk-3{right:-34px;top:46%;animation-delay:2s,2.7s}.stk-3 .em{background:var(--butter)}
+.stk-4{left:-40px;top:58%;animation-delay:2.2s,2.9s}.stk-4 .em{background:var(--lilac)}
+.stk-4 .score{font-family:var(--display);font-size:1.15rem!important;color:var(--violet)!important;font-weight:600}
+.stk-5{left:12%;bottom:-6px;animation-delay:2.4s,3.1s;padding-right:16px}.stk-5 .em{background:var(--peach)}
+@keyframes stkIn{from{opacity:0;transform:scale(.6) translateY(20px)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{margin-top:0}50%{margin-top:-10px}}
+.spark{position:absolute;color:var(--sun);font-size:1.4rem;animation:twinkle 2.4s ease-in-out infinite}
+.sp1{left:6%;top:30%;color:var(--violet)}.sp2{right:12%;top:8%;animation-delay:.8s}.sp3{right:4%;bottom:22%;color:var(--pink);animation-delay:1.6s}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.6) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(45deg)}}
+.stage .tracker{margin-top:44px}
+@media (max-width:980px){.stk-1{left:0}.stk-3{right:0}.stk-4{left:0}.stk-2{right:0}}
+@media (max-width:560px){.stk-3,.stk-4{display:none}.stk{font-size:.78rem}.stage{padding-top:56px}}
+/* ribbon */
+.ribbon{background:linear-gradient(90deg,var(--violet),var(--accent-2) 40%,var(--cyan) 70%,var(--green));transform:rotate(-1.6deg);margin:-30px -20px 30px;padding:14px 0;overflow:hidden;position:relative;z-index:2;box-shadow:0 10px 30px rgba(46,91,216,.25)}
+.rb-track{display:flex;gap:14px;width:max-content;animation:mscroll 40s linear infinite}
+.rb-track span{color:#fff;font-weight:700;white-space:nowrap;font-size:.98rem;display:inline-flex;align-items:center;gap:14px}
+.rb-track span:after{content:"✦";color:var(--sun)}
+/* quiz */
+.quiz-sec{position:relative;background:radial-gradient(50% 60% at 0% 100%,#ECE6FF,transparent 70%),radial-gradient(40% 60% at 100% 0%,#DDF5EA,transparent 70%),#fff;overflow:hidden}
+.quiz-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+.quiz-floaters{position:relative;height:120px;margin-top:20px}
+.quiz-floaters span{position:absolute;width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:1.7rem;box-shadow:var(--sh-2);animation:bob 4s ease-in-out infinite}
+.quiz-floaters span:nth-child(1){left:0;top:10px}.quiz-floaters span:nth-child(2){left:70px;top:50px;animation-delay:-.7s}.quiz-floaters span:nth-child(3){left:140px;top:0;animation-delay:-1.4s}.quiz-floaters span:nth-child(4){left:210px;top:46px;animation-delay:-2.1s}.quiz-floaters span:nth-child(5){left:280px;top:6px;animation-delay:-2.8s}.quiz-floaters span:nth-child(6){left:350px;top:52px;animation-delay:-3.5s}
+.quiz-card{background:#fff;border-radius:28px;padding:32px;box-shadow:0 30px 70px rgba(10,26,58,.14);border:1px solid #E3E9F3;min-height:380px;position:relative;overflow:hidden}
+.quiz-card:before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--violet),var(--accent-2),var(--cyan),var(--green),var(--sun))}
+.qz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-weight:700;color:var(--muted);font-size:.88rem}
+.qz-dots{display:flex;gap:6px}.qz-dots i{width:26px;height:6px;border-radius:6px;background:#E3E9F3;transition:.3s}.qz-dots i.on{background:var(--violet)}
+.qz-q{font-family:var(--display);font-size:1.6rem;margin-bottom:18px;animation:slup .4s ease}
+.qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qz-opt{border:2px solid #E3E9F3;background:#fff;border-radius:18px;padding:16px;font:inherit;font-weight:700;cursor:pointer;text-align:left;display:flex;gap:12px;align-items:center;color:var(--ink);transition:transform .2s,border-color .2s,background .2s;animation:slup .4s ease both}
+.qz-opt:nth-child(2){animation-delay:.05s}.qz-opt:nth-child(3){animation-delay:.1s}.qz-opt:nth-child(4){animation-delay:.15s}
+.qz-opt i{font-style:normal;font-size:1.5rem;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;flex:0 0 auto}
+.qz-opt:nth-child(1) i{background:var(--sky)}.qz-opt:nth-child(2) i{background:var(--butter)}.qz-opt:nth-child(3) i{background:var(--mint)}.qz-opt:nth-child(4) i{background:var(--peach)}
+.qz-opt:hover{transform:translateY(-3px);border-color:var(--violet)}
+.qz-opt.sel{background:var(--lilac);border-color:var(--violet)}
+.qz-res{text-align:center;animation:resIn .7s cubic-bezier(.3,1.4,.5,1)}
+@keyframes resIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+.qz-flag{font-size:4.4rem;line-height:1;display:inline-block;animation:flagSpin 1s cubic-bezier(.3,1.4,.5,1)}
+@keyframes flagSpin{from{transform:rotateY(180deg) scale(.4)}to{transform:none}}
+.qz-res h3{font-family:var(--display);font-size:2rem;margin:10px 0 4px}
+.qz-match{display:inline-block;background:var(--mint);color:#0b6b48;font-weight:800;border-radius:99px;padding:5px 12px;font-size:.85rem;margin-bottom:14px}
+.qz-why{list-style:none;display:grid;gap:8px;text-align:left;max-width:420px;margin:0 auto 16px}
+.qz-why li{background:var(--paper);border-radius:12px;padding:10px 14px;font-size:.92rem}
+.qz-alt{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+.qz-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+#confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+@media (max-width:980px){.quiz-grid{grid-template-columns:1fr}.quiz-floaters{display:none}}
+@media (max-width:560px){.qz-opts{grid-template-columns:1fr}.quiz-card{padding:24px 18px}}
+/* did you know */
+.facts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fcard{border:0;background:none;padding:0;height:220px;perspective:1000px;cursor:pointer;font:inherit;text-align:left}
+.fc-in{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,1.3,.5,1)}
+.fcard.open .fc-in{transform:rotateY(180deg)}
+.fc-front,.fc-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.fc-front i{font-style:normal;font-size:2rem}
+.fc-front b{font-size:1.05rem;line-height:1.35;color:var(--ink)}
+.fc-front small{margin-top:auto;font-weight:700;color:var(--ink-2);display:inline-flex;gap:6px;align-items:center}
+.fc-front small:after{content:"↻";animation:spinHint 2.5s ease-in-out infinite;display:inline-block}
+@keyframes spinHint{0%,70%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.fc-back{transform:rotateY(180deg);color:#fff;justify-content:center}
+.fc-back b{font-family:var(--display);font-size:1.9rem;font-weight:600}
+.fc-back span{opacity:.92}
+.f1 .fc-front{background:var(--sky)}.f1 .fc-back{background:linear-gradient(135deg,#2E5BD8,#1B3A8C)}
+.f2 .fc-front{background:var(--peach)}.f2 .fc-back{background:linear-gradient(135deg,#FF7A59,#d9482b)}
+.f3 .fc-front{background:var(--mint)}.f3 .fc-back{background:linear-gradient(135deg,#19B37D,#0d7f57)}
+.f4 .fc-front{background:var(--lilac)}.f4 .fc-back{background:linear-gradient(135deg,#7B61FF,#5235d6)}
+.f5 .fc-front{background:var(--butter)}.f5 .fc-back{background:linear-gradient(135deg,#E8A92B,#a8730c)}
+.f6 .fc-front{background:var(--rose)}.f6 .fc-back{background:linear-gradient(135deg,#FF5C8A,#c92f5c)}
+.fcard:hover .fc-in{transform:rotateY(8deg)}.fcard.open:hover .fc-in{transform:rotateY(180deg)}
+@media (max-width:980px){.facts-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.facts-grid{grid-template-columns:1fr}.fcard{height:190px}}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(210px,auto);gap:16px}
+.bx{border-radius:24px;padding:26px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.3,1.4,.5,1),box-shadow .3s}
+.bx:hover{transform:translateY(-6px) rotate(-.4deg);box-shadow:0 22px 40px rgba(10,26,58,.14)}
+.bx h3{font-family:var(--body);font-size:1.15rem}
+.bx p{color:var(--ink-2);font-size:.92rem;max-width:280px}
+.bx-lg{grid-column:span 2;grid-row:span 2;display:grid;grid-template-rows:auto 1fr;gap:18px}
+.bx-lg h3{font-family:var(--display);font-size:1.9rem;font-weight:600}
+.bx-wide{grid-column:span 2;flex-direction:row;align-items:center;gap:20px}
+.bx-link{display:inline-block;margin-top:10px;font-weight:800;color:var(--accent);border-bottom:2px solid currentColor}
+.b-sky{background:var(--sky)}.b-butter{background:var(--butter)}.b-mint{background:var(--mint)}.b-lilac{background:var(--lilac)}.b-peach{background:var(--peach)}.b-rose{background:var(--rose)}.b-sky2{background:var(--sky2)}
+.anim-list{display:grid;gap:10px;align-content:end}
+.anim-list span{background:#fff;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:.92rem;box-shadow:var(--sh-1);opacity:0;transform:translateX(-30px)}
+.anim-list i{font-style:normal}.anim-list em{margin-left:auto;font-style:normal;font-size:.72rem;font-weight:800;border-radius:99px;padding:3px 9px;background:var(--mint);color:#0b6b48}
+.anim-list span:nth-child(4) em{background:var(--lilac);color:#5235d6}.anim-list span:nth-child(2) em{background:var(--sky);color:var(--accent)}
+.bento.in .anim-list span{animation:listIn 6s infinite}
+.bento.in .anim-list span:nth-child(2){animation-delay:.35s}.bento.in .anim-list span:nth-child(3){animation-delay:.7s}.bento.in .anim-list span:nth-child(4){animation-delay:1.05s}
+@keyframes listIn{0%{opacity:0;transform:translateX(-30px)}10%,80%{opacity:1;transform:none}92%,100%{opacity:0;transform:translateX(30px)}}
+.anim-coins{position:relative;height:70px;margin-top:auto}
+.anim-coins span{position:absolute;right:6px;bottom:0;font-size:2.6rem}
+.anim-coins i{position:absolute;font-style:normal;font-size:1.5rem;right:22px;top:-10px;opacity:0;animation:coin 2.4s infinite}
+.anim-coins i:nth-child(2){right:40px;animation-delay:.8s}.anim-coins i:nth-child(3){right:10px;animation-delay:1.6s}
+@keyframes coin{0%{opacity:0;transform:translateY(-20px) rotateY(0)}20%{opacity:1}70%{opacity:1;transform:translateY(40px) rotateY(720deg)}100%{opacity:0;transform:translateY(46px)}}
+.anim-score{margin-top:auto;display:flex;align-items:baseline;gap:8px}
+.anim-score b{font-family:var(--display);font-size:3rem;color:#0d7f57;font-weight:600}
+.anim-score small{font-weight:700;color:var(--ink-2)}
+.anim-bars{margin-top:auto;display:flex;align-items:flex-end;gap:8px;height:70px}
+.anim-bars i{flex:1;border-radius:8px 8px 4px 4px;background:linear-gradient(var(--violet),#a493ff);height:var(--h);transform-origin:bottom;animation:bar 3s ease-in-out infinite}
+.anim-bars i:nth-child(2){animation-delay:.2s}.anim-bars i:nth-child(3){animation-delay:.4s}.anim-bars i:nth-child(4){animation-delay:.6s}.anim-bars i:nth-child(5){animation-delay:.8s}
+@keyframes bar{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+.anim-stamp{margin-top:auto;height:70px;display:grid;place-items:center}
+.anim-stamp span{border:3px solid var(--coral);color:var(--coral);font-weight:900;letter-spacing:.12em;padding:6px 14px;border-radius:8px;transform:rotate(-12deg);animation:stampThud 3s infinite}
+@keyframes stampThud{0%,30%{opacity:0;transform:rotate(-12deg) scale(2.2)}40%{opacity:1;transform:rotate(-12deg) scale(.95)}45%,90%{opacity:1;transform:rotate(-12deg) scale(1)}100%{opacity:0}}
+.anim-type{flex:1;background:#fff;border-radius:14px;padding:16px;font-family:var(--display);font-style:italic;color:var(--ink-2);box-shadow:var(--sh-1);overflow:hidden;white-space:nowrap}
+.anim-type span{display:inline-block;overflow:hidden;border-right:2px solid var(--pink);animation:typing 5s steps(40) infinite;max-width:100%}
+@keyframes typing{0%{width:0}60%,90%{width:100%}100%{width:0}}
+.anim-meter{margin-top:auto;height:14px;border-radius:99px;background:#fff;overflow:hidden}
+.anim-meter i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--cyan),var(--accent-2));animation:meter 3.5s ease-in-out infinite}
+@keyframes meter{0%{width:5%}60%,85%{width:88%}100%{width:5%}}
+@media (max-width:980px){.bento{grid-template-columns:1fr 1fr}.bx-lg{grid-column:span 2;grid-row:auto}}
+@media (max-width:560px){.bento{grid-template-columns:1fr}.bx-lg,.bx-wide{grid-column:auto}.bx-wide{flex-direction:column;align-items:flex-start}.anim-type{width:100%}}
+/* pastel variety for cards across all pages */
+.cards>.card:nth-child(6n+1) .ico{background:var(--sky);color:#1B3A8C}
+.cards>.card:nth-child(6n+2) .ico{background:var(--mint);color:#0d7f57}
+.cards>.card:nth-child(6n+3) .ico{background:var(--peach);color:#c2401f}
+.cards>.card:nth-child(6n+4) .ico{background:var(--lilac);color:#5235d6}
+.cards>.card:nth-child(6n+5) .ico{background:var(--butter);color:#8a5a00}
+.cards>.card:nth-child(6n+6) .ico{background:var(--rose);color:#c92f5c}
+.card:hover .ico{transform:scale(1.08) rotate(-4deg)!important;background:inherit}
+.country:nth-child(6n+1){background:linear-gradient(180deg,#fff 60%,var(--sky))}.country:nth-child(6n+2){background:linear-gradient(180deg,#fff 60%,var(--mint))}.country:nth-child(6n+3){background:linear-gradient(180deg,#fff 60%,var(--peach))}.country:nth-child(6n+4){background:linear-gradient(180deg,#fff 60%,var(--lilac))}.country:nth-child(6n+5){background:linear-gradient(180deg,#fff 60%,var(--butter))}.country:nth-child(6n+6){background:linear-gradient(180deg,#fff 60%,var(--rose))}
+.country:hover .flag{transform:scale(1.25) rotate(-8deg)!important}
+.fact:nth-child(6n+1){background:var(--sky)!important}.fact:nth-child(6n+2){background:var(--mint)!important}.fact:nth-child(6n+3){background:var(--peach)!important}.fact:nth-child(6n+4){background:var(--lilac)!important}.fact:nth-child(6n+5){background:var(--butter)!important}.fact:nth-child(6n+6){background:var(--rose)!important}
+.fact{border-color:transparent!important}
+/* colourful inner page heroes */
+.page-hero{background:radial-gradient(45% 70% at 90% 10%,rgba(123,97,255,.55),transparent 70%),radial-gradient(35% 60% at 70% 100%,rgba(31,182,255,.35),transparent 70%),radial-gradient(30% 50% at 10% 100%,rgba(255,122,89,.25),transparent 70%),linear-gradient(160deg,#071330 0%,#0d2257 60%,#14317e 100%)}
+.svc-art{background:radial-gradient(120% 120% at 20% 10%,#7B61FF,#2E5BD8 55%,#1B3A8C)}
+.block:nth-of-type(3n) .svc-art{background:radial-gradient(120% 120% at 20% 10%,#1FB6FF,#2E5BD8 60%,#1B3A8C)}
+.block:nth-of-type(3n+1) .svc-art{background:radial-gradient(120% 120% at 20% 10%,#FF7A59,#e0533a 50%,#7A2E3A)}
+.subnav a.on{background:linear-gradient(90deg,var(--violet),var(--accent-2));border-color:transparent}
+.btn-primary{background:linear-gradient(135deg,#2E5BD8,#1B3A8C 60%)}
+.btn-primary:hover{background:linear-gradient(135deg,#3a66e0,#7B61FF)}
+.scroll-bar{background:linear-gradient(90deg,var(--violet),var(--cyan),var(--green),var(--sun))!important}
+.tab.on{background:linear-gradient(135deg,var(--violet),var(--accent))}
+.wl-face{background:#fff}
+@media (prefers-reduced-motion:reduce){.stk,.fun-chips .chip{opacity:1;animation:none}.anim-list span{opacity:1;transform:none}.rb-track{animation:none}}
+html,body{overflow-x:clip}
+.ribbon{margin:-30px 0 30px;width:104%;left:-2%}
+.stk-5{left:-44px;top:34%;bottom:auto}
+.stk-4{top:62%}
+@media (max-width:980px){.stk-5{left:0}}
+
 </style>
 </head>
 <body>
@@ -545,6 +947,7 @@ body.sl-lock{overflow:hidden}
       <a href="ielts.html">IELTS</a>
       <a href="india-admissions.html">India</a>
       <a href="about.html">About</a>
+      <button class="btn btn-ghost nav-signup" type="button" data-signup>Sign up</button>
       <a class="btn btn-primary" data-wa="Hi EDURO, I'd like to book a consultation.">Book Consultation</a>
     </nav>
     <button class="burger" aria-label="Menu">☰</button>
@@ -554,29 +957,35 @@ body.sl-lock{overflow:hidden}
 <section class="hero">
   <div class="hero-bg" aria-hidden="true">
     <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
-    <svg class="flight" viewBox="0 0 1200 400" preserveAspectRatio="none"><path id="fpath" d="M-50 330 C 250 120, 520 380, 800 170 S 1150 60, 1260 90" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="6 10"/>
-      <g class="plane-g"><text font-size="28" dy="9" text-anchor="middle">✈️</text><animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#fpath"/></animateMotion></g></svg>
+    <svg class="flight" viewBox="0 0 1200 400" preserveAspectRatio="none"><defs><mask id="fm" maskUnits="userSpaceOnUse" x="-100" y="0" width="1400" height="400"><g class="reveal-mask"><path pathLength="1" d="M-50 330 C 250 120, 520 380, 800 170 S 1150 60, 1260 90" fill="none" stroke="#fff" stroke-width="6"/></g></mask></defs><path id="fpath" d="M-50 330 C 250 120, 520 380, 800 170 S 1150 60, 1260 90" fill="none" stroke="currentColor" stroke-width="2" mask="url(#fm)"/><g class="plane-g"><svg x="-13" y="-13" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><g transform="rotate(45 12 12)"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></g></svg><animateMotion dur="10s" begin="2.6s" repeatCount="indefinite" rotate="auto"><mpath href="#fpath"/></animateMotion></g></svg>
   </div>
   <div class="wrap">
     <div>
       <span class="eyebrow">Career counselling · Study abroad</span>
-      <h1>Study in <span class="rot-wrap"><span class="rot" id="rotWord">🇺🇸 USA</span></span><br>with the <em>right plan.</em></h1>
+      <h1><span class="ln"><span>Study in <span class="rot-wrap"><span class="rot" id="rotWord">🇺🇸 USA</span></span></span></span><span class="ln"><span>with the right plan.</span></span></h1>
       <p class="lead">From choosing a career to landing in your new campus city — EDURO guides you through every step with honest, research-based advice from someone who has studied abroad herself.</p>
-      <div class="chips">
-        <span class="chip"><b>✓</b> Find universities</span>
-        <span class="chip"><b>✓</b> Unlock scholarships</span>
-        <span class="chip"><b>✓</b> Plan finances</span>
-        <span class="chip"><b>✓</b> Prepare for IELTS</span>
-        <span class="chip"><b>✓</b> Get visa ready</span>
+      <div class="chips fun-chips">
+        <span class="chip c1"><b>🎯</b> Find universities</span>
+        <span class="chip c2"><b>💰</b> Unlock scholarships</span>
+        <span class="chip c3"><b>📊</b> Plan finances</span>
+        <span class="chip c4"><b>📝</b> Prepare for IELTS</span>
+        <span class="chip c5"><b>🛂</b> Get visa ready</span>
       </div>
       <div class="hero-cta">
-        <a class="btn btn-primary" target="_blank" rel="noopener" data-wa="Hi EDURO, I'd like to book a free consultation.">Book a consultation →</a>
+        <a class="btn btn-primary" target="_blank" rel="noopener" data-wa="Hi EDURO, I'd like to book a free consultation.">Book a consultation</a>
         <button class="btn btn-ghost" type="button" data-shortlist>Shortlist your university</button>
       </div>
       <div class="trust"><span class="stars">★★★★★</span> Rated by students &amp; parents · <a href="#" data-link="reviewsLink" target="_blank" rel="noopener"><u>Read reviews</u></a></div>
     </div>
 
     <div>
+      <div class="stage" id="heroStage">
+      <span class="stk stk-1" data-depth="18"><i class="em">📄</i><span><b>Offer letter</b><small>Your dream university</small></span></span>
+      <span class="stk stk-2" data-depth="-24"><i class="fl">🇬🇧</i><i class="fl">🇺🇸</i><i class="fl">🇩🇪</i><i class="fl">🇰🇷</i><i class="fl">🇮🇪</i></span>
+      <span class="stk stk-3" data-depth="28"><i class="em">💰</i><span><b>Scholarship unlocked</b><small>Up to 100% tuition</small></span></span>
+      <span class="stk stk-4" data-depth="-16"><i class="em">🎧</i><span><b>IELTS</b><small class="score" data-to="7.5">0.0</small></span></span>
+      <span class="stk stk-5" data-depth="12"><i class="em">🛂</i><b>Visa ready</b></span>
+      <span class="spark sp1">✦</span><span class="spark sp2">✦</span><span class="spark sp3">✦</span>
       <div class="pass float"><span class="shine-clip"><span class="shine"></span></span>
         <div class="pass-top"><span>EDURO Airways</span><span>Boarding pass</span></div>
         <div class="route">
@@ -590,11 +999,23 @@ body.sl-lock{overflow:hidden}
           <div>Course<b>Your pick</b></div>
           <div>Intake<b>Fall / Spring</b></div>
         </div>
-        <div class="stamp">Profile → Admit → Visa</div>
+        <div class="stamp">Profile ⟶ Admit ⟶ Visa</div>
+      </div>
+    <div class="tracker" aria-label="Application tracker example">
+        <div class="tr-head"><span class="tr-tag">Example tracker</span><b id="trUni">The University of Manchester</b><span id="trFlag">🇬🇧</span></div>
+        <div class="tr-steps"><span>Shortlisted</span><span>Applied</span><span>Admit</span><span>Visa</span></div>
+        <div class="tr-bar"><i id="trBar"></i></div>
+        <small id="trMsg">Every step of your application, visible to you</small>
       </div>
     </div>
+      </div>
   </div>
 </section>
+<div class="ribbon" aria-hidden="true"><div class="rb-track">
+  <span>🇬🇧 1-year master's</span><span>🇩🇪 Low or no tuition</span><span>🇰🇷 Fully funded GKS</span><span>🇮🇪 Up to 2 years post-study work</span><span>🇺🇸 STEM OPT</span><span>🇫🇷 English-taught programs</span><span>🇦🇪 UK degrees in Dubai</span><span>🇭🇺 Stipendium Hungaricum</span><span>🇦🇺 Post-study work visa</span><span>🇳🇱 Orientation year</span>
+  <span>🇬🇧 1-year master's</span><span>🇩🇪 Low or no tuition</span><span>🇰🇷 Fully funded GKS</span><span>🇮🇪 Up to 2 years post-study work</span><span>🇺🇸 STEM OPT</span><span>🇫🇷 English-taught programs</span><span>🇦🇪 UK degrees in Dubai</span><span>🇭🇺 Stipendium Hungaricum</span><span>🇦🇺 Post-study work visa</span><span>🇳🇱 Orientation year</span>
+</div></div>
+
 
 <!-- ================= STATS ================= -->
 <div class="stats reveal">
@@ -606,6 +1027,35 @@ body.sl-lock{overflow:hidden}
   </div>
 </div>
 
+<!-- ================= QUIZ ================= -->
+<section class="quiz-sec" id="quiz">
+  <div class="wrap quiz-grid">
+    <div class="reveal">
+      <span class="eyebrow">30-second quiz</span>
+      <h2>Which country fits you best?</h2>
+      <p class="lead" style="margin-top:12px">Answer 3 quick questions and see your best-match study destination — with the reasons why.</p>
+      <div class="quiz-floaters" aria-hidden="true"><span>🇬🇧</span><span>🇩🇪</span><span>🇰🇷</span><span>🇺🇸</span><span>🇮🇪</span><span>🇫🇷</span></div>
+    </div>
+    <div class="quiz-card reveal" id="quizCard" aria-live="polite"></div>
+  </div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+</section>
+
+<!-- ================= DID YOU KNOW ================= -->
+<section id="facts" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-title reveal" style="text-align:center"><span class="eyebrow">Did you know?</span><h2>Tap a card to reveal</h2></div>
+    <div class="facts-grid stagger">
+      <button class="fcard f1" type="button"><span class="fc-in"><span class="fc-front"><i>🇩🇪</i><b>How much tuition do most public universities in Germany charge?</b><small>Tap to reveal</small></span><span class="fc-back"><b>Little or nothing</b><span>Most charge only a semester fee — even for international students.</span></span></span></button>
+      <button class="fcard f2" type="button"><span class="fc-in"><span class="fc-front"><i>🇬🇧</i><b>How long is a UK master's degree?</b><small>Tap to reveal</small></span><span class="fc-back"><b>Usually 1 year</b><span>Save a full year of fees and living costs compared with 2-year programs.</span></span></span></button>
+      <button class="fcard f3" type="button"><span class="fc-in"><span class="fc-front"><i>🇰🇷</i><b>Do you need Korean to apply for GKS?</b><small>Tap to reveal</small></span><span class="fc-back"><b>No</b><span>GKS includes a Korean language year. TOPIK can give you an advantage, but it's not required to apply.</span></span></span></button>
+      <button class="fcard f4" type="button"><span class="fc-in"><span class="fc-front"><i>🇮🇪</i><b>How long can master's graduates stay in Ireland to work?</b><small>Tap to reveal</small></span><span class="fc-back"><b>Up to 2 years</b><span>Under Stamp 1G after a level 9 master's degree.</span></span></span></button>
+      <button class="fcard f5" type="button"><span class="fc-in"><span class="fc-front"><i>📅</i><b>When should you start planning for a scholarship?</b><small>Tap to reveal</small></span><span class="fc-back"><b>12–18 months early</b><span>Many scholarships close months before your final results are out.</span></span></span></button>
+      <button class="fcard f6" type="button"><span class="fc-in"><span class="fc-front"><i>🎧</i><b>A correct answer with a spelling mistake in IELTS Listening scores…</b><small>Tap to reveal</small></span><span class="fc-back"><b>Zero</b><span>Misspelled answers are marked wrong — practise spelling common words.</span></span></span></button>
+    </div>
+  </div>
+</section>
+
 <!-- ================= GLOBE ================= -->
 <section class="globe-sec" id="explore">
   <div class="wrap globe-grid">
@@ -616,7 +1066,7 @@ body.sl-lock{overflow:hidden}
       <div class="globe-list stagger">
         <a href="destinations.html#usa">🇺🇸 USA</a><a href="destinations.html#uk">🇬🇧 UK</a><a href="destinations.html#ireland">🇮🇪 Ireland</a><a href="destinations.html#germany">🇩🇪 Germany</a><a href="destinations.html#france">🇫🇷 France</a><a href="destinations.html#south-korea">🇰🇷 Korea</a><a href="destinations.html#dubai">🇦🇪 Dubai</a><a href="destinations.html#australia">🇦🇺 Australia</a>
       </div>
-      <div class="btn-row" style="margin-top:24px"><a class="btn btn-primary" href="destinations.html">Compare destinations →</a><button class="btn btn-ghost" type="button" data-shortlist>Book a consultation</button></div>
+      <div class="btn-row" style="margin-top:24px"><a class="btn btn-primary" href="destinations.html">Compare destinations</a><button class="btn btn-ghost" type="button" data-shortlist>Book a consultation</button></div>
     </div>
     <div class="globe-box reveal"><canvas id="globe" width="560" height="560" aria-label="Rotating globe showing study destinations"></canvas><div class="globe-badge">✈️ From India to the world</div></div>
   </div>
@@ -631,7 +1081,7 @@ body.sl-lock{overflow:hidden}
         <span class="eyebrow">Choose the right country</span>
         <h2>Where do you want to study?</h2>
       </div>
-      <a class="btn btn-ghost" data-wa="Hi EDURO! I'm not sure which country is right for me. Can you help?">Not sure? Ask us →</a>
+      <a class="btn btn-ghost" data-wa="Hi EDURO! I'm not sure which country is right for me. Can you help?">Not sure? Ask us</a>
     </div>
     <div class="country-grid stagger" id="countryGrid"></div>
     <p class="more-countries reveal">Plus Poland, Italy, Malta, Singapore, Georgia, Switzerland and 15+ more destinations — <a data-wa="Hi EDURO! Which other countries can you help me with?">ask us</a>.</p>
@@ -645,14 +1095,15 @@ body.sl-lock{overflow:hidden}
       <div>
         <span class="eyebrow">600+ universities · 30+ countries</span>
         <h2>Find the right university for you</h2>
-        <p class="lead" style="margin-top:12px">From top Russell Group universities to affordable options across Europe and Asia. Popular picks are below — tap any one to ask about courses, fees and eligibility.</p>
+        <p class="lead" style="margin-top:12px">From top Russell Group universities to affordable options across Europe and Asia. Tap any university to ask about courses, fees and eligibility.</p>
       </div>
     </div>
-    <div class="marquee-wrap reveal" aria-label="Universities we work with">
+    <div class="logo-wall" id="logoWall" data-tiles="18" aria-label="Universities we work with"></div>
+    <div class="marquee-wrap reveal" aria-label="More universities we work with">
       <div class="marquee-count"><b id="uniCount">600+</b> universities across <b>30+</b> countries — hover to pause</div>
-      <div id="marquee"></div>
+      <div id="marquee" data-rows="3"></div>
     </div>
-    <div class="feat-grid stagger" id="featuredUnis"></div>
+
     <div style="text-align:center;margin-top:22px" class="reveal"><button class="btn btn-primary" type="button" data-shortlist>🎯 Get my free university shortlist</button></div>
     <div class="dream reveal">
       <div>
@@ -661,7 +1112,7 @@ body.sl-lock{overflow:hidden}
       </div>
       <form id="dreamForm">
         <input class="field" name="uni" required placeholder="Type your dream university…">
-        <button class="btn btn-primary" type="submit">Ask us →</button>
+        <button class="btn btn-primary" type="submit">Ask us</button>
       </form>
     </div>
   </div>
@@ -685,7 +1136,7 @@ body.sl-lock{overflow:hidden}
         <div class="sl-steps"><span>1 Country</span><span>2 Course</span><span>3 Field</span><span>4 Intake</span><span>5 Budget</span></div>
         <h3>Answer 5 quick questions</h3>
         <p>Takes about 30 seconds. We'll send your personalised shortlist on WhatsApp.</p>
-        <button class="btn btn-primary" type="button" data-shortlist>Shortlist my universities →</button>
+        <button class="btn btn-primary" type="button" data-shortlist>Shortlist my universities</button>
       </div>
     </div>
   </div>
@@ -696,59 +1147,58 @@ body.sl-lock{overflow:hidden}
   <div class="wrap">
     <div class="sec-title reveal" style="text-align:center"><span class="eyebrow">Why choose EDURO</span><h2>More than an admission agent</h2></div>
     <div class="tabs reveal" role="tablist">
-      <button class="tab on" data-tab="t1" role="tab">🏆 Scholarships</button><button class="tab" data-tab="t2" role="tab">🎓 Universities</button><button class="tab" data-tab="t3" role="tab">🧭 Career clarity</button><button class="tab" data-tab="t4" role="tab">🤝 End-to-end support</button>
+      <button class="tab on" data-tab="t1" role="tab">Scholarships</button><button class="tab" data-tab="t2" role="tab">Universities</button><button class="tab" data-tab="t3" role="tab">Career clarity</button><button class="tab" data-tab="t4" role="tab">End-to-end support</button>
     </div>
     <div class="tab-panels reveal">
-      <div class="tab-panel on" id="t1"><div><h3>Study for less — or for free</h3><p>Fully funded scholarships like GKS, Stipendium Hungaricum and Erasmus Mundus, plus university merit awards. Guidance from a founder who did her PhD abroad.</p><a class="btn btn-primary" href="scholarships.html">Explore scholarships →</a></div><div class="tab-art">🏆<span>💰</span><span>🎓</span></div></div>
-      <div class="tab-panel" id="t2"><div><h3>600+ universities, 30+ countries</h3><p>Russell Group and top research universities, low-cost public universities, branch campuses and pathway programs — matched to your profile.</p><a class="btn btn-primary" href="universities.html">See universities →</a></div><div class="tab-art">🏛️<span>🌍</span><span>📚</span></div></div>
-      <div class="tab-panel" id="t3"><div><h3>Right course before right country</h3><p>Psychometric career assessments from Class 2 to working professionals, with a 1:1 session with a certified career counsellor.</p><a class="btn btn-primary" href="career-counselling.html">About the career test →</a></div><div class="tab-art">🧭<span>🧠</span><span>📊</span></div></div>
-      <div class="tab-panel" id="t4"><div><h3>From first call to first week abroad</h3><p>Shortlisting, SOP &amp; LOR, applications, education loans, visa, IELTS, accommodation and pre-departure — one team, one plan.</p><a class="btn btn-primary" href="services.html">All services →</a></div><div class="tab-art">✈️<span>🛂</span><span>🏠</span></div></div>
+      <div class="tab-panel on" id="t1"><div><h3>Study for less — or for free</h3><p>Fully funded scholarships like GKS, Stipendium Hungaricum and Erasmus Mundus, plus university merit awards. Guidance from a founder who did her PhD abroad.</p><a class="btn btn-primary" href="scholarships.html">Explore scholarships</a></div><div class="tab-art"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M16 15h2M7 6V4.5A1.5 1.5 0 0 1 8.5 3h7A1.5 1.5 0 0 1 17 4.5V6"/></svg></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 9 12 4 2 9l10 5zM6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6"/></svg></span></div></div>
+      <div class="tab-panel" id="t2"><div><h3>600+ universities, 30+ countries</h3><p>Russell Group and top research universities, low-cost public universities, branch campuses and pathway programs — matched to your profile.</p><a class="btn btn-primary" href="universities.html">See universities</a></div><div class="tab-art"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M2 10l10-6 10 6z"/></svg><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></svg></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg></span></div></div>
+      <div class="tab-panel" id="t3"><div><h3>Right course before right country</h3><p>Psychometric career assessments from Class 2 to working professionals, with a 1:1 session with a certified career counsellor.</p><a class="btn btn-primary" href="career-counselling.html">About the career test</a></div><div class="tab-art"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8 14.1 14.1 7.8 16.2 9.9 9.9z"/></svg><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 1 5 3 3 0 0 0 4 4zM15 3a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-1 5 3 3 0 0 1-4 4z"/></svg></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 10v8M17 6v12"/></svg></span></div></div>
+      <div class="tab-panel" id="t4"><div><h3>From first call to first week abroad</h3><p>Shortlisting, SOP &amp; LOR, applications, education loans, visa, IELTS, accommodation and pre-departure — one team, one plan.</p><a class="btn btn-primary" href="services.html">All services</a></div><div class="tab-art"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 17h6"/></svg></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span></div></div>
     </div>
   </div>
 </section>
 
 
 <!-- ================= SERVICES ================= -->
-<section id="services" style="padding-top:20px">
+<section id="services">
   <div class="wrap">
     <div class="section-head reveal">
-      <div>
-        <span class="eyebrow">All the right support, in one place</span>
-        <h2>Everything you need, from career choice to campus</h2>
-      </div>
-      <a class="btn btn-ghost" href="services.html">All services →</a>
+      <div><span class="eyebrow">All the right support, in one place</span><h2>Everything you need, from career choice to campus</h2></div>
+      <a class="btn btn-ghost" href="services.html">All services</a>
     </div>
-    <div class="services stagger">
-      <div class="svc reveal"><div class="ico">🧭</div><h3>Psychometric career assessment</h3><p>Scientific tests for students from Class 2 to working professionals — know your strengths before you choose a course.</p></div>
-      <div class="svc reveal"><div class="ico">🎓</div><h3>University shortlisting</h3><p>A balanced list of dream, target and safe universities matched to your profile, budget and career goals.</p></div>
-      <div class="svc reveal"><div class="ico">✍️</div><h3>Applications, SOP &amp; LOR</h3><p>Complete application support with guidance on statements of purpose, recommendation letters and CVs.</p></div>
-      <div class="svc reveal"><div class="ico">🏆</div><h3>Scholarships</h3><p>Find and apply for university and government scholarships — including fully funded options like GKS.</p></div>
-      <div class="svc reveal"><div class="ico">💰</div><h3>Education loans</h3><p>Plan your finances and get help comparing education loan options for your study abroad budget.</p></div>
-      <div class="svc reveal"><div class="ico">🛂</div><h3>Visa assistance</h3><p>Document checklists, financial proof and interview preparation so you apply for your visa with confidence.</p></div>
-      <div class="svc reveal"><div class="ico">📝</div><h3>IELTS coaching</h3><p>Prepare with our IELTS team — structured practice, mock tests and feedback to reach your target band.</p></div>
-      <div class="svc reveal"><div class="ico">🏠</div><h3>Accommodation &amp; pre-departure</h3><p>Help finding a place to stay, plus a pre-departure briefing on life, culture and settling in abroad.</p></div>
-      <div class="svc reveal"><div class="ico">🚀</div><h3>Career boosters</h3><p>Career library, student dashboard and virtual internship opportunities to strengthen your profile.</p></div>
+    <div class="bento stagger">
+      <a class="bx bx-lg b-sky" href="universities.html"><div><h3>University shortlist</h3><p>Dream, target and safe universities matched to your profile and budget.</p><span class="bx-link">Get your shortlist</span></div>
+        <div class="anim-list" aria-hidden="true"><span><i>🇬🇧</i>University of Leeds<em>Target</em></span><span><i>🇮🇪</i>University of Limerick<em>Safe</em></span><span><i>🇺🇸</i>Arizona State University<em>Target</em></span><span><i>🇩🇪</i>KIT<em>Dream</em></span></div></a>
+      <a class="bx b-butter" href="scholarships.html"><h3>Scholarships</h3><p>Fully funded &amp; merit awards you're eligible for.</p><div class="anim-coins" aria-hidden="true"><i>🪙</i><i>🪙</i><i>🪙</i><span>💰</span></div></a>
+      <a class="bx b-mint" href="ielts.html"><h3>IELTS coaching</h3><p>Mock tests and band-by-band feedback.</p><div class="anim-score" aria-hidden="true"><b data-to="7.5">5.0</b><small>Target band</small></div></a>
+      <a class="bx b-lilac" href="career-counselling.html"><h3>Career test</h3><p>Know your strengths before you choose.</p><div class="anim-bars" aria-hidden="true"><i style="--h:70%"></i><i style="--h:45%"></i><i style="--h:90%"></i><i style="--h:60%"></i><i style="--h:80%"></i></div></a>
+      <a class="bx b-peach" href="services.html#visa"><h3>Visa &amp; beyond</h3><p>Documents, mock interview, pre-departure.</p><div class="anim-stamp" aria-hidden="true"><span>APPROVED</span></div></a>
+      <a class="bx bx-wide b-rose" href="services.html#sop-lor"><div><h3>Applications, SOP &amp; LOR</h3><p>Your story, told the right way — in your own words.</p></div><div class="anim-type" aria-hidden="true"><span>"I want to study data science because…"</span></div></a>
+      <a class="bx b-sky2" href="services.html#loans"><h3>Loans &amp; finances</h3><p>Total cost, loans and proof of funds.</p><div class="anim-meter" aria-hidden="true"><i></i></div></a>
     </div>
   </div>
 </section>
 
 <!-- ================= JOURNEY ================= -->
-<section class="journey">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow">How we help you</span>
-        <h2>Your journey, step by step</h2>
-      </div>
+<section class="journey path-sec" id="journey">
+  <div class="wrap path-grid">
+    <div class="path-intro">
+      <span class="eyebrow">How we help you</span>
+      <h2>We're with you from the first call to the first week abroad</h2>
+      <p class="lead" style="margin-top:14px">Eight clear stages, one counsellor. You always know what's done, what's next and what it needs from you.</p>
+      <div class="path-meter"><b id="pathPct">0%</b><span>of your journey mapped</span></div>
+      <button class="btn btn-primary" type="button" data-signup>Start my journey</button>
     </div>
-    <div class="steps reveal">
-      <div class="step"><h3>Free consultation</h3><p>Understand your goals, profile and budget.</p></div>
-      <div class="step"><h3>Career &amp; country</h3><p>Psychometric test and career roadmap.</p></div>
-      <div class="step"><h3>Shortlist</h3><p>The right universities and courses for you.</p></div>
-      <div class="step"><h3>Apply</h3><p>SOP, LOR, tests and applications.</p></div>
-      <div class="step"><h3>Fund</h3><p>Scholarships and education loans.</p></div>
-      <div class="step"><h3>Fly</h3><p>Visa, accommodation and pre-departure.</p></div>
-    </div>
+    <ol class="path" id="path">
+      <li><span class="dot"></span><div><small>Stage 1</small><h3>One-to-one guidance</h3><p>A free first conversation about your goals, marks, budget and family plans.</p></div></li>
+      <li><span class="dot"></span><div><small>Stage 2</small><h3>Career clarity &amp; roadmap</h3><p>Psychometric test if needed, and a personal roadmap with dates.</p></div></li>
+      <li><span class="dot"></span><div><small>Stage 3</small><h3>The right universities</h3><p>A shortlist of dream, target and safe options with honest admit chances.</p></div></li>
+      <li><span class="dot"></span><div><small>Stage 4</small><h3>Test preparation</h3><p>IELTS coaching and guidance for other tests your universities need.</p></div></li>
+      <li><span class="dot"></span><div><small>Stage 5</small><h3>A strong application</h3><p>SOP, LOR and CV guidance, forms and deadline tracking.</p></div></li>
+      <li><span class="dot"></span><div><small>Stage 6</small><h3>Finances planned</h3><p>Total cost, education loan options and proof-of-funds documents.</p></div></li>
+      <li><span class="dot"></span><div><small>Stage 7</small><h3>Scholarships</h3><p>University awards and fully funded options you are actually eligible for.</p></div></li>
+      <li><span class="dot"></span><div><small>Stage 8</small><h3>Visa ready &amp; flying</h3><p>Visa documents, mock interview, accommodation and pre-departure briefing.</p></div></li>
+    </ol>
   </div>
 </section>
 
@@ -772,7 +1222,7 @@ body.sl-lock{overflow:hidden}
         <div class="calc-verdict" id="cVerdict"></div>
         <div class="calc-alt" id="cAlt"></div>
         <p class="calc-note">Very rough planning estimate in Indian rupees. Real costs depend on the university, city, course and exchange rates. Scholarships can reduce costs.</p>
-        <a class="btn btn-primary" id="cAsk" data-wa="Hi EDURO! Can you help me plan my study abroad budget?">Get an exact estimate →</a>
+        <a class="btn btn-primary" id="cAsk" data-wa="Hi EDURO! Can you help me plan my study abroad budget?">Get an exact estimate</a>
       </div>
     </div>
   </div>
@@ -786,13 +1236,13 @@ body.sl-lock{overflow:hidden}
       <h3>Admissions in India</h3>
       <p>Not going abroad? We also guide students and parents through admissions in India's top colleges.</p>
       <div class="tags"><span>MBBS</span><span>Engineering</span><span>Management</span><span>Management quota guidance</span></div>
-      <a class="btn btn-light" href="india-admissions.html">Explore India admissions →</a>
+      <a class="btn btn-light" href="india-admissions.html">Explore India admissions</a>
     </div>
     <div class="band b reveal">
       <h3>Not sure what to study?</h3>
       <p>Take the EDURO psychometric career assessment and get a one-on-one results session with a certified career counsellor.</p>
       <div class="tags"><span>Class 2–7</span><span>Class 8–10</span><span>Class 11–12</span><span>Graduates</span><span>Professionals</span></div>
-      <a class="btn btn-light" href="career-counselling.html">About the career test →</a>
+      <a class="btn btn-light" href="career-counselling.html">About the career test</a>
     </div>
   </div>
 </section>
@@ -800,12 +1250,12 @@ body.sl-lock{overflow:hidden}
 <!-- ================= WORKSHOPS ================= -->
 <section id="events" style="padding-top:0">
   <div class="wrap">
-    <div class="section-head reveal"><div><span class="eyebrow">Free masterclasses</span><h2>Live workshops &amp; webinars</h2><p class="lead" style="margin-top:10px">Join our free sessions — dates are announced on Instagram. Tap "Notify me" to get the next one on WhatsApp.</p></div><a class="btn btn-ghost" href="#" data-link="instagram2" target="_blank" rel="noopener">Follow on Instagram →</a></div>
+    <div class="section-head reveal"><div><span class="eyebrow">Free masterclasses</span><h2>Live workshops &amp; webinars</h2><p class="lead" style="margin-top:10px">Join our free sessions — dates are announced on Instagram. Tap "Notify me" to get the next one on WhatsApp.</p></div><a class="btn btn-ghost" href="#" data-link="instagram2" target="_blank" rel="noopener">Follow on Instagram</a></div>
     <div class="cards stagger">
-      <div class="card tilt event"><div class="ev-top"><span class="ev-tag">Scholarships</span><span class="ev-live">● FREE</span></div><div class="ico">🇰🇷</div><h3>GKS scholarship masterclass</h3><p>Eligibility, documents, study plan and common mistakes — for UG, master's and PhD.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next GKS masterclass.">Notify me →</a></div>
-      <div class="card tilt event"><div class="ev-top"><span class="ev-tag">Europe</span><span class="ev-live">● FREE</span></div><div class="ico">🇩🇪</div><h3>Study in Europe on a budget</h3><p>Low-tuition public universities in Germany, France and Hungary — and how to apply.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next Study in Europe webinar.">Notify me →</a></div>
-      <div class="card tilt event"><div class="ev-top"><span class="ev-tag">IELTS</span><span class="ev-live">● FREE</span></div><div class="ico">🎯</div><h3>IELTS band 7 strategies</h3><p>Module-wise tips from our IELTS team, with a live speaking demo.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next IELTS strategy session.">Notify me →</a></div>
-      <div class="card tilt event"><div class="ev-top"><span class="ev-tag">Careers</span><span class="ev-live">● FREE</span></div><div class="ico">🧭</div><h3>What after 12th?</h3><p>For students and parents — choosing the right stream, course and career path.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next career guidance session.">Notify me →</a></div>
+      <div class="card event"><div class="ev-top"><span class="ev-tag">Scholarships</span><span class="ev-live">● FREE</span></div><div class="ico">🇰🇷</div><h3>GKS scholarship masterclass</h3><p>Eligibility, documents, study plan and common mistakes — for UG, master's and PhD.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next GKS masterclass.">Notify me</a></div>
+      <div class="card event"><div class="ev-top"><span class="ev-tag">Europe</span><span class="ev-live">● FREE</span></div><div class="ico">🇩🇪</div><h3>Study in Europe on a budget</h3><p>Low-tuition public universities in Germany, France and Hungary — and how to apply.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next Study in Europe webinar.">Notify me</a></div>
+      <div class="card event"><div class="ev-top"><span class="ev-tag">IELTS</span><span class="ev-live">● FREE</span></div><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h3>IELTS band 7 strategies</h3><p>Module-wise tips from our IELTS team, with a live speaking demo.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next IELTS strategy session.">Notify me</a></div>
+      <div class="card event"><div class="ev-top"><span class="ev-tag">Careers</span><span class="ev-live">● FREE</span></div><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8 14.1 14.1 7.8 16.2 9.9 9.9z"/></svg></div><h3>What after 12th?</h3><p>For students and parents — choosing the right stream, course and career path.</p><a class="btn btn-primary" data-wa="Hi EDURO! Please notify me about the next career guidance session.">Notify me</a></div>
     </div>
   </div>
 </section>
@@ -822,11 +1272,11 @@ body.sl-lock{overflow:hidden}
       <h2>Dr. Priyadarshini Venkatachalam</h2>
       <p class="lead" style="margin-top:14px">Founder of EDURO. I've been an international student myself, so I know how confusing the process can feel. My goal is to replace guesswork with personalised, ethical, research-based guidance — especially for students who don't have anyone to ask.</p>
       <div class="creds">
-        <div class="cred"><span class="ic">🎓</span><div><b>PhD, Polymer Science &amp; Engineering</b><span>Chonnam National University, South Korea</span></div></div>
-        <div class="cred"><span class="ic">🔬</span><div><b>Postdoctoral researcher in Korea</b><span>Living and working abroad as an international researcher</span></div></div>
-        <div class="cred"><span class="ic">🧭</span><div><b>Certified career counsellor</b><span>5+ years of career mentoring</span></div></div>
+        <div class="cred"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 9 12 4 2 9l10 5zM6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6"/></svg></span><div><b>PhD, Polymer Science &amp; Engineering</b><span>Chonnam National University, South Korea</span></div></div>
+        <div class="cred"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L4 20a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 20L14 9V3M7 15h10"/></svg></span><div><b>Postdoctoral researcher in Korea</b><span>Living and working abroad as an international researcher</span></div></div>
+        <div class="cred"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8 14.1 14.1 7.8 16.2 9.9 9.9z"/></svg></span><div><b>Certified career counsellor</b><span>5+ years of career mentoring</span></div></div>
       </div>
-      <a class="btn btn-ghost" href="about.html" style="margin-bottom:20px">More about EDURO →</a>
+      <a class="btn btn-ghost" href="about.html" style="margin-bottom:20px">More about EDURO</a>
       <blockquote>“Admission is not the finish line — it's the beginning of a meaningful academic and professional journey.”</blockquote>
     </div>
   </div>
@@ -848,22 +1298,27 @@ body.sl-lock{overflow:hidden}
 </section>
 
 <!-- ================= FINAL CTA ================= -->
-<section style="padding-top:0">
+<section style="padding-top:0" id="board">
   <div class="wrap">
-    <div class="cta reveal">
-      <div>
-        <h2>Ready to take the first step?</h2>
-        <p>Book a one-on-one session and leave with a clear plan — country, course, universities, budget and timeline.</p>
-        <div class="hero-cta" style="margin-top:22px">
-          <a class="btn btn-light" href="#" data-link="registerLink" target="_blank" rel="noopener">Register for global admissions</a>
-        </div>
+    <div class="ticket reveal">
+      <div class="ticket-main">
+        <div class="tk-top"><span>EDURO Airways</span><span class="tk-status"><i></i> Now boarding</span></div>
+        <h2>Ready to take off?</h2>
+        <p>Create your free EDURO profile. A counsellor will reach out on WhatsApp with your next step.</p>
+        <form class="tk-form" id="ticketForm">
+          <select class="field cc" name="cc" aria-label="Country code" data-cc></select>
+          <input class="field" name="phone" required inputmode="tel" pattern="[0-9 ]{6,15}" placeholder="WhatsApp number" aria-label="WhatsApp number">
+          <button class="btn btn-primary" type="submit">Start my journey</button>
+        </form>
+        <small class="tk-note">Free. No spam — only your counsellor will contact you.</small>
       </div>
-      <form id="callbackForm">
-        <input class="field" name="name" required placeholder="Your name">
-        <input class="field" name="phone" required placeholder="Phone / WhatsApp number" inputmode="tel">
-        <select class="field" name="country" data-countries><option value="" disabled selected>Where do you want to study?</option></select>
-        <button class="btn btn-wa" type="submit">Request a call back on WhatsApp</button>
-      </form>
+      <div class="ticket-stub">
+        <div><small>From</small><b>India</b></div>
+        <div class="tk-plane">✈</div>
+        <div><small>To</small><b>Your dream university</b></div>
+        <div class="tk-row"><div><small>Status</small><b>Ready</b></div><div><small>Seat</small><b>1:1</b></div><div><small>Class</small><b>First</b></div></div>
+        <div class="tk-bar" aria-hidden="true"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -886,7 +1341,7 @@ body.sl-lock{overflow:hidden}
         <li><a href="destinations.html#ireland">Ireland</a></li>
         <li><a href="destinations.html#germany">Germany</a></li>
         <li><a href="destinations.html#south-korea">South Korea</a></li>
-        <li><a href="destinations.html">All destinations →</a></li>
+        <li><a href="destinations.html">All destinations</a></li>
       </ul></div>
       <div><h4>Services</h4><ul>
         <li><a href="career-counselling.html">Career counselling</a></li>
@@ -924,11 +1379,53 @@ body.sl-lock{overflow:hidden}
   </div>
 </div>
 
+
+<!-- ================= SIGN UP ================= -->
+<div class="sl-overlay" id="suModal" aria-hidden="true">
+  <div class="sl-box su-box" role="dialog" aria-modal="true" aria-labelledby="suTitle">
+    <button class="sl-close su-close" type="button" aria-label="Close">✕</button>
+    <div class="su-side">
+      <div class="su-brand">eduro<i></i></div>
+      <h3>Your study-abroad journey, planned with you.</h3>
+      <ul><li>Free first consultation</li><li>Personal university shortlist</li><li>Scholarship &amp; visa guidance</li><li>One counsellor from start to finish</li></ul>
+    </div>
+    <div class="su-main">
+      <div class="sl-bar"><i id="suBar"></i></div>
+      <form class="su-step" data-step="1" id="suForm1">
+        <h3 id="suTitle">Create your free profile</h3>
+        <p>Enter your WhatsApp number — your counsellor will contact you there.</p>
+        <label>WhatsApp number</label>
+        <div class="su-phone"><select class="field" id="suCC" data-cc aria-label="Country code"></select><input class="field" id="suPhone" inputmode="tel" required placeholder="98765 43210" aria-label="WhatsApp number"></div>
+        <small class="su-err" id="suErr1" role="alert"></small>
+        <button class="btn btn-primary" type="submit">Continue</button>
+        <small class="su-legal">By continuing you agree to be contacted by EDURO on WhatsApp, phone or email about your enquiry.</small>
+      </form>
+      <form class="su-step" data-step="2" id="suForm2" hidden>
+        <h3>Tell us about you</h3>
+        <label>Full name</label><input class="field" name="name" required placeholder="Your name" autocomplete="name">
+        <label>Email (optional)</label><input class="field" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+        <label>I'm interested in</label>
+        <div class="su-chips"><button type="button" class="su-chip" data-v="Study abroad">Study abroad</button><button type="button" class="su-chip" data-v="Scholarships">Scholarships</button><button type="button" class="su-chip" data-v="Career test">Career test</button><button type="button" class="su-chip" data-v="IELTS">IELTS</button><button type="button" class="su-chip" data-v="India admissions">India admissions</button></div>
+        <div class="row2"><div><label>Level</label><select class="field" name="level"><option>Bachelor's</option><option>Master's</option><option>MBA</option><option>PhD</option><option>Class 8–12</option><option>Not sure</option></select></div>
+        <div><label>Preferred country</label><select class="field" name="country" data-countries><option value="">Not sure yet</option></select></div></div>
+        <div class="su-actions"><button class="btn btn-ghost" type="button" id="suBack">Back</button><button class="btn btn-primary" type="submit">Create my profile</button></div>
+      </form>
+      <div class="su-step su-done" data-step="3" hidden>
+        <div class="su-check"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+        <h3 id="suWelcome">Welcome aboard!</h3>
+        <p id="suDoneMsg"></p>
+        <div class="su-actions"><button class="btn btn-primary" type="button" id="suToShortlist">Get my free shortlist</button><a class="btn btn-ghost" data-wa="Hi EDURO! I just created my profile.">Chat on WhatsApp</a></div>
+      </div>
+    </div>
+  </div>
+</div>
 <a class="wa-float" data-wa="Hi EDURO, I'd like to book a consultation." target="_blank" rel="noopener">💬 <span>Chat on WhatsApp</span></a>
-<script>window.EDURO_NAMES = [["University of South Alabama","🇺🇸"],["University of Alabama - Tuscaloosa","🇺🇸"],["University of West Alabama","🇺🇸"],["Troy State University","🇺🇸"],["The University of Alabama at Birmingham","🇺🇸"],["Auburn University at Montgomery","🇺🇸"],["Auburn University","🇺🇸"],["Jacksonville State University","🇺🇸"],["Arkansas State University","🇺🇸"],["Arizona State University","🇺🇸"],["University of Arizona","🇺🇸"],["Northern Arizona University","🇺🇸"],["Colorado State University","🇺🇸"],["University of Colorado - Springs","🇺🇸"],["University of Colorado Denver","🇺🇸"],["Colorado Mesa University","🇺🇸"],["University of New Haven","🇺🇸"],["Southern Connecticut State University","🇺🇸"],["University of Connecticut","🇺🇸"],["Quinnipiac University","🇺🇸"],["University of Hartford","🇺🇸"],["Fairfield University","🇺🇸"],["University of Bridgeport","🇺🇸"],["Sacred Heart University","🇺🇸"],["Albertus Magnus College","🇺🇸"],["Post University","🇺🇸"],["California State University – Fullerton","🇺🇸"],["California State University – Northridge","🇺🇸"],["California State University – Sacramento","🇺🇸"],["California State University, Bakersfield","🇺🇸"],["San Jose State University","🇺🇸"],["Sonoma State University","🇺🇸"],["San Francisco State University","🇺🇸"],["California State University – San Marcos","🇺🇸"],["California State University – Long Beach","🇺🇸"],["California State University – East Bay","🇺🇸"],["DeVry Education – Los Angeles & San Francisco","🇺🇸"],["California Lutheran University","🇺🇸"],["California State University San Bernardino","🇺🇸"],["California State University – Fresno","🇺🇸"],["California State University Channel Islands","🇺🇸"],["California State University, Dominguez Hills","🇺🇸"],["California State University, Monterey Bay","🇺🇸"],["Woodbury University","🇺🇸"],["Golden Gate University","🇺🇸"],["Whittier College","🇺🇸"],["American University","🇺🇸"],["Westcliff University","🇺🇸"],["Foothill and De Anza Colleges","🇺🇸"],["Santa Barbara City College","🇺🇸"],["Santiago Canyon College","🇺🇸"],["College of San Mateo","🇺🇸"],["University of the Pacific","🇺🇸"],["Moorpark College","🇺🇸"],["Yosemite Community College- Columbia College","🇺🇸"],["Contra Costa Community College","🇺🇸"],["Simpson University","🇺🇸"],["University of California- Riverside","🇺🇸"],["University of California- SantaCruz","🇺🇸"],["William Jessup University","🇺🇸"],["College of Canyons","🇺🇸"],["Rancho Santiago Community College District","🇺🇸"],["University of Delaware","🇺🇸"],["Wilmington University","🇺🇸"],["University of Tampa","🇺🇸"],["Florida Institute of Technology","🇺🇸"],["Embry–Riddle Aeronautical University","🇺🇸"],["Florida International University","🇺🇸"],["Florida Polytechnic University","🇺🇸"],["Florida A & M University","🇺🇸"],["Atlantis University","🇺🇸"],["Nova Southeastern University","🇺🇸"],["St. Leo University","🇺🇸"],["Full Sail University","🇺🇸"],["The University of Central Florida","🇺🇸"],["Schiller International University","🇺🇸"],["University of South Florida","🇺🇸"],["Med College","🇺🇸"],["University of North Florida","🇺🇸"],["Mercer University","🇺🇸"],["Herzing University","🇺🇸"],["Middle Georgia State University","🇺🇸"],["South University","🇺🇸"],["Hawaii Pacific University","🇺🇸"],["University of Idaho","🇺🇸"],["Bradley University","🇺🇸"],["University of Illinois Springfield (UIS)","🇺🇸"],["University of Illinois at Chicago","🇺🇸"],["Illinois State University","🇺🇸"],["Western Illinois University","🇺🇸"],["Elmhurst University","🇺🇸"],["Governors State University","🇺🇸"],["Southern Illinois University - Carbondale","🇺🇸"],["DePaul University - Selected Programs","🇺🇸"],["Southern Illinois University Edwardsville","🇺🇸"],["North Eastern Illinois University","🇺🇸"],["North Park University","🇺🇸"],["Millikin University","🇺🇸"],["DeVry University","🇺🇸"],["Illinois Eastern Community College","🇺🇸"],["National Louis University","🇺🇸"],["Concordia University of Chicago","🇺🇸"],["Illinois Institute of Technology","🇺🇸"],["Benedictine University","🇺🇸"],["Indiana Institute of Technology","🇺🇸"],["Trine University","🇺🇸"],["Marian University","🇺🇸"],["Valparaiso University","🇺🇸"],["University of Indianapolis","🇺🇸"],["Purdue University - Northwest","🇺🇸"],["Iowa State University","🇺🇸"],["Upper Iowa University","🇺🇸"],["Drake University","🇺🇸"],["Kansas State University","🇺🇸"],["Wichita State University","🇺🇸"],["Pittsburgh State University","🇺🇸"],["Ottawa University","🇺🇸"],["The University of Kansas","🇺🇸"],["Western Kentucky University","🇺🇸"],["University of the Cumberlands","🇺🇸"],["Murray State University","🇺🇸"],["Midway University","🇺🇸"],["Eastern Kentucky University","🇺🇸"],["University of Louisville","🇺🇸"],["Louisiana State University","🇺🇸"],["University of Maryland, Baltimore County","🇺🇸"],["Towson University- only Grad","🇺🇸"],["University of Massachusetts, Lowell","🇺🇸"],["Bridgewater State University","🇺🇸"],["University of Massachusetts Amherst","🇺🇸"],["University of Massachusetts Dartmouth- only Grad","🇺🇸"],["University of Massachusetts, Boston [Grad – PMP & UG – UPP]","🇺🇸"],["Massachusetts College of Pharmacy and Health Sciences","🇺🇸"],["Western New England University","🇺🇸"],["Worcester Polytechnic Institute - Graduate Business Degrees Only","🇺🇸"],["Hult International Business School","🇺🇸"],["Suffolk University","🇺🇸"],["Fisher College","🇺🇸"],["Regis College","🇺🇸"],["Simmons University","🇺🇸"],["University of Michigan - Flint","🇺🇸"],["Eastern Michigan University","🇺🇸"],["Grand Valley State University","🇺🇸"],["Lawrence Technology University","🇺🇸"],["Ferris State University","🇺🇸"],["Northern Michigan University","🇺🇸"],["Central Michigan University","🇺🇸"],["Saginaw Valley State University","🇺🇸"],["University of Minnesota","🇺🇸"],["University of Central Missouri","🇺🇸"],["University of Missouri - St. Louis","🇺🇸"],["Saint Louis University","🇺🇸"],["Missouri University of Science & Technology","🇺🇸"],["Webster University – St. Louis","🇺🇸"],["Northwest Missouri State University","🇺🇸"],["Southeast Missouri State University","🇺🇸"],["Drury University","🇺🇸"],["Central Methodist University","🇺🇸"],["Missouri Southern State University","🇺🇸"],["Avila University","🇺🇸"],["Mississippi State University","🇺🇸"],["University of Mississippi","🇺🇸"],["Montana State University – Bozeman","🇺🇸"],["University of Nebraska Omaha","🇺🇸"],["Nebraska Wesleyan University","🇺🇸"],["University of Nevada, Las Vegas","🇺🇸"],["Southern New Hampshire University","🇺🇸"],["University of New Hampshire","🇺🇸"],["New Jersey Institute of Technology","🇺🇸"],["Stevens Institute of Technology","🇺🇸"],["FDU (Fairleigh Dickinson University)","🇺🇸"],["Saint Peter's University","🇺🇸"],["Rowan University","🇺🇸"],["Drew University","🇺🇸"],["Monmouth University","🇺🇸"],["Felician University","🇺🇸"],["Rider University","🇺🇸"],["Montclair State University","🇺🇸"],["William Paterson University","🇺🇸"],["Clarkson University","🇺🇸"],["St. John’s University","🇺🇸"],["Rochester Institute of Technology","🇺🇸"],["Pace University","🇺🇸"],["NYIT (New York Institute of Technology)","🇺🇸"],["Hofstra University","🇺🇸"],["Yeshiva University- The Katz School of Science and Health","🇺🇸"],["Long Island - C.W. Post Campus","🇺🇸"],["Long Island - Brooklyn Campus","🇺🇸"],["DeVry Education","🇺🇸"],["Monroe College","🇺🇸"],["Elmira College","🇺🇸"],["St. Francis College","🇺🇸"],["LIM College","🇺🇸"],["Vaughn College of Aeronautics and Technology","🇺🇸"],["New York University","🇺🇸"],["State University of New York – Polytechnic","🇺🇸"],["State University of New York – New Paltz","🇺🇸"],["State University of New York – Albany","🇺🇸"],["State University of New York at Oswego","🇺🇸"],["State University of New York at Binghamton","🇺🇸"],["State University of New York at Geneseo","🇺🇸"],["State University of New York – Brockport","🇺🇸"],["SUNY Buffalo State College","🇺🇸"],["New York Film Academy","🇺🇸"],["Marist College – Computer Science Dept","🇺🇸"],["Adelphi University","🇺🇸"],["Mercy College","🇺🇸"],["Berkeley College","🇺🇸"],["West Coast Connection Travel Camp USA","🇺🇸"],["University of North Carolina Wilmington","🇺🇸"],["University of North Carolina at Pembroke","🇺🇸"],["High Point University","🇺🇸"],["Elon University","🇺🇸"],["The University of North Carolina at Greensboro","🇺🇸"],["Salem College","🇺🇸"],["University of New Mexico","🇺🇸"],["New Mexico Military Institute","🇺🇸"],["Ohio Northern University","🇺🇸"],["Kent State University","🇺🇸"],["Miami University","🇺🇸"],["Ohio Dominican University","🇺🇸"],["Ohio University","🇺🇸"],["Ohio Wesleyan University","🇺🇸"],["University of Dayton","🇺🇸"],["University of Findlay","🇺🇸"],["Cleveland State University","🇺🇸"],["Wright State University","🇺🇸"],["University of Cincinnati","🇺🇸"],["Bowling Green State University","🇺🇸"],["Youngstown State University","🇺🇸"],["Tiffin University","🇺🇸"],["Oregon State University","🇺🇸"],["Portland State University","🇺🇸"],["Western Oregon University","🇺🇸"],["University of Oregon","🇺🇸"],["Oklahoma City University","🇺🇸"],["Oklahoma State University","🇺🇸"],["University of Tulsa","🇺🇸"],["University of Central Oklahoma","🇺🇸"],["Gannon University","🇺🇸"],["University of Scranton","🇺🇸"],["Drexel University - Only GRAD","🇺🇸"],["Wilkes University","🇺🇸"],["Thomas Jefferson University","🇺🇸"],["La Salle University","🇺🇸"],["Kutztown University","🇺🇸"],["Harrisburg University of Science and Technology","🇺🇸"],["Indiana University of Pennsylvania","🇺🇸"],["York College of Pennsylvania","🇺🇸"],["Alvernia University","🇺🇸"],["Temple University","🇺🇸"],["Robbert Morris University","🇺🇸"],["Bryant University - Master Only","🇺🇸"],["Johnson & Wales University","🇺🇸"],["Roger William University","🇺🇸"],["South Dakota State University","🇺🇸"],["Augustana University","🇺🇸"],["University of South Carolina Upstate","🇺🇸"],["Webster University - Columbia","🇺🇸"],["Anderson University","🇺🇸"],["University of South Carolina","🇺🇸"],["Tennessee Tech University","🇺🇸"],["University of Tennessee - Knoxville","🇺🇸"],["University of Memphis","🇺🇸"],["Middle Tennessee State University","🇺🇸"],["Christian Brothers University","🇺🇸"],["University of Houston - Selected Gard Programs","🇺🇸"],["Texas A&M University–Kingsville","🇺🇸"],["University of Houston–Clear Lake","🇺🇸"],["Texas Tech University","🇺🇸"],["Texas A & M University (Corpus Christi)","🇺🇸"],["Webster University – San Antonio","🇺🇸"],["Texas Wesleyan University","🇺🇸"],["Dallas Baptist University","🇺🇸"],["Midwestern State University","🇺🇸"],["Stephen F. Austin State University","🇺🇸"],["The University of North Texas","🇺🇸"],["University of the Incarnate Word of San Antonio","🇺🇸"],["Texas A&M University-San Antonio","🇺🇸"],["Texas State University","🇺🇸"],["McMurry University","🇺🇸"],["University of Mary Hardin Baylor","🇺🇸"],["University of Texas at San Antonio","🇺🇸"],["Weber State University","🇺🇸"],["University of Utah","🇺🇸"],["University of Vermont","🇺🇸"],["George Mason University","🇺🇸"],["West Virginia University","🇺🇸"],["Radford University","🇺🇸"],["James Madison University","🇺🇸"],["Virginia Commonwealth University","🇺🇸"],["Washington State University","🇺🇸"],["Gonzaga University","🇺🇸"],["City University of Seattle","🇺🇸"],["Western Washington University-Extended Education","🇺🇸"],["Lake Washington Institute of Technology","🇺🇸"],["Highline College","🇺🇸"],["University of Potomac","🇺🇸"],["Marshall University","🇺🇸"],["University of Wisconsin – Stout","🇺🇸"],["University of Wisconsin – La Crosse","🇺🇸"],["University of Wisconsin – Platteville","🇺🇸"],["Marquette university","🇺🇸"],["Viterbo University","🇺🇸"],["Milwaukee School of Engineering","🇺🇸"],["Concordia University Wisconsin","🇺🇸"],["American University of Barbados","🇺🇸"],["The Art Institutes","🇺🇸"],["University of Bristol","🇬🇧"],["The University of Edinburgh","🇬🇧"],["University of Glasgow","🇬🇧"],["The University of Sheffield","🇬🇧"],["The University of Manchester","🇬🇧"],["Durham University","🇬🇧"],["University of Birmingham","🇬🇧"],["University of Leeds","🇬🇧"],["Queen Mary University of London","🇬🇧"],["University of Warwick","🇬🇧"],["University of Nottingham","🇬🇧"],["University of Southampton","🇬🇧"],["University of Liverpool","🇬🇧"],["King's College London","🇬🇧"],["Queens University of Belfast","🇬🇧"],["Newcastle University","🇬🇧"],["Cardiff University","🇬🇧"],["University of Exeter","🇬🇧"],["University of York","🇬🇧"],["Aberdeen University","🇬🇧"],["Leeds Beckett University","🇬🇧"],["Abertay University","🇬🇧"],["Leeds Trinity University","🇬🇧"],["Aberystwyth University","🇬🇧"],["Leicester University","🇬🇧"],["Anglia Ruskin University","🇬🇧"],["Lincoln University","🇬🇧"],["Arts University Bournemouth","🇬🇧"],["Liverpool Hope University","🇬🇧"],["Aston University","🇬🇧"],["Liverpool John Moores University","🇬🇧"],["BANGOR BUSINESS SCHOOL","🇬🇧"],["London Metropolitan University","🇬🇧"],["Bangor University","🇬🇧"],["London South Bank University","🇬🇧"],["Bath Spa University","🇬🇧"],["Loughborough University","🇬🇧"],["Bath University","🇬🇧"],["Loughborough University - London Campus","🇬🇧"],["Bedfordshire University","🇬🇧"],["Manchester Metropolitan University","🇬🇧"],["Birkbeck University of London","🇬🇧"],["Middlesex University","🇬🇧"],["Birmingham City University","🇬🇧"],["Northampton University","🇬🇧"],["Bolton University","🇬🇧"],["Northumbria University","🇬🇧"],["Bournemouth University","🇬🇧"],["Norwich University Of The Arts","🇬🇧"],["BPP University Limited","🇬🇧"],["Nottingham Trent University","🇬🇧"],["Bradford University","🇬🇧"],["Oxford Brookes University","🇬🇧"],["Brighton University","🇬🇧"],["Plymouth University","🇬🇧"],["Brunel University","🇬🇧"],["Portsmouth University","🇬🇧"],["Buckingham University","🇬🇧"],["Queen Margaret University","🇬🇧"],["Canterbury Christ Church University","🇬🇧"],["Ravensbourne","🇬🇧"],["Cardiff Metropolitan University","🇬🇧"],["Reading University","🇬🇧"],["Central Lancashire University","🇬🇧"],["Regents University London","🇬🇧"],["Chester University","🇬🇧"],["Richmond The American International University in London","🇬🇧"],["Chichester University","🇬🇧"],["Robert Gordon University","🇬🇧"],["City University","🇬🇧"],["Roehampton University","🇬🇧"],["Coventry University","🇬🇧"],["Royal Agricultural University","🇬🇧"],["Coventry University - London Campus","🇬🇧"],["Royal Holloway University of London","🇬🇧"],["Cranfield University","🇬🇧"],["Salford University","🇬🇧"],["De Montfort University","🇬🇧"],["School of Oriental and African Studies London (SOAS)","🇬🇧"],["Derby University","🇬🇧"],["Sheffield Hallam University","🇬🇧"],["Dundee University","🇬🇧"],["Solent University","🇬🇧"],["East Anglia University","🇬🇧"],["St Mary's University Twickenham","🇬🇧"],["East London University","🇬🇧"],["Staffordshire University","🇬🇧"],["Edge Hill University","🇬🇧"],["Stirling University","🇬🇧"],["Edinburgh Business School","🇬🇧"],["Strathclyde University","🇬🇧"],["Edinburgh Napier University","🇬🇧"],["Essex University","🇬🇧"],["Sunderland University","🇬🇧"],["Falmouth University","🇬🇧"],["Sunderland University - London Campus","🇬🇧"],["Glasgow Caledonian London Campus","🇬🇧"],["Surrey University","🇬🇧"],["Glasgow Caledonian University","🇬🇧"],["Sussex University","🇬🇧"],["Glasgow School of Art","🇬🇧"],["Swansea University of Wales","🇬🇧"],["Gloucestershire University","🇬🇧"],["Teesside University","🇬🇧"],["Goldsmiths University of London","🇬🇧"],["Ulster University","🇬🇧"],["Greenwich University","🇬🇧"],["Ulster University Coleraine Campus","🇬🇧"],["Harper Adams University","🇬🇧"],["University College Birmingham","🇬🇧"],["Heriot-Watt University","🇬🇧"],["University for the Creative Arts","🇬🇧"],["Hertfordshire University","🇬🇧"],["University of Law London Bloomsbury","🇬🇧"],["Huddersfield University","🇬🇧"],["University of South Wales","🇬🇧"],["Hull University","🇬🇧"],["University of Suffolk","🇬🇧"],["Hult International Business School AG","🇬🇧"],["University of Wales Trinity Saint David","🇬🇧"],["University of West London","🇬🇧"],["Istituto Marangoni","🇬🇧"],["University of West of Scotland","🇬🇧"],["University of Wolverhampton","🇬🇧"],["Keele University","🇬🇧"],["West of England University (Bristol)","🇬🇧"],["Kent University","🇬🇧"],["Westminster University","🇬🇧"],["Kingston University","🇬🇧"],["Winchester University","🇬🇧"],["Lancaster University","🇬🇧"],["York St John University","🇬🇧"],["Technological University Dublin (TU Dublin)","🇮🇪"],["Technological University of the Shannon (TUS)","🇮🇪"],["Royal College of Surgeons in Ireland (RCSI)","🇮🇪"],["Dublin City University & DBS","🇮🇪"],["University of Limerick","🇮🇪"],["Atlantic Technological University","🇮🇪"],["Dundalk Institute of Technology","🇮🇪"],["IBAT Dublin","🇮🇪"],["Griffith College","🇮🇪"],["Dublin City University","🇮🇪"],["Maynooth University","🇮🇪"],["University of Galway","🇮🇪"],["TU Dublin","🇮🇪"],["University College Cork","🇮🇪"],["University College Dublin","🇮🇪"],["South East Technological University","🇮🇪"],["Trinity College Dublin","🇮🇪"],["Shannon College of Hotel Management","🇮🇪"],["Dublin Business School","🇮🇪"],["Institute of Technology Tralee","🇮🇪"],["National College of Ireland","🇮🇪"],["Holmes Institute of Dublin","🇮🇪"],["Munster Technological University","🇮🇪"],["University of Europe for Applied Sciences","🇩🇪"],["Arden University","🇩🇪"],["GISMA Business School","🇩🇪"],["New European College","🇩🇪"],["International School of Management (ISM)","🇩🇪"],["BBW Hochschule University of Applied Sciences","🇩🇪"],["Berlin School of Business & Innovation","🇩🇪"],["Karlsruhe Institute of Technology","🇩🇪"],["EBS Business School","🇩🇪"],["Cologne Business School","🇩🇪"],["Steinbeis School of Management and Innovation","🇩🇪"],["ISL Germany (Pathway to Public Universities)","🇩🇪"],["FOM University of Applied Sciences","🇩🇪"],["Munich Business School","🇩🇪"],["Macromedia university of applied sciences","🇩🇪"],["IU University of Applied Sciences","🇩🇪"],["SRH Berlin University of Applied Sciences","🇩🇪"],["EU Business School","🇩🇪"],["College De Paris","🇫🇷"],["ISC Paris","🇫🇷"],["Speos: Photography School London Paris","🇫🇷"],["Keyce Business School","🇫🇷"],["American Business School of Paris","🇫🇷"],["Grenoble Institute of Technology","🇫🇷"],["University Paris-Saclay; Paris","🇫🇷"],["École Polytechnique","🇫🇷"],["SUP Biotech","🇫🇷"],["École des mines d'Alès (IMT Mines d'Alès)","🇫🇷"],["Neoma Business School","🇫🇷"],["CY Tech","🇫🇷"],["ESAM School of Management and Finance","🇫🇷"],["ISTEC, Paris","🇫🇷"],["Clermont School of Business","🇫🇷"],["Kedge Business School","🇫🇷"],["IPSA Engineering School of Air, Space, and Sustainable Mobility","🇫🇷"],["ICD Business School","🇫🇷"],["Lyon Institute for Geostrategy & Multicultural Relations","🇫🇷"],["Regent Dubai","🇦🇪"],["Synergy University","🇦🇪"],["Britts Imperial University College","🇦🇪"],["University of Bolton UAE campus","🇦🇪"],["GBS Dubai","🇦🇪"],["Ajman University","🇦🇪"],["Curtin University","🇦🇪"],["Transnational Academic Group Middle East - Curtin University","🇦🇪"],["American University of Ras AI Khaimah (AURAK)","🇦🇪"],["Amity University Dubai Campus","🇦🇪"],["Bits Pilani Dubai Campus","🇦🇪"],["DMU PostGraduate Programs","🇦🇪"],["DMU Undergraduate and Foundation Programs","🇦🇪"],["Heriot Watt Dubai Campus","🇦🇪"],["Hult International Business School Dubai Campus","🇦🇪"],["Manipal Academy of Higher Education","🇦🇪"],["Middlesex University Dubai Campus","🇦🇪"],["Regent College Dubai","🇦🇪"],["SP Jain","🇦🇪"],["Abu Dhabi University","🇦🇪"],["University of Birmingham Dubai Campus","🇦🇪"],["Symbiosis International University","🇦🇪"],["Woosong University","🇰🇷"],["Sejong University","🇰🇷"],["Kimpo University","🇰🇷"],["ERC Institute","🇸🇬"],["London School of Business & Finance","🇸🇬"],["TEG International College","🇸🇬"],["Capital College","🇦🇺"],["Orange College","🇦🇺"],["Stanley College","🇦🇺"],["Australian School of Accounting","🇦🇺"],["Sydney Metropolitan - Institute of Technology","🇦🇺"],["Sydney Polytechnic Institute","🇦🇺"],["Lincoln Institute of Higher Education","🇦🇺"],["Limkokwing University of Creative Technology","🇲🇾"],["INTI International University and Colleges","🇲🇾"],["Berjaya University College","🇲🇾"],["Mahsa University","🇲🇾"],["University of Cyberjaya (UoC)","🇲🇾"],["Universiti Kuala Lumpur, UniKL","🇲🇾"],["SEGi University and Colleges (SEGi)","🇲🇾"],["UCSI University","🇲🇾"],["University of Southampton Malaysia","🇲🇾"],["Tomnyong University","🇲🇾"],["Unimy Malaysia","🇲🇾"],["Asia E University","🇲🇾"],["Webster University Vienna","🇦🇹"],["KU Leuven","🇧🇪"],["United Business Institutes","🇧🇪"],["Thomas More University of Applied Sciences","🇧🇪"],["KdG University of Applied Sciences and Arts","🇧🇪"],["The CAD (College of Art & Design)","🇧🇪"],["Zagreb University","🇭🇷"],["University of Nicosia","🇨🇾"],["Aalto University","🇫🇮"],["Arcada University of Applied Sciences","🇫🇮"],["Alte University","🇬🇪"],["British Teaching University in Georgia","🇬🇪"],["Caucasus University","🇬🇪"],["Kutaisi International University","🇬🇪"],["European University","🇬🇪"],["Tbilisi Medical University","🇬🇪"],["Georgian National University SEU","🇬🇪"],["International Black Sea University","🇬🇪"],["Hellenic American College","🇬🇷"],["IBS Budapest","🇭🇺"],["Budapest Business University","🇭🇺"],["Wekerle Business School","🇭🇺"],["University of Miskolc","🇭🇺"],["University in Győr","🇭🇺"],["University of Nyiregyhaza","🇭🇺"],["Elte University","🇭🇺"],["University of Debrecen","🇭🇺"],["John Cabot University","🇮🇹"],["POLIMI Graduate School of Management","🇮🇹"],["Ascencia Business School Malta","🇲🇹"],["Global College Malta","🇲🇹"],["Central Mediterranean Business School (CMBS)","🇲🇹"],["GBS Malta","🇲🇹"],["Eindhoven University of Technology","🇳🇱"],["Tio University of Applied Sciences","🇳🇱"],["Wittenborg University of Applied Sciences","🇳🇱"],["The International University of Logistics and Transport in Wroclaw","🇵🇱"],["AGH University of Science and Technology","🇵🇱"],["Silesian University of Technology","🇵🇱"],["Warsaw University of Business","🇵🇱"],["Warsaw University of Economics","🇵🇱"],["Vistula University","🇵🇱"],["WSB University","🇵🇱"],["Instituto Superior Técnico","🇵🇹"],["Astrakhan State Medical University","🇷🇺"],["Saint Petersburg State Chemical Pharmaceutical University","🇷🇺"],["Mari state University","🇷🇺"],["Admiral Makarov State Maritime Academy and Inland shipping (Saint Peterburg)","🇷🇺"],["North-Caucasus Federal University","🇷🇺"],["Peter the Great St.Petersburg Polytechnic University","🇷🇺"],["Saratov State Medical University","🇷🇺"],["Platov South-Russian State Polytechnic University","🇷🇺"],["Perm State Pharmaceutical Academy","🇷🇺"],["Saint Petersburg State University of Veterinary Medicine","🇷🇺"],["Nizhny Novgorod state University for Architecture and Civil Engineering (Nizhny Novgorod)","🇷🇺"],["Moscow Aviation Institute","🇷🇺"],["Tambov State University","🇷🇺"],["Yaroslav the Wise Novgorod State University","🇷🇺"],["University of Presov","🇸🇰"],["ISAM - International School of Agri Management","🇪🇸"],["LABA Valencia - School of Art, Design & New Media","🇪🇸"],["UCAM - Catholic University of Murcia","🇪🇸"],["CEU Cardenal Herrera University","🇪🇸"],["Abat Oliba CEU University","🇪🇸"],["University San Pablo","🇪🇸"],["IHMGS – International School","🇪🇸"],["Schellhammer Business School","🇪🇸"],["C3S Business School","🇪🇸"],["Aspire Business School","🇪🇸"],["Ascencia Business School","🇪🇸"],["Aura Labor","🇪🇸"],["Carlos V Education","🇪🇸"],["Webster University Geneva","🇨🇭"],["University IFM Institute of Finance and Management","🇨🇭"],["American University of Switzerland","🇨🇭"],["B.H.M.S. Business and Hotel Management School","🇨🇭"],["Bella Vista Institute of Higher Education","🇨🇭"],["HTMi Hotel and Tourism Management Institute","🇨🇭"],["Webster University (Bangkok)","🇹🇭"],["Dhurakij Pundit University (DPU)","🇹🇭"],["Dogus University","🇹🇷"],["Sabancı University","🇹🇷"],["Esenyurt University","🇹🇷"],["Westminster International University in Tashkent","🇺🇿"],["British University Vietnam","🇻🇳"]];</script>
+<script>window.EDURO_NAMES = [["University of South Alabama","🇺🇸"],["University of Alabama - Tuscaloosa","🇺🇸"],["University of West Alabama","🇺🇸"],["Troy State University","🇺🇸"],["The University of Alabama at Birmingham","🇺🇸"],["Auburn University at Montgomery","🇺🇸"],["Auburn University","🇺🇸"],["Jacksonville State University","🇺🇸"],["Arkansas State University","🇺🇸"],["Arizona State University","🇺🇸"],["University of Arizona","🇺🇸"],["Northern Arizona University","🇺🇸"],["Colorado State University","🇺🇸"],["University of Colorado - Springs","🇺🇸"],["University of Colorado Denver","🇺🇸"],["Colorado Mesa University","🇺🇸"],["University of New Haven","🇺🇸"],["Southern Connecticut State University","🇺🇸"],["University of Connecticut","🇺🇸"],["Quinnipiac University","🇺🇸"],["University of Hartford","🇺🇸"],["Fairfield University","🇺🇸"],["University of Bridgeport","🇺🇸"],["Sacred Heart University","🇺🇸"],["Albertus Magnus College","🇺🇸"],["Post University","🇺🇸"],["California State University – Fullerton","🇺🇸"],["California State University – Northridge","🇺🇸"],["California State University – Sacramento","🇺🇸"],["California State University, Bakersfield","🇺🇸"],["San Jose State University","🇺🇸"],["Sonoma State University","🇺🇸"],["San Francisco State University","🇺🇸"],["California State University – San Marcos","🇺🇸"],["California State University – Long Beach","🇺🇸"],["California State University – East Bay","🇺🇸"],["DeVry Education – Los Angeles & San Francisco","🇺🇸"],["California Lutheran University","🇺🇸"],["California State University San Bernardino","🇺🇸"],["California State University – Fresno","🇺🇸"],["California State University Channel Islands","🇺🇸"],["California State University, Dominguez Hills","🇺🇸"],["California State University, Monterey Bay","🇺🇸"],["Woodbury University","🇺🇸"],["Golden Gate University","🇺🇸"],["Whittier College","🇺🇸"],["American University","🇺🇸"],["Westcliff University","🇺🇸"],["Foothill and De Anza Colleges","🇺🇸"],["Santa Barbara City College","🇺🇸"],["Santiago Canyon College","🇺🇸"],["College of San Mateo","🇺🇸"],["University of the Pacific","🇺🇸"],["Moorpark College","🇺🇸"],["Yosemite Community College- Columbia College","🇺🇸"],["Contra Costa Community College","🇺🇸"],["Simpson University","🇺🇸"],["University of California- Riverside","🇺🇸"],["University of California- SantaCruz","🇺🇸"],["William Jessup University","🇺🇸"],["College of Canyons","🇺🇸"],["Rancho Santiago Community College District","🇺🇸"],["University of Delaware","🇺🇸"],["Wilmington University","🇺🇸"],["University of Tampa","🇺🇸"],["Florida Institute of Technology","🇺🇸"],["Embry–Riddle Aeronautical University","🇺🇸"],["Florida International University","🇺🇸"],["Florida Polytechnic University","🇺🇸"],["Florida A & M University","🇺🇸"],["Atlantis University","🇺🇸"],["Nova Southeastern University","🇺🇸"],["St. Leo University","🇺🇸"],["Full Sail University","🇺🇸"],["The University of Central Florida","🇺🇸"],["Schiller International University","🇺🇸"],["University of South Florida","🇺🇸"],["Med College","🇺🇸"],["University of North Florida","🇺🇸"],["Mercer University","🇺🇸"],["Herzing University","🇺🇸"],["Middle Georgia State University","🇺🇸"],["South University","🇺🇸"],["Hawaii Pacific University","🇺🇸"],["University of Idaho","🇺🇸"],["Bradley University","🇺🇸"],["University of Illinois Springfield (UIS)","🇺🇸"],["University of Illinois at Chicago","🇺🇸"],["Illinois State University","🇺🇸"],["Western Illinois University","🇺🇸"],["Elmhurst University","🇺🇸"],["Governors State University","🇺🇸"],["Southern Illinois University - Carbondale","🇺🇸"],["DePaul University","🇺🇸"],["Southern Illinois University Edwardsville","🇺🇸"],["North Eastern Illinois University","🇺🇸"],["North Park University","🇺🇸"],["Millikin University","🇺🇸"],["DeVry University","🇺🇸"],["Illinois Eastern Community College","🇺🇸"],["National Louis University","🇺🇸"],["Concordia University of Chicago","🇺🇸"],["Illinois Institute of Technology","🇺🇸"],["Benedictine University","🇺🇸"],["Indiana Institute of Technology","🇺🇸"],["Trine University","🇺🇸"],["Marian University","🇺🇸"],["Valparaiso University","🇺🇸"],["University of Indianapolis","🇺🇸"],["Purdue University - Northwest","🇺🇸"],["Iowa State University","🇺🇸"],["Upper Iowa University","🇺🇸"],["Drake University","🇺🇸"],["Kansas State University","🇺🇸"],["Wichita State University","🇺🇸"],["Pittsburgh State University","🇺🇸"],["Ottawa University","🇺🇸"],["The University of Kansas","🇺🇸"],["Western Kentucky University","🇺🇸"],["University of the Cumberlands","🇺🇸"],["Murray State University","🇺🇸"],["Midway University","🇺🇸"],["Eastern Kentucky University","🇺🇸"],["University of Louisville","🇺🇸"],["Louisiana State University","🇺🇸"],["University of Maryland, Baltimore County","🇺🇸"],["Towson University","🇺🇸"],["University of Massachusetts, Lowell","🇺🇸"],["Bridgewater State University","🇺🇸"],["University of Massachusetts Amherst","🇺🇸"],["University of Massachusetts Dartmouth","🇺🇸"],["University of Massachusetts, Boston","🇺🇸"],["Massachusetts College of Pharmacy and Health Sciences","🇺🇸"],["Western New England University","🇺🇸"],["Worcester Polytechnic Institute","🇺🇸"],["Hult International Business School","🇺🇸"],["Suffolk University","🇺🇸"],["Fisher College","🇺🇸"],["Regis College","🇺🇸"],["Simmons University","🇺🇸"],["University of Michigan - Flint","🇺🇸"],["Eastern Michigan University","🇺🇸"],["Grand Valley State University","🇺🇸"],["Lawrence Technology University","🇺🇸"],["Ferris State University","🇺🇸"],["Northern Michigan University","🇺🇸"],["Central Michigan University","🇺🇸"],["Saginaw Valley State University","🇺🇸"],["University of Minnesota","🇺🇸"],["University of Central Missouri","🇺🇸"],["University of Missouri - St. Louis","🇺🇸"],["Saint Louis University","🇺🇸"],["Missouri University of Science & Technology","🇺🇸"],["Webster University – St. Louis","🇺🇸"],["Northwest Missouri State University","🇺🇸"],["Southeast Missouri State University","🇺🇸"],["Drury University","🇺🇸"],["Central Methodist University","🇺🇸"],["Missouri Southern State University","🇺🇸"],["Avila University","🇺🇸"],["Mississippi State University","🇺🇸"],["University of Mississippi","🇺🇸"],["Montana State University – Bozeman","🇺🇸"],["University of Nebraska Omaha","🇺🇸"],["Nebraska Wesleyan University","🇺🇸"],["University of Nevada, Las Vegas","🇺🇸"],["Southern New Hampshire University","🇺🇸"],["University of New Hampshire","🇺🇸"],["New Jersey Institute of Technology","🇺🇸"],["Stevens Institute of Technology","🇺🇸"],["FDU (Fairleigh Dickinson University)","🇺🇸"],["Saint Peter's University","🇺🇸"],["Rowan University","🇺🇸"],["Drew University","🇺🇸"],["Monmouth University","🇺🇸"],["Felician University","🇺🇸"],["Rider University","🇺🇸"],["Montclair State University","🇺🇸"],["William Paterson University","🇺🇸"],["Clarkson University","🇺🇸"],["St. John’s University","🇺🇸"],["Rochester Institute of Technology","🇺🇸"],["Pace University","🇺🇸"],["NYIT (New York Institute of Technology)","🇺🇸"],["Hofstra University","🇺🇸"],["Yeshiva University","🇺🇸"],["Long Island - C.W. Post Campus","🇺🇸"],["Long Island - Brooklyn Campus","🇺🇸"],["DeVry Education","🇺🇸"],["Monroe College","🇺🇸"],["Elmira College","🇺🇸"],["St. Francis College","🇺🇸"],["LIM College","🇺🇸"],["Vaughn College of Aeronautics and Technology","🇺🇸"],["New York University","🇺🇸"],["State University of New York – Polytechnic","🇺🇸"],["State University of New York – New Paltz","🇺🇸"],["State University of New York – Albany","🇺🇸"],["State University of New York at Oswego","🇺🇸"],["State University of New York at Binghamton","🇺🇸"],["State University of New York at Geneseo","🇺🇸"],["State University of New York – Brockport","🇺🇸"],["SUNY Buffalo State College","🇺🇸"],["New York Film Academy","🇺🇸"],["Marist College","🇺🇸"],["Adelphi University","🇺🇸"],["Mercy College","🇺🇸"],["Berkeley College","🇺🇸"],["University of North Carolina Wilmington","🇺🇸"],["University of North Carolina at Pembroke","🇺🇸"],["High Point University","🇺🇸"],["Elon University","🇺🇸"],["The University of North Carolina at Greensboro","🇺🇸"],["Salem College","🇺🇸"],["University of New Mexico","🇺🇸"],["New Mexico Military Institute","🇺🇸"],["Ohio Northern University","🇺🇸"],["Kent State University","🇺🇸"],["Miami University","🇺🇸"],["Ohio Dominican University","🇺🇸"],["Ohio University","🇺🇸"],["Ohio Wesleyan University","🇺🇸"],["University of Dayton","🇺🇸"],["University of Findlay","🇺🇸"],["Cleveland State University","🇺🇸"],["Wright State University","🇺🇸"],["University of Cincinnati","🇺🇸"],["Bowling Green State University","🇺🇸"],["Youngstown State University","🇺🇸"],["Tiffin University","🇺🇸"],["Oregon State University","🇺🇸"],["Portland State University","🇺🇸"],["Western Oregon University","🇺🇸"],["University of Oregon","🇺🇸"],["Oklahoma City University","🇺🇸"],["Oklahoma State University","🇺🇸"],["University of Tulsa","🇺🇸"],["University of Central Oklahoma","🇺🇸"],["Gannon University","🇺🇸"],["University of Scranton","🇺🇸"],["Drexel University","🇺🇸"],["Wilkes University","🇺🇸"],["Thomas Jefferson University","🇺🇸"],["La Salle University","🇺🇸"],["Kutztown University","🇺🇸"],["Harrisburg University of Science and Technology","🇺🇸"],["Indiana University of Pennsylvania","🇺🇸"],["York College of Pennsylvania","🇺🇸"],["Alvernia University","🇺🇸"],["Temple University","🇺🇸"],["Robbert Morris University","🇺🇸"],["Bryant University","🇺🇸"],["Johnson & Wales University","🇺🇸"],["Roger William University","🇺🇸"],["South Dakota State University","🇺🇸"],["Augustana University","🇺🇸"],["University of South Carolina Upstate","🇺🇸"],["Webster University - Columbia","🇺🇸"],["Anderson University","🇺🇸"],["University of South Carolina","🇺🇸"],["Tennessee Tech University","🇺🇸"],["University of Tennessee - Knoxville","🇺🇸"],["University of Memphis","🇺🇸"],["Middle Tennessee State University","🇺🇸"],["Christian Brothers University","🇺🇸"],["University of Houston","🇺🇸"],["Texas A&M University–Kingsville","🇺🇸"],["University of Houston–Clear Lake","🇺🇸"],["Texas Tech University","🇺🇸"],["Texas A & M University (Corpus Christi)","🇺🇸"],["Webster University – San Antonio","🇺🇸"],["Texas Wesleyan University","🇺🇸"],["Dallas Baptist University","🇺🇸"],["Midwestern State University","🇺🇸"],["Stephen F. Austin State University","🇺🇸"],["The University of North Texas","🇺🇸"],["University of the Incarnate Word of San Antonio","🇺🇸"],["Texas A&M University-San Antonio","🇺🇸"],["Texas State University","🇺🇸"],["McMurry University","🇺🇸"],["University of Mary Hardin Baylor","🇺🇸"],["University of Texas at San Antonio","🇺🇸"],["Weber State University","🇺🇸"],["University of Utah","🇺🇸"],["University of Vermont","🇺🇸"],["George Mason University","🇺🇸"],["West Virginia University","🇺🇸"],["Radford University","🇺🇸"],["James Madison University","🇺🇸"],["Virginia Commonwealth University","🇺🇸"],["Washington State University","🇺🇸"],["Gonzaga University","🇺🇸"],["City University of Seattle","🇺🇸"],["Western Washington University-Extended Education","🇺🇸"],["Lake Washington Institute of Technology","🇺🇸"],["Highline College","🇺🇸"],["University of Potomac","🇺🇸"],["Marshall University","🇺🇸"],["University of Wisconsin – Stout","🇺🇸"],["University of Wisconsin – La Crosse","🇺🇸"],["University of Wisconsin – Platteville","🇺🇸"],["Marquette university","🇺🇸"],["Viterbo University","🇺🇸"],["Milwaukee School of Engineering","🇺🇸"],["Concordia University Wisconsin","🇺🇸"],["American University of Barbados","🇺🇸"],["The Art Institutes","🇺🇸"],["University of Bristol","🇬🇧"],["The University of Edinburgh","🇬🇧"],["University of Glasgow","🇬🇧"],["The University of Sheffield","🇬🇧"],["The University of Manchester","🇬🇧"],["Durham University","🇬🇧"],["University of Birmingham","🇬🇧"],["University of Leeds","🇬🇧"],["Queen Mary University of London","🇬🇧"],["University of Warwick","🇬🇧"],["University of Nottingham","🇬🇧"],["University of Southampton","🇬🇧"],["University of Liverpool","🇬🇧"],["King's College London","🇬🇧"],["Queens University of Belfast","🇬🇧"],["Newcastle University","🇬🇧"],["Cardiff University","🇬🇧"],["University of Exeter","🇬🇧"],["University of York","🇬🇧"],["Aberdeen University","🇬🇧"],["Leeds Beckett University","🇬🇧"],["Abertay University","🇬🇧"],["Leeds Trinity University","🇬🇧"],["Aberystwyth University","🇬🇧"],["Leicester University","🇬🇧"],["Anglia Ruskin University","🇬🇧"],["Lincoln University","🇬🇧"],["Arts University Bournemouth","🇬🇧"],["Liverpool Hope University","🇬🇧"],["Aston University","🇬🇧"],["Liverpool John Moores University","🇬🇧"],["BANGOR BUSINESS SCHOOL","🇬🇧"],["London Metropolitan University","🇬🇧"],["Bangor University","🇬🇧"],["London South Bank University","🇬🇧"],["Bath Spa University","🇬🇧"],["Loughborough University","🇬🇧"],["Bath University","🇬🇧"],["Loughborough University - London Campus","🇬🇧"],["Bedfordshire University","🇬🇧"],["Manchester Metropolitan University","🇬🇧"],["Birkbeck University of London","🇬🇧"],["Middlesex University","🇬🇧"],["Birmingham City University","🇬🇧"],["Northampton University","🇬🇧"],["Bolton University","🇬🇧"],["Northumbria University","🇬🇧"],["Bournemouth University","🇬🇧"],["Norwich University Of The Arts","🇬🇧"],["BPP University Limited","🇬🇧"],["Nottingham Trent University","🇬🇧"],["Bradford University","🇬🇧"],["Oxford Brookes University","🇬🇧"],["Brighton University","🇬🇧"],["Plymouth University","🇬🇧"],["Brunel University","🇬🇧"],["Portsmouth University","🇬🇧"],["Buckingham University","🇬🇧"],["Queen Margaret University","🇬🇧"],["Canterbury Christ Church University","🇬🇧"],["Ravensbourne","🇬🇧"],["Cardiff Metropolitan University","🇬🇧"],["Reading University","🇬🇧"],["Central Lancashire University","🇬🇧"],["Regents University London","🇬🇧"],["Chester University","🇬🇧"],["Richmond The American International University in London","🇬🇧"],["Chichester University","🇬🇧"],["Robert Gordon University","🇬🇧"],["City University","🇬🇧"],["Roehampton University","🇬🇧"],["Coventry University","🇬🇧"],["Royal Agricultural University","🇬🇧"],["Coventry University - London Campus","🇬🇧"],["Royal Holloway University of London","🇬🇧"],["Cranfield University","🇬🇧"],["Salford University","🇬🇧"],["De Montfort University","🇬🇧"],["School of Oriental and African Studies London (SOAS)","🇬🇧"],["Derby University","🇬🇧"],["Sheffield Hallam University","🇬🇧"],["Dundee University","🇬🇧"],["Solent University","🇬🇧"],["East Anglia University","🇬🇧"],["St Mary's University Twickenham","🇬🇧"],["East London University","🇬🇧"],["Staffordshire University","🇬🇧"],["Edge Hill University","🇬🇧"],["Stirling University","🇬🇧"],["Edinburgh Business School","🇬🇧"],["Strathclyde University","🇬🇧"],["Edinburgh Napier University","🇬🇧"],["Essex University","🇬🇧"],["Sunderland University","🇬🇧"],["Falmouth University","🇬🇧"],["Sunderland University - London Campus","🇬🇧"],["Glasgow Caledonian London Campus","🇬🇧"],["Surrey University","🇬🇧"],["Glasgow Caledonian University","🇬🇧"],["Sussex University","🇬🇧"],["Glasgow School of Art","🇬🇧"],["Swansea University of Wales","🇬🇧"],["Gloucestershire University","🇬🇧"],["Teesside University","🇬🇧"],["Goldsmiths University of London","🇬🇧"],["Ulster University","🇬🇧"],["Greenwich University","🇬🇧"],["Ulster University Coleraine Campus","🇬🇧"],["Harper Adams University","🇬🇧"],["University College Birmingham","🇬🇧"],["Heriot-Watt University","🇬🇧"],["University for the Creative Arts","🇬🇧"],["Hertfordshire University","🇬🇧"],["University of Law London Bloomsbury","🇬🇧"],["Huddersfield University","🇬🇧"],["University of South Wales","🇬🇧"],["Hull University","🇬🇧"],["University of Suffolk","🇬🇧"],["Hult International Business School AG","🇬🇧"],["University of Wales Trinity Saint David","🇬🇧"],["University of West London","🇬🇧"],["Istituto Marangoni","🇬🇧"],["University of West of Scotland","🇬🇧"],["University of Wolverhampton","🇬🇧"],["Keele University","🇬🇧"],["West of England University (Bristol)","🇬🇧"],["Kent University","🇬🇧"],["Westminster University","🇬🇧"],["Kingston University","🇬🇧"],["Winchester University","🇬🇧"],["Lancaster University","🇬🇧"],["York St John University","🇬🇧"],["Technological University Dublin (TU Dublin)","🇮🇪"],["Technological University of the Shannon (TUS)","🇮🇪"],["Royal College of Surgeons in Ireland (RCSI)","🇮🇪"],["Dublin City University & DBS","🇮🇪"],["University of Limerick","🇮🇪"],["Atlantic Technological University","🇮🇪"],["Dundalk Institute of Technology","🇮🇪"],["IBAT Dublin","🇮🇪"],["Griffith College","🇮🇪"],["Dublin City University","🇮🇪"],["Maynooth University","🇮🇪"],["University of Galway","🇮🇪"],["TU Dublin","🇮🇪"],["University College Cork","🇮🇪"],["University College Dublin","🇮🇪"],["South East Technological University","🇮🇪"],["Trinity College Dublin","🇮🇪"],["Shannon College of Hotel Management","🇮🇪"],["Dublin Business School","🇮🇪"],["Institute of Technology Tralee","🇮🇪"],["National College of Ireland","🇮🇪"],["Holmes Institute of Dublin","🇮🇪"],["Munster Technological University","🇮🇪"],["University of Europe for Applied Sciences","🇩🇪"],["Arden University","🇩🇪"],["GISMA Business School","🇩🇪"],["New European College","🇩🇪"],["International School of Management (ISM)","🇩🇪"],["BBW Hochschule University of Applied Sciences","🇩🇪"],["Berlin School of Business & Innovation","🇩🇪"],["Karlsruhe Institute of Technology","🇩🇪"],["EBS Business School","🇩🇪"],["Cologne Business School","🇩🇪"],["Steinbeis School of Management and Innovation","🇩🇪"],["ISL Germany (Pathway to Public Universities)","🇩🇪"],["FOM University of Applied Sciences","🇩🇪"],["Munich Business School","🇩🇪"],["Macromedia university of applied sciences","🇩🇪"],["IU University of Applied Sciences","🇩🇪"],["SRH Berlin University of Applied Sciences","🇩🇪"],["EU Business School","🇩🇪"],["College De Paris","🇫🇷"],["ISC Paris","🇫🇷"],["Speos: Photography School London Paris","🇫🇷"],["Keyce Business School","🇫🇷"],["American Business School of Paris","🇫🇷"],["Grenoble Institute of Technology","🇫🇷"],["University Paris-Saclay; Paris","🇫🇷"],["École Polytechnique","🇫🇷"],["SUP Biotech","🇫🇷"],["École des mines d'Alès (IMT Mines d'Alès)","🇫🇷"],["Neoma Business School","🇫🇷"],["CY Tech","🇫🇷"],["ESAM School of Management and Finance","🇫🇷"],["ISTEC, Paris","🇫🇷"],["Clermont School of Business","🇫🇷"],["Kedge Business School","🇫🇷"],["IPSA Engineering School of Air, Space, and Sustainable Mobility","🇫🇷"],["ICD Business School","🇫🇷"],["Lyon Institute for Geostrategy & Multicultural Relations","🇫🇷"],["Regent Dubai","🇦🇪"],["Synergy University","🇦🇪"],["Britts Imperial University College","🇦🇪"],["University of Bolton UAE campus","🇦🇪"],["GBS Dubai","🇦🇪"],["Ajman University","🇦🇪"],["Curtin University","🇦🇪"],["Transnational Academic Group Middle East - Curtin University","🇦🇪"],["American University of Ras AI Khaimah (AURAK)","🇦🇪"],["Amity University Dubai Campus","🇦🇪"],["Bits Pilani Dubai Campus","🇦🇪"],["DMU PostGraduate Programs","🇦🇪"],["DMU Undergraduate and Foundation Programs","🇦🇪"],["Heriot Watt Dubai Campus","🇦🇪"],["Hult International Business School Dubai Campus","🇦🇪"],["Manipal Academy of Higher Education","🇦🇪"],["Middlesex University Dubai Campus","🇦🇪"],["Regent College Dubai","🇦🇪"],["SP Jain","🇦🇪"],["Abu Dhabi University","🇦🇪"],["University of Birmingham Dubai Campus","🇦🇪"],["Symbiosis International University","🇦🇪"],["Woosong University","🇰🇷"],["Sejong University","🇰🇷"],["Kimpo University","🇰🇷"],["ERC Institute","🇸🇬"],["London School of Business & Finance","🇸🇬"],["TEG International College","🇸🇬"],["Capital College","🇦🇺"],["Orange College","🇦🇺"],["Stanley College","🇦🇺"],["Australian School of Accounting","🇦🇺"],["Sydney Metropolitan - Institute of Technology","🇦🇺"],["Sydney Polytechnic Institute","🇦🇺"],["Lincoln Institute of Higher Education","🇦🇺"],["Limkokwing University of Creative Technology","🇲🇾"],["INTI International University and Colleges","🇲🇾"],["Berjaya University College","🇲🇾"],["Mahsa University","🇲🇾"],["University of Cyberjaya (UoC)","🇲🇾"],["Universiti Kuala Lumpur, UniKL","🇲🇾"],["SEGi University and Colleges (SEGi)","🇲🇾"],["UCSI University","🇲🇾"],["University of Southampton Malaysia","🇲🇾"],["Tomnyong University","🇲🇾"],["Unimy Malaysia","🇲🇾"],["Asia E University","🇲🇾"],["Webster University Vienna","🇦🇹"],["KU Leuven","🇧🇪"],["United Business Institutes","🇧🇪"],["Thomas More University of Applied Sciences","🇧🇪"],["KdG University of Applied Sciences and Arts","🇧🇪"],["The CAD (College of Art & Design)","🇧🇪"],["Zagreb University","🇭🇷"],["University of Nicosia","🇨🇾"],["Aalto University","🇫🇮"],["Arcada University of Applied Sciences","🇫🇮"],["Alte University","🇬🇪"],["British Teaching University in Georgia","🇬🇪"],["Caucasus University","🇬🇪"],["Kutaisi International University","🇬🇪"],["European University","🇬🇪"],["Tbilisi Medical University","🇬🇪"],["Georgian National University SEU","🇬🇪"],["International Black Sea University","🇬🇪"],["Hellenic American College","🇬🇷"],["IBS Budapest","🇭🇺"],["Budapest Business University","🇭🇺"],["Wekerle Business School","🇭🇺"],["University of Miskolc","🇭🇺"],["University in Győr","🇭🇺"],["University of Nyiregyhaza","🇭🇺"],["Elte University","🇭🇺"],["University of Debrecen","🇭🇺"],["John Cabot University","🇮🇹"],["POLIMI Graduate School of Management","🇮🇹"],["Ascencia Business School Malta","🇲🇹"],["Global College Malta","🇲🇹"],["Central Mediterranean Business School (CMBS)","🇲🇹"],["GBS Malta","🇲🇹"],["Eindhoven University of Technology","🇳🇱"],["Tio University of Applied Sciences","🇳🇱"],["Wittenborg University of Applied Sciences","🇳🇱"],["The International University of Logistics and Transport in Wroclaw","🇵🇱"],["AGH University of Science and Technology","🇵🇱"],["Silesian University of Technology","🇵🇱"],["Warsaw University of Business","🇵🇱"],["Warsaw University of Economics","🇵🇱"],["Vistula University","🇵🇱"],["WSB University","🇵🇱"],["Instituto Superior Técnico","🇵🇹"],["Astrakhan State Medical University","🇷🇺"],["Saint Petersburg State Chemical Pharmaceutical University","🇷🇺"],["Mari state University","🇷🇺"],["Admiral Makarov State Maritime Academy and Inland shipping (Saint Peterburg)","🇷🇺"],["North-Caucasus Federal University","🇷🇺"],["Peter the Great St.Petersburg Polytechnic University","🇷🇺"],["Saratov State Medical University","🇷🇺"],["Platov South-Russian State Polytechnic University","🇷🇺"],["Perm State Pharmaceutical Academy","🇷🇺"],["Saint Petersburg State University of Veterinary Medicine","🇷🇺"],["Nizhny Novgorod state University for Architecture and Civil Engineering (Nizhny Novgorod)","🇷🇺"],["Moscow Aviation Institute","🇷🇺"],["Tambov State University","🇷🇺"],["Yaroslav the Wise Novgorod State University","🇷🇺"],["University of Presov","🇸🇰"],["ISAM - International School of Agri Management","🇪🇸"],["LABA Valencia - School of Art, Design & New Media","🇪🇸"],["UCAM - Catholic University of Murcia","🇪🇸"],["CEU Cardenal Herrera University","🇪🇸"],["Abat Oliba CEU University","🇪🇸"],["University San Pablo","🇪🇸"],["IHMGS – International School","🇪🇸"],["Schellhammer Business School","🇪🇸"],["C3S Business School","🇪🇸"],["Aspire Business School","🇪🇸"],["Ascencia Business School","🇪🇸"],["Aura Labor","🇪🇸"],["Carlos V Education","🇪🇸"],["Webster University Geneva","🇨🇭"],["University IFM Institute of Finance and Management","🇨🇭"],["American University of Switzerland","🇨🇭"],["B.H.M.S. Business and Hotel Management School","🇨🇭"],["Bella Vista Institute of Higher Education","🇨🇭"],["HTMi Hotel and Tourism Management Institute","🇨🇭"],["Webster University (Bangkok)","🇹🇭"],["Dhurakij Pundit University (DPU)","🇹🇭"],["Dogus University","🇹🇷"],["Sabancı University","🇹🇷"],["Esenyurt University","🇹🇷"],["Westminster International University in Tashkent","🇺🇿"],["British University Vietnam","🇻🇳"]];
+window.EDURO_DOMAINS = {"University of South Alabama": "southalabama.edu","University of West Alabama": "westal.edu","Troy State University": "tsufl.edu","The University of Alabama at Birmingham": "uab.edu","Auburn University at Montgomery": "aum.edu","Auburn University": "auburn.edu","Jacksonville State University": "jsu.edu","Arkansas State University": "astate.edu","Arizona State University": "asu.edu","University of Arizona": "arizona.edu","Northern Arizona University": "nau.edu","Colorado State University": "colostate.edu","University of Colorado - Springs": "uccs.edu","University of Colorado Denver": "ucdenver.edu","Colorado Mesa University": "coloradomesa.edu","University of New Haven": "newhaven.edu","Southern Connecticut State University": "southernct.edu","University of Connecticut": "conncoll.edu","Quinnipiac University": "quinnipiac.edu","University of Hartford": "hartford.edu","Fairfield University": "fairfield.edu","University of Bridgeport": "bridgeport.edu","Sacred Heart University": "sacredheart.edu","California State University – Fullerton": "fullerton.edu","California State University – Northridge": "csun.edu","California State University – Sacramento": "csus.edu","California State University, Bakersfield": "csub.edu","San Jose State University": "sjsu.edu","Sonoma State University": "sonoma.edu","San Francisco State University": "sfsu.edu","California State University – San Marcos": "csusm.edu","California State University – Long Beach": "csulb.edu","California Lutheran University": "callutheran.edu","California State University San Bernardino": "csusb.edu","California State University – Fresno": "csufresno.edu","California State University Channel Islands": "csuci.edu","California State University, Dominguez Hills": "csudh.edu","California State University, Monterey Bay": "csumb.edu","Woodbury University": "woodbury.edu","Golden Gate University": "ggu.edu","Whittier College": "whittier.edu","American University": "american.edu","Santa Barbara City College": "sbcc.edu","Santiago Canyon College": "sccollege.edu","College of San Mateo": "collegeofsanmateo.edu","University of the Pacific": "pacificu.edu","Moorpark College": "moorparkcollege.edu","Simpson University": "simpson.edu","University of California- Riverside": "ucr.edu","College of Canyons": "canyons.edu","University of Delaware": "udel.edu","Wilmington University": "wilmu.edu","University of Tampa": "ut.edu","Florida Institute of Technology": "fit.edu","Embry–Riddle Aeronautical University": "erau.edu","Florida International University": "fiu.edu","Florida Polytechnic University": "floridapoly.edu","Nova Southeastern University": "nova.edu","Full Sail University": "fullsail.edu","The University of Central Florida": "ucf.edu","Schiller International University": "schiller.edu","University of South Florida": "usf.edu","University of North Florida": "unf.edu","Mercer University": "mercer.edu","Middle Georgia State University": "mga.edu","Hawaii Pacific University": "hpu.edu","University of Idaho": "uidaho.edu","Bradley University": "bradley.edu","University of Illinois Springfield (UIS)": "uis.edu","University of Illinois at Chicago": "uic.edu","Illinois State University": "illinoisstate.edu","Western Illinois University": "wiu.edu","Elmhurst University": "elmhurst.edu","Governors State University": "govst.edu","Southern Illinois University - Carbondale": "siu.edu","DePaul University": "depaul.edu","Southern Illinois University Edwardsville": "siue.edu","Millikin University": "millikin.edu","National Louis University": "nl.edu","Illinois Institute of Technology": "iit.edu","Benedictine University": "benedictine.edu","Indiana Institute of Technology": "indianatech.edu","Trine University": "trine.edu","Marian University": "marin.edu","Valparaiso University": "valpo.edu","University of Indianapolis": "uindy.edu","Purdue University - Northwest": "pnw.edu","Iowa State University": "iastate.edu","Upper Iowa University": "uiu.edu","Drake University": "drake.edu","Kansas State University": "ksu.edu","Wichita State University": "wichita.edu","Pittsburgh State University": "pittstate.edu","The University of Kansas": "ku.edu","Western Kentucky University": "wku.edu","Murray State University": "mursuky.edu","Eastern Kentucky University": "eku.edu","University of Louisville": "louisville.edu","Louisiana State University": "lsu.edu","University of Maryland, Baltimore County": "umbc.edu","Towson University": "towson.edu","University of Massachusetts, Lowell": "uml.edu","Bridgewater State University": "bridgew.edu","University of Massachusetts Amherst": "umass.edu","University of Massachusetts Dartmouth": "umassd.edu","University of Massachusetts, Boston": "umb.edu","Western New England University": "wne.edu","Worcester Polytechnic Institute": "wpi.edu","Hult International Business School": "hult.edu","Suffolk University": "suffolk.edu","Regis College": "regis.edu","Simmons University": "simmons.edu","University of Michigan - Flint": "umflint.edu","Eastern Michigan University": "emich.edu","Grand Valley State University": "gvsu.edu","Ferris State University": "ferris.edu","Northern Michigan University": "nmu.edu","Central Michigan University": "cmich.edu","Saginaw Valley State University": "svsu.edu","University of Minnesota": "umn.edu","University of Central Missouri": "ucmo.edu","University of Missouri - St. Louis": "umsl.edu","Saint Louis University": "slu.edu","Missouri University of Science & Technology": "mst.edu","Northwest Missouri State University": "nwmissouri.edu","Southeast Missouri State University": "semo.edu","Drury University": "drury.edu","Central Methodist University": "cmc.edu","Missouri Southern State University": "mssc.edu","Avila University": "avila.edu","Mississippi State University": "msstate.edu","University of Mississippi": "mc.edu","Montana State University – Bozeman": "montana.edu","University of Nebraska Omaha": "unomaha.edu","Nebraska Wesleyan University": "nebrwesleyan.edu","University of Nevada, Las Vegas": "unlv.edu","Southern New Hampshire University": "snhu.edu","University of New Hampshire": "nhc.edu","New Jersey Institute of Technology": "njit.edu","Stevens Institute of Technology": "stevens.edu","Rowan University": "rowan.edu","Drew University": "drew.edu","Monmouth University": "monmouthcollege.edu","Rider University": "rider.edu","Montclair State University": "montclair.edu","William Paterson University": "wpunj.edu","Clarkson University": "clarkson.edu","Rochester Institute of Technology": "rit.edu","Pace University": "pace.edu","Hofstra University": "hofstra.edu","Yeshiva University": "yu.edu","Monroe College": "monroecollege.edu","St. Francis College": "stfrancis.edu","New York University": "nyu.edu","State University of New York – New Paltz": "newpaltz.edu","State University of New York – Albany": "albany.edu","State University of New York at Oswego": "oswego.edu","State University of New York at Binghamton": "binghamton.edu","State University of New York at Geneseo": "geneseo.edu","State University of New York – Brockport": "brockport.edu","Marist College": "marist.edu","Adelphi University": "adelphi.edu","Mercy College": "mercymavericks.edu","Berkeley College": "berkeleycollege.edu","University of North Carolina Wilmington": "uncw.edu","High Point University": "highpoint.edu","Elon University": "elon.edu","The University of North Carolina at Greensboro": "uncg.edu","University of New Mexico": "unm.edu","New Mexico Military Institute": "nmmi.edu","Ohio Northern University": "onu.edu","Kent State University": "kent.edu","Miami University": "miami.edu","Ohio Dominican University": "odc.edu","Ohio University": "ohio.edu","Ohio Wesleyan University": "owu.edu","University of Dayton": "udayton.edu","University of Findlay": "findlay.edu","Cleveland State University": "csuohio.edu","Wright State University": "wright.edu","University of Cincinnati": "uc.edu","Bowling Green State University": "bgsu.edu","Youngstown State University": "ysu.edu","Tiffin University": "tiffin.edu","Oregon State University": "oregonstate.edu","Portland State University": "pdx.edu","University of Oregon": "uoregon.edu","Oklahoma City University": "okcu.edu","Oklahoma State University": "okstate.edu","University of Tulsa": "utulsa.edu","University of Central Oklahoma": "uco.edu","Gannon University": "gannon.edu","University of Scranton": "scranton.edu","Drexel University": "drexel.edu","Wilkes University": "wilkes.edu","Thomas Jefferson University": "tju.edu","Indiana University of Pennsylvania": "iup.edu","York College of Pennsylvania": "ycp.edu","Alvernia University": "alvernia.edu","Temple University": "temple.edu","Robbert Morris University": "rmu.edu","Bryant University": "bryant.edu","Johnson & Wales University": "jwu.edu","Roger William University": "rwu.edu","South Dakota State University": "sdstate.edu","Augustana University": "augustana.edu","University of South Carolina Upstate": "email.uscupstate.edu","Anderson University": "andersonuniversity.edu","University of South Carolina": "sc.edu","University of Tennessee - Knoxville": "utk.edu","University of Memphis": "memphis.edu","Middle Tennessee State University": "mtsu.edu","Christian Brothers University": "cbu.edu","University of Houston": "uh.edu","Texas A&M University–Kingsville": "tamuk.edu","Texas Tech University": "ttu.edu","Texas Wesleyan University": "txwes.edu","Dallas Baptist University": "dbu.edu","Midwestern State University": "mwsu.edu","Stephen F. Austin State University": "sfasu.edu","The University of North Texas": "unt.edu","Texas State University": "txstate.edu","McMurry University": "mcm.edu","University of Texas at San Antonio": "utsa.edu","Weber State University": "weber.edu","University of Utah": "utah.edu","University of Vermont": "uvm.edu","George Mason University": "gmu.edu","West Virginia University": "wvu.edu","Radford University": "radford.edu","James Madison University": "jmu.edu","Virginia Commonwealth University": "vcu.edu","Washington State University": "wsu.edu","Gonzaga University": "gonzaga.edu","Marshall University": "marshall.edu","University of Wisconsin – Stout": "uwstout.edu","University of Wisconsin – La Crosse": "uwlax.edu","University of Wisconsin – Platteville": "uwplatt.edu","Marquette university": "marquette.edu","Milwaukee School of Engineering": "msoe.edu","Concordia University Wisconsin": "cuw.edu","The Art Institutes": "aii.edu","University of Bristol": "bristol.ac.uk","The University of Edinburgh": "ed.ac.uk","University of Glasgow": "gla.ac.uk","The University of Sheffield": "shef.ac.uk","The University of Manchester": "manchester.ac.uk","Durham University": "durham.ac.uk","University of Birmingham": "bham.ac.uk","University of Leeds": "leeds.ac.uk","Queen Mary University of London": "qmul.ac.uk","University of Warwick": "warwick.ac.uk","University of Nottingham": "nottingham.ac.uk","University of Southampton": "soton.ac.uk","University of Liverpool": "liv.ac.uk","King's College London": "kcl.ac.uk","Queens University of Belfast": "qub.ac.uk","Newcastle University": "ncl.ac.uk","Cardiff University": "cardiff.ac.uk","University of Exeter": "ex.ac.uk","University of York": "york.ac.uk","Aberdeen University": "abdn.ac.uk","Leeds Beckett University": "leedsbeckett.ac.uk","Leeds Trinity University": "leedstrinity.ac.uk","Aberystwyth University": "aber.ac.uk","Leicester University": "le.ac.uk","Anglia Ruskin University": "anglia.ac.uk","Lincoln University": "lincoln.ac.uk","Liverpool Hope University": "hope.ac.uk","Aston University": "aston.ac.uk","Liverpool John Moores University": "ljmu.ac.uk","London Metropolitan University": "londonmet.ac.uk","London South Bank University": "mlsbu.ac.uk","Bath Spa University": "bathspa.ac.uk","Loughborough University": "lboro.ac.uk","Bath University": "bath.ac.uk","Bedfordshire University": "beds.ac.uk","Manchester Metropolitan University": "mmu.ac.uk","Birkbeck University of London": "bbk.ac.uk","Birmingham City University": "bcu.ac.uk","Northampton University": "northampton.ac.uk","Bolton University": "bolton.ac.uk","Northumbria University": "northumbria.ac.uk","Bournemouth University": "bournemouth.ac.uk","Nottingham Trent University": "ntu.ac.uk","Bradford University": "brad.ac.uk","Oxford Brookes University": "brookes.ac.uk","Brighton University": "bton.ac.uk","Plymouth University": "plymouth.ac.uk","Portsmouth University": "port.ac.uk","Buckingham University": "buck.ac.uk","Canterbury Christ Church University": "canterbury.ac.uk","Reading University": "rdg.ac.uk","Central Lancashire University": "uclan.ac.uk","Chester University": "chester.ac.uk","Richmond The American International University in London": "richmond.ac.uk","Robert Gordon University": "rgu.ac.uk","City University": "city.ac.uk","Coventry University": "coventry.ac.uk","Royal Holloway University of London": "rhul.ac.uk","Cranfield University": "cranfield.ac.uk","Salford University": "salford.ac.uk","School of Oriental and African Studies London (SOAS)": "soas.ac.uk","Derby University": "derby.ac.uk","Sheffield Hallam University": "shu.ac.uk","Dundee University": "dundee.ac.uk","East Anglia University": "uea.ac.uk","East London University": "uel.ac.uk","Staffordshire University": "staffs.ac.uk","Edge Hill University": "edgehill.ac.uk","Stirling University": "stir.ac.uk","Strathclyde University": "strath.ac.uk","Edinburgh Napier University": "napier.ac.uk","Essex University": "essex.ac.uk","Sunderland University": "sunderland.ac.uk","Falmouth University": "falmouth.ac.uk","Surrey University": "surrey.ac.uk","Glasgow Caledonian University": "gcal.ac.uk","Sussex University": "sussex.ac.uk","Glasgow School of Art": "gsa.ac.uk","Swansea University of Wales": "swan.ac.uk","Gloucestershire University": "glos.ac.uk","Teesside University": "tees.ac.uk","Goldsmiths University of London": "gold.ac.uk","Ulster University": "ulster.ac.uk","Greenwich University": "gre.ac.uk","University College Birmingham": "bham.ac.uk","Heriot-Watt University": "hw.ac.uk","Hertfordshire University": "herts.ac.uk","Huddersfield University": "hud.ac.uk","Hull University": "hull.ac.uk","Istituto Marangoni": "istitutomarangoni.com","University of Wolverhampton": "wlv.ac.uk","Keele University": "keele.ac.uk","Westminster University": "westminster.ac.uk","Kingston University": "kingston.ac.uk","Lancaster University": "lancs.ac.uk","York St John University": "yorksj.ac.uk","Technological University Dublin (TU Dublin)": "tudublin.ie","Technological University of the Shannon (TUS)": "tus.ie","Royal College of Surgeons in Ireland (RCSI)": "rcsi.com","Dublin City University & DBS": "dcu.ie","University of Limerick": "ul.ie","Atlantic Technological University": "atu.ie","Dundalk Institute of Technology": "dkit.ie","IBAT Dublin": "ibat.ie","Griffith College": "griffith.ie","Dublin City University": "dcu.ie","Maynooth University": "mu.ie","University of Galway": "universityofgalway.ie","TU Dublin": "tudublin.ie","University College Cork": "ucc.ie","University College Dublin": "ucd.ie","South East Technological University": "setu.ie","Trinity College Dublin": "tcd.ie","Shannon College of Hotel Management": "shannoncollege.com","Dublin Business School": "dbs.ie","Institute of Technology Tralee": "ittralee.ie","National College of Ireland": "ncirl.ie","Munster Technological University": "mtu.ie","University of Europe for Applied Sciences": "ue-germany.com","Arden University": "arden.ac.uk","GISMA Business School": "gisma.com","New European College": "neweuropeancollege.com","International School of Management (ISM)": "ism.de","BBW Hochschule University of Applied Sciences": "bbw-hochschule.de","Berlin School of Business & Innovation": "berlinsbi.com","Karlsruhe Institute of Technology": "kit.edu","EBS Business School": "ebs.edu","Cologne Business School": "cbs.de","Steinbeis School of Management and Innovation": "steinbeis-smi.de","FOM University of Applied Sciences": "fom.de","Munich Business School": "munich-business-school.de","Macromedia university of applied sciences": "macromedia-fachhochschule.de","IU University of Applied Sciences": "iu.org","SRH Berlin University of Applied Sciences": "srh-berlin.de","EU Business School": "euruni.edu","College De Paris": "collegedeparis.fr","ISC Paris": "iscparis.com","Keyce Business School": "keyce.fr","American Business School of Paris": "absparis.org","Grenoble Institute of Technology": "grenoble-inp.fr","University Paris-Saclay; Paris": "universite-paris-saclay.fr","École Polytechnique": "polytechnique.edu","SUP Biotech": "supbiotech.fr","Neoma Business School": "neoma-bs.com","CY Tech": "cytech.cyu.fr","ESAM School of Management and Finance": "esam-ecoles.com","ISTEC, Paris": "istec.fr","Clermont School of Business": "clermont-sb.fr","Kedge Business School": "kedge.edu","IPSA Engineering School of Air, Space, and Sustainable Mobility": "ipsa.fr","ICD Business School": "icd-ecoles.com","Ajman University": "ajman.ac.ae","Curtin University": "curtin.edu.au","American University of Ras AI Khaimah (AURAK)": "aurak.ac.ae","Amity University Dubai Campus": "amityuniversity.ae","Bits Pilani Dubai Campus": "bits-pilani.ac.in","Heriot Watt Dubai Campus": "hw.ac.uk","Manipal Academy of Higher Education": "manipal.edu","Middlesex University Dubai Campus": "mdx.ac.ae","SP Jain": "spjain.ae","Abu Dhabi University": "adu.ac.ae","University of Birmingham Dubai Campus": "birmingham.ac.uk","Symbiosis International University": "siu.edu.in","Woosong University": "wsu.ac.kr","Sejong University": "sejong.ac.kr","Kimpo University": "kimpo.ac.kr","London School of Business & Finance": "lsbf.edu.sg","Limkokwing University of Creative Technology": "limkokwing.net","INTI International University and Colleges": "newinti.edu.my","Mahsa University": "mahsa.edu.my","Universiti Kuala Lumpur, UniKL": "unikl.edu.my","SEGi University and Colleges (SEGi)": "segi.edu.my","UCSI University": "ucsiuniversity.edu.my","University of Southampton Malaysia": "southampton.ac.uk","Asia E University": "aeu.edu.my","Webster University Vienna": "webster.ac.at","KU Leuven": "kuleuven.be","United Business Institutes": "ubi.edu","Thomas More University of Applied Sciences": "thomasmore.be","KdG University of Applied Sciences and Arts": "kdg.be","Zagreb University": "unizg.hr","University of Nicosia": "unic.ac.cy","Aalto University": "aalto.fi","Arcada University of Applied Sciences": "arcada.fi","Caucasus University": "cu.edu.ge","Kutaisi International University": "kiu.edu.ge","Tbilisi Medical University": "tmu.edu.ge","International Black Sea University": "ibsu.edu.ge","Hellenic American College": "hauniv.edu","IBS Budapest": "ibs-b.hu","Budapest Business University": "uni-bge.hu","University of Miskolc": "uni-miskolc.hu","Elte University": "elte.hu","University of Debrecen": "unideb.hu","John Cabot University": "johncabot.edu","POLIMI Graduate School of Management": "gsom.polimi.it","Eindhoven University of Technology": "tue.nl","Wittenborg University of Applied Sciences": "wittenborg.eu","AGH University of Science and Technology": "agh.edu.pl","Silesian University of Technology": "polsl.pl","Vistula University": "vistula.edu.pl","WSB University": "wsb.pl","Instituto Superior Técnico": "tecnico.ulisboa.pt","Mari state University": "margu.mari.ru","Peter the Great St.Petersburg Polytechnic University": "spbstu.ru","Saratov State Medical University": "med.sgu.ru","Perm State Pharmaceutical Academy": "psfa.ru","Moscow Aviation Institute": "mai.ru","University of Presov": "unipo.sk","Webster University Geneva": "webster.ch","Webster University (Bangkok)": "webster.ac.th","Dhurakij Pundit University (DPU)": "dpu.ac.th","Dogus University": "dogus.edu.tr","Sabancı University": "sabanciuniv.edu","Westminster International University in Tashkent": "wiut.uz","British University Vietnam": "buv.edu.vn","University of Alabama - Tuscaloosa": "ua.edu","Albertus Magnus College": "albertus.edu","Post University": "post.edu","California State University – East Bay": "csueastbay.edu","DeVry Education – Los Angeles & San Francisco": "devry.edu","Westcliff University": "westcliff.edu","Foothill and De Anza Colleges": "fhda.edu","Contra Costa Community College": "4cd.edu","University of California- SantaCruz": "ucsc.edu","William Jessup University": "jessup.edu","Rancho Santiago Community College District": "rsccd.edu","Florida A & M University": "famu.edu","Atlantis University": "atlantisuniversity.edu","St. Leo University": "saintleo.edu","Herzing University": "herzing.edu","South University": "southuniversity.edu","North Eastern Illinois University": "neiu.edu","North Park University": "northpark.edu","DeVry University": "devry.edu","Illinois Eastern Community College": "iecc.edu","Concordia University of Chicago": "cuchicago.edu","Ottawa University": "ottawa.edu","University of the Cumberlands": "ucumberlands.edu","Midway University": "midway.edu","Massachusetts College of Pharmacy and Health Sciences": "mcphs.edu","Fisher College": "fisher.edu","Lawrence Technology University": "ltu.edu","Webster University – St. Louis": "webster.edu","FDU (Fairleigh Dickinson University)": "fdu.edu","Saint Peter's University": "saintpeters.edu","Felician University": "felician.edu","St. John’s University": "stjohns.edu","NYIT (New York Institute of Technology)": "nyit.edu","Long Island - C.W. Post Campus": "liu.edu","Long Island - Brooklyn Campus": "liu.edu","DeVry Education": "devry.edu","Elmira College": "elmira.edu","LIM College": "limcollege.edu","Vaughn College of Aeronautics and Technology": "vaughn.edu","State University of New York – Polytechnic": "sunypoly.edu","SUNY Buffalo State College": "buffalostate.edu","New York Film Academy": "nyfa.edu","University of North Carolina at Pembroke": "uncp.edu","Salem College": "salem.edu","Western Oregon University": "wou.edu","La Salle University": "lasalle.edu","Kutztown University": "kutztown.edu","Harrisburg University of Science and Technology": "harrisburgu.edu","Webster University - Columbia": "webster.edu","Tennessee Tech University": "tntech.edu","University of Houston–Clear Lake": "uhcl.edu","Texas A & M University (Corpus Christi)": "tamucc.edu","Webster University – San Antonio": "webster.edu","University of the Incarnate Word of San Antonio": "uiw.edu","Texas A&M University-San Antonio": "tamusa.edu","University of Mary Hardin Baylor": "umhb.edu","City University of Seattle": "cityu.edu","Western Washington University-Extended Education": "wwu.edu","Lake Washington Institute of Technology": "lwtech.edu","Highline College": "highline.edu","University of Potomac": "potomac.edu","Viterbo University": "viterbo.edu","Abertay University": "abertay.ac.uk","Arts University Bournemouth": "aub.ac.uk","BANGOR BUSINESS SCHOOL": "bangor.ac.uk","Bangor University": "bangor.ac.uk","Loughborough University - London Campus": "lboro.ac.uk","Middlesex University": "mdx.ac.uk","Norwich University Of The Arts": "nua.ac.uk","BPP University Limited": "bpp.com","Brunel University": "brunel.ac.uk","Queen Margaret University": "qmu.ac.uk","Ravensbourne": "ravensbourne.ac.uk","Cardiff Metropolitan University": "cardiffmet.ac.uk","Regents University London": "regents.ac.uk","Chichester University": "chi.ac.uk","Roehampton University": "roehampton.ac.uk","Royal Agricultural University": "rau.ac.uk","Coventry University - London Campus": "coventry.ac.uk","De Montfort University": "dmu.ac.uk","Solent University": "solent.ac.uk","St Mary's University Twickenham": "stmarys.ac.uk","Edinburgh Business School": "hw.ac.uk","Sunderland University - London Campus": "sunderland.ac.uk","Glasgow Caledonian London Campus": "gcu.ac.uk","Ulster University Coleraine Campus": "ulster.ac.uk","Harper Adams University": "harper-adams.ac.uk","University for the Creative Arts": "uca.ac.uk","University of Law London Bloomsbury": "law.ac.uk","University of South Wales": "southwales.ac.uk","University of Suffolk": "uos.ac.uk","Hult International Business School AG": "hult.edu","University of Wales Trinity Saint David": "uwtsd.ac.uk","University of West London": "uwl.ac.uk","University of West of Scotland": "uws.ac.uk","West of England University (Bristol)": "uwe.ac.uk","Kent University": "kent.ac.uk","Winchester University": "winchester.ac.uk","École des mines d'Alès (IMT Mines d'Alès)": "mines-ales.fr","University of Bolton UAE campus": "bolton.ac.uk","Transnational Academic Group Middle East - Curtin University": "curtin.edu.au","DMU PostGraduate Programs": "dmu.ac.uk","DMU Undergraduate and Foundation Programs": "dmu.ac.uk","Hult International Business School Dubai Campus": "hult.edu","University of Cyberjaya (UoC)": "cyberjaya.edu.my"};</script>
+<script src="config.js"></script>
 <script>
 /* ================= EDIT YOUR DETAILS HERE ================= */
-const CONFIG = {
+const CONFIG = Object.assign({
   whatsapp: "917708783084",          // country code + number, no "+" or spaces
   phoneDisplay: "+91 77087 83084",
   email: "",                         // e.g. "hello@eduro.in" — leave "" to hide
@@ -938,8 +1435,9 @@ const CONFIG = {
   youtube: "",                       // add your channel link, or leave ""
   registerLink: "https://eduro.edumilestones.com/login/global-admissions/",
   psychometricLink: "https://eduro.edumilestones.com/",
-  reviewsLink: "https://eduro.edumilestones.com/"
-};
+  reviewsLink: "https://eduro.edumilestones.com/",
+  signupEndpoint: ""
+}, window.EDURO_CONFIG || {});
 /* Countries shown as cards (flag, name, short line) */
 const COUNTRY_CARDS = [
   ["🇺🇸","USA","STEM, MS & MBA"],["🇬🇧","UK","1-year master's"],["🇮🇪","Ireland","Tech & pharma jobs"],["🇩🇪","Germany","Low / no tuition"],
@@ -1015,6 +1513,80 @@ document.addEventListener("DOMContentLoaded", () => {
     window.open(waLink(`Hi EDURO! My dream university is ${u}. Can you check if you can help me apply?`), "_blank");
   });
 
+
+
+  // ===== Lead capture (Google Sheet via Apps Script, WhatsApp fallback) =====
+  const sendLead = (data) => {
+    data.page = location.pathname.split("/").pop() || "index.html"; data.time = new Date().toISOString();
+    if (!CONFIG.signupEndpoint) return false;
+    try { const fd = new FormData(); Object.entries(data).forEach(([k, v]) => fd.append(k, v || "")); fetch(CONFIG.signupEndpoint, { method: "POST", mode: "no-cors", body: fd }); return true; } catch (e) { return false; }
+  };
+  window.EDURO_sendLead = sendLead;
+  // ===== Country codes =====
+  const CC = [["🇮🇳","+91","India"],["🇵🇰","+92","Pakistan"],["🇧🇩","+880","Bangladesh"],["🇳🇵","+977","Nepal"],["🇱🇰","+94","Sri Lanka"],["🇦🇪","+971","UAE"],["🇸🇦","+966","Saudi Arabia"],["🇰🇷","+82","South Korea"],["🇺🇸","+1","USA / Canada"],["🇬🇧","+44","UK"],["🇲🇾","+60","Malaysia"],["🇸🇬","+65","Singapore"],["🇵🇭","+63","Philippines"],["🇮🇩","+62","Indonesia"],["🇳🇬","+234","Nigeria"],["🇰🇪","+254","Kenya"],["🇬🇭","+233","Ghana"],["🇷🇼","+250","Rwanda"],["🇿🇦","+27","South Africa"],["🇪🇬","+20","Egypt"],["🇲🇦","+212","Morocco"]];
+  $$("select[data-cc]").forEach((s) => (s.innerHTML = CC.map(([f, c, n]) => `<option value="${c}" title="${n}">${f} ${c}</option>`).join("")));
+  // ===== Sign up =====
+  const su = $("#suModal");
+  let suData = {};
+  const user = (() => { try { return JSON.parse(localStorage.getItem("eduroUser") || "null"); } catch (e) { return null; } })();
+  const greet = (u) => { $$("[data-signup].nav-signup").forEach((b) => { b.textContent = "Hi, " + u.name.split(" ")[0]; b.classList.add("hi"); }); };
+  if (user && user.name) greet(user);
+  const suOpen = (step = 1, preset = {}) => { if (!su) return; suData = Object.assign({}, preset); suStep(step); su.classList.add("open"); su.setAttribute("aria-hidden", "false"); document.body.classList.add("sl-lock"); setTimeout(() => su.querySelector(".su-step:not([hidden]) input")?.focus({ preventScroll: true }), 250); };
+  const suClose = () => { su.classList.remove("open"); su.setAttribute("aria-hidden", "true"); document.body.classList.remove("sl-lock"); };
+  function suStep(n) {
+    $$(".su-step", su).forEach((s) => s.hidden = +s.dataset.step !== n);
+    $("#suBar").style.width = (n / 3 * 100) + "%";
+    if (n === 1 && suData.phone) { $("#suPhone").value = suData.phone; $("#suCC").value = suData.cc || "+91"; }
+  }
+  $$("[data-signup]").forEach((b) => b.addEventListener("click", (e) => { e.preventDefault(); links?.classList.remove("open"); if (b.classList.contains("hi")) { window.open(waLink("Hi EDURO! I'd like to continue with my study plan."), "_blank"); return; } suOpen(1); }));
+  if (su) {
+    $(".su-close", su).addEventListener("click", suClose);
+    su.addEventListener("click", (e) => { if (e.target === su) suClose(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && su.classList.contains("open")) suClose(); });
+    $$(".su-chip", su).forEach((c) => c.addEventListener("click", () => c.classList.toggle("sel")));
+    $("#suForm1").addEventListener("submit", (e) => { e.preventDefault(); const p = $("#suPhone").value.replace(/\D/g, ""); if (p.length < 6 || p.length > 15) { $("#suErr1").textContent = "Enter a valid WhatsApp number (6–15 digits)."; return; } $("#suErr1").textContent = ""; suData.cc = $("#suCC").value; suData.phone = p; suStep(2); });
+    $("#suBack").addEventListener("click", () => suStep(1));
+    $("#suForm2").addEventListener("submit", (e) => {
+      e.preventDefault(); const f = new FormData(e.target);
+      const interest = $$(".su-chip.sel", su).map((c) => c.dataset.v).join(", ") || "Not sure yet";
+      const d = { type: "Sign up", name: f.get("name"), phone: suData.cc + " " + suData.phone, email: f.get("email"), interest, level: f.get("level"), details: f.get("country") };
+      const saved = sendLead(d);
+      try { localStorage.setItem("eduroUser", JSON.stringify({ name: d.name })); } catch (er) {}
+      greet({ name: d.name });
+      $("#suWelcome").textContent = `Welcome aboard, ${d.name.split(" ")[0]}!`;
+      $("#suDoneMsg").textContent = saved ? "Your profile is created. Our counsellor will message you on WhatsApp soon." : "Send the WhatsApp message that opened so our counsellor can reach you.";
+      if (!saved) window.open(waLink(`Hi EDURO! I just signed up 👋\n\nName: ${d.name}\nWhatsApp: ${d.phone}\nEmail: ${d.email || "-"}\nInterested in: ${interest}\nLevel: ${d.level}\nCountry: ${d.details || "-"}`), "_blank");
+      suStep(3);
+    });
+    $("#suToShortlist").addEventListener("click", () => { suClose(); $("[data-shortlist]")?.click(); });
+  }
+  $("#ticketForm")?.addEventListener("submit", (e) => { e.preventDefault(); const f = new FormData(e.target); const p = String(f.get("phone")).replace(/\D/g, ""); suOpen(2, { cc: f.get("cc"), phone: p }); });
+  // ===== Journey path (scroll-driven) =====
+  const path = $("#path");
+  if (path) {
+    const items = $$("li", path), pct = $("#pathPct");
+    const upd = () => {
+      const r = path.getBoundingClientRect(), mid = innerHeight * 0.6;
+      const p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
+      path.style.setProperty("--p", p);
+      items.forEach((li) => li.classList.toggle("on", li.getBoundingClientRect().top < mid));
+      if (pct) pct.textContent = Math.round(items.filter((li) => li.classList.contains("on")).length / items.length * 100) + "%";
+    };
+    addEventListener("scroll", upd, { passive: true }); upd();
+  }
+  // ===== Hero application tracker (illustrative) =====
+  const trBar = $("#trBar");
+  if (trBar) {
+    const T = [["The University of Manchester","🇬🇧"],["Trinity College Dublin","🇮🇪"],["Arizona State University","🇺🇸"],["Karlsruhe Institute of Technology","🇩🇪"],["Sejong University","🇰🇷"],["KU Leuven","🇧🇪"]];
+    const MSG = ["Shortlisted — matched to your profile","Applied — documents submitted","Admit received 🎉","Visa ready ✈️"];
+    let ti = 0, st = 0; const steps = $$(".tr-steps span");
+    const tick = () => {
+      steps.forEach((s, i) => s.classList.toggle("on", i <= st));
+      trBar.style.width = ((st + 1) / 4 * 100) + "%"; $("#trMsg").textContent = MSG[st];
+      st++; if (st > 3) { st = 0; ti = (ti + 1) % T.length; setTimeout(() => { $("#trUni").textContent = T[ti][0]; $("#trFlag").textContent = T[ti][1]; }, 1300); }
+    };
+    setTimeout(() => { tick(); setInterval(tick, 1500); }, 2200);
+  }
 
   // ===== Home: globe =====
   const cv = document.getElementById("globe");
@@ -1095,6 +1667,72 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     cc.addEventListener("change", upd); $("#cBudget").addEventListener("input", upd); upd();
   }
+  // ===== FUN: hero rotating word colour =====
+  const ROTC = ["#2E5BD8","#7B61FF","#19B37D","#FF7A59","#FF5C8A","#1FB6FF","#E8A92B","#2E5BD8"];
+  const rw = $(".rot-wrap"); let rci = 0;
+  if (rw) setInterval(() => { rci = (rci + 1) % ROTC.length; rw.style.setProperty("--rc", ROTC[rci]); }, 2600);
+  // ===== FUN: sticker parallax =====
+  const stage = $("#heroStage");
+  if (stage && matchMedia("(hover:hover)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const stks = $$(".stk", stage);
+    document.querySelector(".hero").addEventListener("mousemove", (e) => {
+      const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+      stks.forEach((s) => { const d = +s.dataset.depth || 10; s.style.translate = `${x * d}px ${y * d}px`; });
+    });
+  }
+  // ===== FUN: count-up scores =====
+  const countUp = (el, to, dur = 1400) => { const t0 = performance.now(), from = parseFloat(el.textContent) || 0; const f = (t) => { const k = Math.min((t - t0) / dur, 1); el.textContent = (from + (to - from) * (1 - Math.pow(1 - k, 3))).toFixed(1); if (k < 1) requestAnimationFrame(f); }; requestAnimationFrame(f); };
+  const sc = $(".stk-4 .score"); if (sc) setTimeout(() => countUp(sc, 7.5, 1600), 2600);
+  const bs = $(".anim-score b");
+  if (bs) new IntersectionObserver((es, o) => es.forEach((e) => { if (e.isIntersecting) { o.disconnect(); const loop = () => { bs.textContent = "5.0"; countUp(bs, 7.5, 1800); }; loop(); setInterval(loop, 4000); } }), { threshold: .5 }).observe(bs);
+  // ===== FUN: flip cards =====
+  $$(".fcard").forEach((c) => c.addEventListener("click", () => c.classList.toggle("open")));
+  // ===== FUN: confetti =====
+  const confetti = (() => {
+    const cv = $("#confetti"); if (!cv) return () => {};
+    const ctx = cv.getContext("2d"); let parts = [], raf = 0;
+    const COLS = ["#7B61FF","#2E5BD8","#1FB6FF","#19B37D","#E8C07D","#FF7A59","#FF5C8A"];
+    const frame = () => { ctx.clearRect(0, 0, cv.width, cv.height); parts.forEach((p) => { p.vy += .25; p.x += p.vx; p.y += p.vy; p.r += p.vr; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); ctx.restore(); }); parts = parts.filter((p) => p.y < cv.height + 20); if (parts.length) raf = requestAnimationFrame(frame); else ctx.clearRect(0, 0, cv.width, cv.height); };
+    return (x, y) => { if (matchMedia("(prefers-reduced-motion: reduce)").matches) return; const r = cv.getBoundingClientRect(); cv.width = r.width; cv.height = r.height; for (let i = 0; i < 140; i++) parts.push({ x, y, vx: (Math.random() - .5) * 14, vy: -Math.random() * 13 - 4, s: 7 + Math.random() * 7, r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: COLS[i % COLS.length] }); cancelAnimationFrame(raf); frame(); };
+  })();
+  // ===== FUN: country quiz =====
+  const qc = $("#quizCard");
+  if (qc) {
+    const Q = [
+      { q: "What's your yearly budget (tuition + living)?", o: [["🪙","Under ₹12 lakh","low"],["💵","₹12–25 lakh","mid"],["💰","₹25–40 lakh","high"],["💎","Above ₹40 lakh","top"]] },
+      { q: "What matters most to you?", o: [["🏷️","Low tuition fees","cheap"],["⚡","Finish my degree fast","fast"],["💼","Work after graduation","work"],["🏆","A full scholarship","schol"]] },
+      { q: "What do you want to study?", o: [["⚙️","Engineering / IT","tech"],["📊","Business / MBA","biz"],["🩺","Medicine / Health","med"],["🎨","Design / Arts / Media","art"]] }
+    ];
+    const C = {
+      "Germany": { f: "🇩🇪", s: { low: 3, mid: 2, cheap: 4, work: 2, tech: 4, biz: 1 }, why: ["Most public universities charge little or no tuition","18-month permit to find a job after graduating","World-class engineering and IT universities"] },
+      "UK": { f: "🇬🇧", s: { mid: 2, high: 3, top: 2, fast: 4, work: 2, biz: 3, med: 1, art: 2 }, why: ["Master's degrees usually take just 1 year","Graduate Route post-study work visa","130+ universities in our network, incl. Russell Group"] },
+      "USA": { f: "🇺🇸", s: { high: 2, top: 4, work: 3, schol: 1, tech: 4, biz: 2 }, why: ["Top STEM, AI and data science programs","OPT work experience, extended for STEM graduates","Assistantships and merit scholarships at many universities"] },
+      "Ireland": { f: "🇮🇪", s: { mid: 3, high: 1, fast: 3, work: 4, tech: 3, biz: 2, med: 2 }, why: ["Europe's tech and pharma hub","Up to 2 years to work after a master's","English-speaking and 1-year master's"] },
+      "South Korea": { f: "🇰🇷", s: { low: 3, mid: 2, schol: 5, cheap: 2, tech: 3, art: 1 }, why: ["Fully funded GKS covers tuition, allowance and flights","Leader in tech, batteries and semiconductors","Guidance from a founder who did her PhD in Korea"] },
+      "Hungary": { f: "🇭🇺", s: { low: 4, cheap: 3, schol: 3, med: 4, tech: 1 }, why: ["Affordable EU-recognised degrees","Fully funded Stipendium Hungaricum","Popular English-taught medicine programs"] },
+      "France": { f: "🇫🇷", s: { low: 1, mid: 3, cheap: 2, work: 2, biz: 4, art: 3, tech: 1 }, why: ["Top business schools and grandes écoles","Many programs taught fully in English","Work permit to look for jobs after a master's"] },
+      "Dubai": { f: "🇦🇪", s: { mid: 3, low: 1, fast: 2, biz: 3, art: 1, tech: 1 }, why: ["UK and Australian degrees, closer to home","Lower total cost than studying in the UK","Growing business and hospitality job market"] },
+      "Australia": { f: "🇦🇺", s: { high: 3, top: 2, work: 4, med: 3, tech: 1, biz: 1 }, why: ["Post-study work visa for graduates","Strong nursing, IT and accounting programs","High quality of life"] }
+    };
+    let qi = 0, ans = [];
+    const dots = () => `<div class="qz-dots">${Q.map((_, i) => `<i class="${i <= qi ? "on" : ""}"></i>`).join("")}</div>`;
+    const render = () => {
+      if (qi < Q.length) {
+        const q = Q[qi];
+        qc.innerHTML = `<div class="qz-top"><span>Question ${qi + 1} of ${Q.length}</span>${dots()}</div><div class="qz-q">${q.q}</div><div class="qz-opts">${q.o.map(([e, t, v]) => `<button class="qz-opt" type="button" data-v="${v}"><i>${e}</i>${t}</button>`).join("")}</div>`;
+        $$(".qz-opt", qc).forEach((b) => b.addEventListener("click", () => { b.classList.add("sel"); ans[qi] = b.dataset.v; setTimeout(() => { qi++; render(); }, 280); }));
+      } else {
+        const ranked = Object.entries(C).map(([n, c]) => [n, c, ans.reduce((a, v) => a + (c.s[v] || 0), 0)]).sort((a, b) => b[2] - a[2]);
+        const [name, c, score] = ranked[0], pct = Math.min(98, 70 + score * 3);
+        qc.innerHTML = `<div class="qz-res"><div class="qz-flag">${c.f}</div><h3>${name}</h3><span class="qz-match">${pct}% match for you</span><ul class="qz-why">${c.why.map((w) => `<li>✓ ${w}</li>`).join("")}</ul><p class="qz-alt">Also worth a look: ${ranked[1][1].f} ${ranked[1][0]} · ${ranked[2][1].f} ${ranked[2][0]}</p><div class="qz-btns"><button class="btn btn-primary" type="button" id="qzList">Get my ${name} shortlist</button><button class="btn btn-ghost" type="button" id="qzAgain">Try again</button></div></div>`;
+        const r = qc.getBoundingClientRect(), s = $("#confetti").getBoundingClientRect();
+        confetti(r.left - s.left + r.width / 2, r.top - s.top + 80);
+        $("#qzAgain").addEventListener("click", () => { qi = 0; ans = []; render(); });
+        $("#qzList").addEventListener("click", () => { $("[data-shortlist]")?.click(); });
+      }
+    };
+    render();
+  }
 
   // ===== Page extras =====
   // active nav link
@@ -1135,21 +1773,55 @@ document.addEventListener("DOMContentLoaded", () => {
   const bar = $("#scrollBar");
   if (bar) addEventListener("scroll", () => { const h = document.documentElement; bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + "%"; }, { passive: true });
 
+  // ===== University logos =====
+  const DOMAINS = window.EDURO_DOMAINS || {};
+  const STOPW = new Set(["of","the","and","&","de","des","du","di","la","in","at","for","-","–"]);
+  const COLS = ["#1B3A8C","#0A1A3A","#2E5BD8","#8A6420","#3B4F7A","#14532D","#7A2E3A"];
+  const initialsOf = (n) => n.replace(/\(.*?\)/g, "").split(/\s+/).filter((w) => w && !STOPW.has(w.toLowerCase()) && /[A-Za-zÀ-ž]/.test(w)).map((w) => w[0].toUpperCase()).join("").slice(0, 3);
+  const colorOf = (n) => COLS[[...n].reduce((a, c) => a + c.charCodeAt(0), 0) % COLS.length];
+  const logoSrc = (n) => LOGOS[n] || (DOMAINS[n] ? `https://www.google.com/s2/favicons?domain=${DOMAINS[n]}&sz=128` : "");
+  const logoBadge = (n, f, cls) => {
+    const src = logoSrc(n), ini = esc(initialsOf(n));
+    return `<span class="${cls} ${src ? "has-img" : ""}" style="--c:${colorOf(n)}" data-ini="${ini}">${src ? `<img src="${src}" alt="${esc(n)} logo" loading="lazy" decoding="async">` : ini}${f ? `<span class="fl">${f}</span>` : ""}</span>`;
+  };
+  // fall back to initials if a logo is missing or is only a tiny generic icon
+  document.addEventListener("load", (e) => { const im = e.target; if (im.tagName === "IMG" && im.closest(".has-img") && im.naturalWidth && im.naturalWidth < 32) fallback(im); }, true);
+  document.addEventListener("error", (e) => { const im = e.target; if (im.tagName === "IMG" && im.closest(".has-img")) fallback(im); }, true);
+  function fallback(im) { const b = im.closest(".has-img"); if (!b) return; b.classList.remove("has-img"); im.replaceWith(document.createTextNode(b.dataset.ini)); }
+
+  // ===== Logo wall (tiles flip to reveal more universities) =====
+  const wall = $("#logoWall");
+  if (wall && UNI_NAMES.length) {
+    const TOP = ["The University of Manchester","King's College London","The University of Edinburgh","University of Warwick","University of Bristol","University of Glasgow","University of Birmingham","University of Leeds","Trinity College Dublin","University College Dublin","Arizona State University","University of Arizona","San Jose State University","Karlsruhe Institute of Technology","École Polytechnique","KU Leuven","Eindhoven University of Technology","Aalto University","Heriot-Watt University","Sejong University","Durham University","University of Southampton","Newcastle University","Cardiff University","Queen Mary University of London","University of Nottingham","University of Sheffield","Colorado State University","University of Delaware","Temple University","Drexel University","Kent State University"];
+    const flagOf = Object.fromEntries(UNI_NAMES.map(([n, f]) => [n, f]));
+    const withLogo = UNI_NAMES.filter(([n]) => logoSrc(n)).map(([n]) => n);
+    const pool = [...TOP.filter((n) => flagOf[n]), ...withLogo.filter((n) => !TOP.includes(n)).sort(() => Math.random() - .5)];
+    const N = +wall.dataset.tiles || 18;
+    const face = (n) => `${logoBadge(n, "", "wl-logo")}<span class="wl-name">${esc(n)}</span><span class="wl-flag">${flagOf[n] || ""}</span>`;
+    let next = N;
+    wall.innerHTML = pool.slice(0, N).map((n, i) => `<a class="wl-tile" style="--d:${i * 45}ms" data-wa="Hi EDURO! I'm interested in ${esc(n)}. Can you guide me on courses, fees and eligibility?"><span class="wl-inner"><span class="wl-face wl-front">${face(n)}</span><span class="wl-face wl-back"></span></span></a>`).join("");
+    $$(".wl-tile", wall).forEach((t) => { t.href = waLink(t.dataset.wa); t.target = "_blank"; t.rel = "noopener"; });
+    const flip = () => {
+      if (document.hidden || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const tiles = $$(".wl-tile:not(:hover)", wall); if (!tiles.length) return;
+      const t = tiles[Math.floor(Math.random() * tiles.length)], n = pool[next++ % pool.length];
+      const showingBack = t.classList.contains("flipped");
+      (showingBack ? $(".wl-front", t) : $(".wl-back", t)).innerHTML = face(n);
+      t.classList.toggle("flipped");
+      t.href = waLink(`Hi EDURO! I'm interested in ${n}. Can you guide me on courses, fees and eligibility?`);
+    };
+    const wio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { wall.classList.add("in"); if (!wall._t) wall._t = setInterval(flip, 1400); } }), { threshold: .2 });
+    wio.observe(wall);
+  }
+
   // ===== University marquee =====
   if ($("#marquee")) (function () {
     const all = UNI_NAMES.slice();
     if ($("#uniCount")) $("#uniCount").textContent = Math.floor(all.length / 50) * 50 + "+";
     // mix countries so every row shows variety
     for (let i = all.length - 1; i > 0; i--) { const j = (i * 7919 + 13) % (i + 1); [all[i], all[j]] = [all[j], all[i]]; }
-    const ROWS = window.innerWidth < 760 ? 4 : 5, per = Math.ceil(all.length / ROWS);
-    const STOP = new Set(["of","the","and","&","de","des","du","di","la","in","at","for","-","–"]);
-    const COLORS = ["#1B3A8C","#0A1A3A","#2E5BD8","#8A6420","#3B4F7A","#14532D","#7A2E3A"];
-    const initials = (n) => n.replace(/\(.*?\)/g, "").split(/\s+/).filter((w) => w && !STOP.has(w.toLowerCase()) && /[A-Za-zÀ-ž]/.test(w)).map((w) => w[0].toUpperCase()).join("").slice(0, 3);
-    const color = (n) => COLORS[[...n].reduce((a, c) => a + c.charCodeAt(0), 0) % COLORS.length];
-    const item = ([n, f]) => {
-      const logo = LOGOS[n] ? `<img src="${esc(LOGOS[n])}" alt="" loading="lazy">` : esc(initials(n));
-      return `<span class="m-item"><span class="m-logo" style="background:${LOGOS[n] ? "#fff" : color(n)}">${logo}<span class="fl">${f}</span></span>${esc(n)}</span>`;
-    };
+    const ROWS = +($("#marquee").dataset.rows || (window.innerWidth < 760 ? 4 : 5)), per = Math.ceil(all.length / ROWS);
+    const item = ([n, f]) => `<span class="m-item">${logoBadge(n, f, "m-logo")}${esc(n)}</span>`;
     let html = "";
     for (let r = 0; r < ROWS; r++) {
       const chunk = all.slice(r * per, (r + 1) * per).map(item).join("");
@@ -1196,12 +1868,13 @@ document.addEventListener("DOMContentLoaded", () => {
           <div><label>Your name</label><input class="field" name="name" required placeholder="Full name"></div>
           <div><label>WhatsApp number</label><input class="field" name="phone" required inputmode="tel" placeholder="+91 98765 43210"></div>
           <div><label>Latest score / CGPA (optional)</label><input class="field" name="score" placeholder="e.g. 8.2 CGPA, 78%, IELTS 7"></div>
-          <button class="btn btn-primary" type="submit" style="justify-content:center">Get my shortlist on WhatsApp →</button>
+          <button class="btn btn-primary" type="submit" style="justify-content:center">Get my shortlist on WhatsApp</button>
         </form>`;
       $("#slForm").addEventListener("submit", (e) => {
         e.preventDefault();
         const f = new FormData(e.target), d = sl.data;
         const msg = `Hi EDURO! Please shortlist universities for me 🎯\n\nName: ${f.get("name")}\nWhatsApp: ${f.get("phone")}\nCountry: ${d.country}\nLevel: ${d.level}\nField: ${d.field}\nIntake: ${d.intake}\nBudget: ${d.budget}\nScore: ${f.get("score") || "-"}`;
+        sendLead({ type: "Shortlist", name: f.get("name"), phone: f.get("phone"), email: "", interest: d.field, level: d.level, details: `${d.country} | ${d.intake} | ${d.budget} | score: ${f.get("score") || "-"}` });
         window.open(waLink(msg), "_blank");
         body.innerHTML = `<div class="sl-done"><div class="big">🎉</div><h3>You're all set, ${esc(f.get("name"))}!</h3><p>Send the WhatsApp message that just opened and our counsellor will share your shortlist soon.</p><button class="btn btn-primary" type="button" id="slOk">Done</button></div>`;
         $("#slBack").style.visibility = "hidden"; $("#slBar").style.width = "100%"; $("#slCount").textContent = "Completed";
