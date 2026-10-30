@@ -1089,11 +1089,29 @@ html,body{overflow-x:clip}
 .cb-form input:focus{outline:none;border-color:var(--accent)}
 .cb-form button{width:42px;height:42px;border-radius:50%;border:0;background:var(--accent);color:#fff;cursor:pointer;font-size:1rem}
 @media (max-width:560px){.cb-lbl{display:none}.cb-btn{padding:15px}.cb{right:14px;bottom:14px}}
+/* ===== IELTS slot popup ===== */
+.slot-box{width:min(560px,100%);padding:28px}
+.slot-head{text-align:left;margin-bottom:8px;padding-right:36px}
+.slot-head h3{font-family:var(--display);font-size:1.6rem;margin:10px 0 4px}
+.slot-head p{color:var(--muted);font-size:.93rem}
+.slot-form{display:grid;gap:8px}
+.slot-form>label{font-weight:800;font-size:.88rem;margin-top:8px}
+.slot-form>label small{font-weight:600;color:var(--muted)}
+.slot-days{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
+.slot-days .dm-day{flex:none}
+.slot-times{display:flex;flex-wrap:wrap;gap:8px}
+.slot-done{text-align:center;display:grid;gap:12px;justify-items:center;padding:10px 0}
+.slot-done[hidden]{display:none}
+.slot-done h3{font-family:var(--display);font-size:1.7rem}
+.slot-form[hidden]{display:none}
+.edu-toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:14px;font-weight:700;opacity:0;pointer-events:none;transition:.3s;z-index:200;max-width:calc(100vw - 32px)}
+.edu-toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:560px){.slot-box{padding:22px 16px}.slot-days{grid-template-columns:repeat(4,1fr)}}
 
 </style>
 </head>
 <body>
-<a class="topbar" href="free-ielts-demo.html"><span class="tb-dot"></span><b>Free IELTS demo class</b><span class="tb-txt">Level check + strategies with the EDURO IELTS team</span><span class="tb-cta">Book your slot</span></a>
+<a class="topbar" href="free-ielts-demo.html" data-slot><span class="tb-dot"></span><b>Free IELTS demo class</b><span class="tb-txt">Level check + strategies with the EDURO IELTS team</span><span class="tb-cta">Book your slot</span></a>
 <header class="nav">
   <div class="wrap">
     <a href="index.html" class="logo"><svg class="mark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="eg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E5BD8"/><stop offset="1" stop-color="#1B3A8C"/></linearGradient></defs><rect width="100" height="100" rx="30" fill="url(#eg)"/><path d="M72 54 H30 C31 68 40 76 52 76 C60 76 66 72 70 66" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 54 C30 40 39 30 51 30 C63 30 72 40 72 54" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/><circle cx="76" cy="24" r="8" fill="#E8C07D"/></svg><span class="lw">eduro<i></i><small>GLOBAL ADMISSIONS</small></span></a>
@@ -1227,6 +1245,34 @@ html,body{overflow-x:clip}
   </div>
 </div>
 
+
+<!-- ================= IELTS SLOT POPUP ================= -->
+<div class="sl-overlay" id="slotModal" aria-hidden="true">
+  <div class="sl-box slot-box" role="dialog" aria-modal="true" aria-labelledby="slotTitle">
+    <button class="sl-close" type="button" data-slot-close aria-label="Close">✕</button>
+    <div class="slot-head"><span class="dm-free">FREE</span><h3 id="slotTitle">Book your free IELTS demo</h3><p>Live online class with the EDURO IELTS team — level check, strategies &amp; speaking practice.</p></div>
+    <form id="slotForm" class="slot-form">
+      <label for="slName">Full name</label>
+      <input class="field" id="slName" name="name" required autocomplete="name" placeholder="Your name">
+      <label for="slPhone">WhatsApp number</label>
+      <div class="su-phone"><select class="field" name="cc" data-cc aria-label="Country code"></select><input class="field" id="slPhone" name="phone" required inputmode="tel" placeholder="98765 43210"></div>
+      <label>Dates you're available <small>(tap one or more)</small></label>
+      <div class="slot-days" id="slotDays"></div>
+      <label>Preferred time <small id="slotTz"></small></label>
+      <div class="slot-times" id="slotTimes"></div>
+      <small class="su-err" id="slotErr" role="alert"></small>
+      <button class="btn btn-primary" type="submit" style="justify-content:center">Book my free slot</button>
+      <small class="su-legal">We'll confirm your slot and send the joining link on WhatsApp.</small>
+    </form>
+    <div class="slot-done" id="slotDone" hidden>
+      <div class="su-check"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+      <h3 id="slotDoneTitle">You're booked in!</h3>
+      <div class="dm-ticket" id="slotTicket"></div>
+      <p>Our team will WhatsApp you to confirm the exact slot and send the joining link.</p>
+      <button class="btn btn-primary" type="button" data-slot-close>Done</button>
+    </div>
+  </div>
+</div>
 
 <!-- ================= SIGN UP ================= -->
 <div class="sl-overlay" id="suModal" aria-hidden="true">
@@ -1504,6 +1550,44 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#cbClose").addEventListener("click", close);
     $$("[data-chat]").forEach((b) => b.addEventListener("click", (e) => { e.preventDefault(); open(); }));
     setTimeout(() => { if (!started && !cb.classList.contains("open")) cb.classList.add("nudge"); }, 8000);
+  }
+
+
+  // ===== Quick IELTS slot popup =====
+  const slotM = $("#slotModal");
+  if (slotM) {
+    const SLOTS = CONFIG.demoSlots || ["10:00 AM", "4:00 PM", "7:30 PM"], TZ = CONFIG.demoTimezone || "IST";
+    const CLOSED = CONFIG.demoClosedDays || [0], AHEAD = CONFIG.demoDaysAhead || 14;
+    const days = []; const t0 = new Date(); t0.setHours(0, 0, 0, 0);
+    for (let i = 1; days.length < AHEAD && i < 40; i++) { const d = new Date(t0); d.setDate(t0.getDate() + i); if (!CLOSED.includes(d.getDay())) days.push(d); }
+    const f = (d, o) => d.toLocaleDateString("en-IN", o);
+    $("#slotTz").textContent = `(${TZ})`;
+    $("#slotDays").innerHTML = days.map((d, i) => `<button type="button" class="dm-day" data-i="${i}" aria-pressed="false"><small>${f(d, { weekday: "short" })}</small><b>${d.getDate()}</b><small>${f(d, { month: "short" })}</small></button>`).join("");
+    $("#slotTimes").innerHTML = SLOTS.map((s) => `<button type="button" class="dm-slot" data-s="${s}" aria-pressed="false">${s}</button>`).join("") + `<button type="button" class="dm-slot" data-s="Any time" aria-pressed="false">Any time</button>`;
+    const tog = (b) => { b.classList.toggle("sel"); b.setAttribute("aria-pressed", b.classList.contains("sel")); };
+    $$("#slotDays .dm-day, #slotTimes .dm-slot").forEach((b) => b.addEventListener("click", () => tog(b)));
+    const openSlot = () => { $("#slotForm").hidden = false; $("#slotDone").hidden = true; slotM.classList.add("open"); slotM.setAttribute("aria-hidden", "false"); document.body.classList.add("sl-lock"); setTimeout(() => $("#slName").focus({ preventScroll: true }), 200); };
+    const closeSlot = () => { slotM.classList.remove("open"); slotM.setAttribute("aria-hidden", "true"); document.body.classList.remove("sl-lock"); };
+    $$("[data-slot]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); openSlot(); }));
+    $$("[data-slot-close]").forEach((b) => b.addEventListener("click", closeSlot));
+    slotM.addEventListener("click", (e) => { if (e.target === slotM) closeSlot(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && slotM.classList.contains("open")) closeSlot(); });
+    $("#slotForm").addEventListener("submit", (e) => {
+      e.preventDefault(); const fd = new FormData(e.target), err = $("#slotErr");
+      const ph = String(fd.get("phone")).replace(/\D/g, "");
+      const ds = $$("#slotDays .dm-day.sel").map((b) => days[+b.dataset.i]);
+      const ts = $$("#slotTimes .dm-slot.sel").map((b) => b.dataset.s);
+      if (ph.length < 6 || ph.length > 15) return (err.textContent = "Enter a valid WhatsApp number.");
+      if (!ds.length) return (err.textContent = "Tap at least one date you're available.");
+      if (!ts.length) return (err.textContent = "Tap a preferred time (or Any time).");
+      err.textContent = "";
+      const dates = ds.map((d) => f(d, { weekday: "short", day: "numeric", month: "short" })).join(", ");
+      sendLead({ type: "IELTS demo", name: fd.get("name"), phone: fd.get("cc") + " " + ph, email: "", interest: "IELTS demo class", level: "", details: `Available: ${dates} | Time: ${ts.join(", ")} ${TZ}` });
+      $("#slotDoneTitle").textContent = `You're booked in, ${String(fd.get("name")).split(" ")[0]}!`;
+      $("#slotTicket").innerHTML = `<small>Free IELTS demo class</small><b>${esc(dates)}</b><small>${esc(ts.join(", "))} ${TZ}</small>`;
+      $("#slotForm").hidden = true; $("#slotDone").hidden = false;
+      e.target.reset(); $$("#slotModal .sel").forEach((b) => { b.classList.remove("sel"); b.setAttribute("aria-pressed", "false"); });
+    });
   }
 
   // ===== Free IELTS demo booking =====
