@@ -1046,6 +1046,49 @@ html,body{overflow-x:clip}
 @media (max-width:560px){.scene .mk{font-size:.78rem;padding:10px 12px}.a1{left:6%;width:84%}.a2{right:-2%}.a3{left:-2%}.svc-art.scene{max-width:300px;margin:20px auto}}
 @media (prefers-reduced-motion:reduce){.scene .mk{opacity:1;transform:none;animation:none!important}}
 .scene-ico svg.i{width:62%;height:62%;stroke-width:.8;color:rgba(255,255,255,.16)}
+.finder-band{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;background:linear-gradient(135deg,var(--butter),var(--peach));border-radius:26px;padding:32px 36px}
+.finder-band h2{font-size:clamp(1.5rem,3vw,2rem)}
+.finder-band p{color:var(--ink-2);margin:6px 0 10px;max-width:620px}
+.finder-band .tags{margin:0}
+.fb-ico{width:72px;height:72px;border-radius:22px;background:#fff;display:grid;place-items:center;font-size:2rem;box-shadow:var(--sh-1)}
+.light-ghost{border-color:#fff!important;color:#fff!important}.light-ghost:hover{background:#fff!important;color:var(--ink)!important}
+@media (max-width:860px){.finder-band{grid-template-columns:1fr;padding:26px 22px}}
+/* ===== Chat assistant ===== */
+.wa-float{display:none!important}
+.cb{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.cb-btn{display:flex;align-items:center;gap:8px;border:0;cursor:pointer;font:inherit;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--violet),var(--accent-2));border-radius:999px;padding:14px 20px;box-shadow:0 14px 30px rgba(46,91,216,.4);position:relative;transition:transform .2s}
+.cb-btn:hover{transform:translateY(-2px)}
+.cb-badge{position:absolute;top:-6px;right:-4px;background:var(--coral);color:#fff;font-size:.72rem;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;border:2px solid #fff}
+.cb.nudge .cb-btn{animation:cbNudge 2.6s ease-in-out 2}
+@keyframes cbNudge{0%,100%{transform:none}10%{transform:translateY(-8px)}20%{transform:none}30%{transform:translateY(-4px)}40%{transform:none}}
+.cb-panel{width:min(370px,calc(100vw - 32px));height:min(540px,calc(100vh - 120px));background:#fff;border-radius:22px;box-shadow:0 30px 70px rgba(10,26,58,.3);display:none;flex-direction:column;overflow:hidden;border:1px solid #E3E9F3}
+.cb.open .cb-panel{display:flex;animation:resIn .35s cubic-bezier(.3,1.4,.5,1)}
+.cb.open .cb-badge{display:none}
+.cb-head{display:flex;align-items:center;gap:10px;padding:14px 16px;background:linear-gradient(135deg,#0d2257,var(--accent));color:#fff}
+.cb-av{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--accent);font-weight:900;display:grid;place-items:center;font-size:1.2rem}
+.cb-head b{display:block}.cb-head small{font-size:.75rem;opacity:.85;display:flex;align-items:center;gap:6px}
+.cb-head small i{width:7px;height:7px;border-radius:50%;background:#4ade80}
+.cb-x{margin-left:auto;background:rgba(255,255,255,.15);border:0;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer}
+.cb-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:8px;background:var(--paper)}
+.cb-msg{max-width:84%;padding:10px 13px;border-radius:16px;font-size:.92rem;line-height:1.45;animation:slup .25s ease}
+.cb-msg.bot{background:#fff;border:1px solid #E3E9F3;border-bottom-left-radius:4px;align-self:flex-start}
+.cb-msg.me{background:var(--accent);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.cb-msg a{color:var(--accent);font-weight:700;text-decoration:underline}
+.cb-msg.typing{display:flex;gap:4px;padding:12px 14px}
+.cb-msg.typing i{width:7px;height:7px;border-radius:50%;background:#9aa7c0;animation:dot 1s infinite}
+.cb-msg.typing i:nth-child(2){animation-delay:.15s}.cb-msg.typing i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,80%,100%{opacity:.3;transform:none}40%{opacity:1;transform:translateY(-3px)}}
+.cb-send{align-self:flex-start;background:#25d366;color:#fff;font-weight:800;border-radius:99px;padding:10px 18px}
+.cb-opts{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;border-top:1px solid #E3E9F3;background:#fff}
+.cb-opts:empty{display:none}
+.cb-chip{border:1.5px solid #C9D6EE;background:#fff;color:var(--accent);font:inherit;font-weight:700;font-size:.85rem;border-radius:99px;padding:7px 12px;cursor:pointer}
+.cb-chip:hover{background:var(--sky);border-color:var(--accent)}
+.cb-form{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #E3E9F3}
+.cb-form[hidden]{display:none}
+.cb-form input{flex:1;border:1.5px solid #E3E9F3;border-radius:99px;padding:10px 14px;font:inherit}
+.cb-form input:focus{outline:none;border-color:var(--accent)}
+.cb-form button{width:42px;height:42px;border-radius:50%;border:0;background:var(--accent);color:#fff;cursor:pointer;font-size:1rem}
+@media (max-width:560px){.cb-lbl{display:none}.cb-btn{padding:15px}.cb{right:14px;bottom:14px}}
 
 </style>
 </head>
@@ -1307,13 +1350,21 @@ html,body{overflow-x:clip}
     </div>
   </div>
 </div>
-<a class="wa-float" data-wa="Hi EDURO, I'd like to book a consultation." target="_blank" rel="noopener">💬 <span>Chat on WhatsApp</span></a>
+<div class="cb" id="chatBot">
+  <div class="cb-panel" role="dialog" aria-label="Chat with EDURO">
+    <div class="cb-head"><span class="cb-av">e</span><div><b>EDURO assistant</b><small><i></i> Replies on WhatsApp within 24 hours</small></div><button type="button" class="cb-x" id="cbClose" aria-label="Close chat">✕</button></div>
+    <div class="cb-log" id="cbLog" aria-live="polite"></div>
+    <div class="cb-opts" id="cbOpts"></div>
+    <form class="cb-form" id="cbForm" hidden><input id="cbInput" autocomplete="off" aria-label="Your answer"><button type="submit" aria-label="Send">➤</button></form>
+  </div>
+  <button type="button" class="cb-btn" id="cbToggle" aria-expanded="false" aria-controls="chatBot"><span class="cb-badge">1</span><span class="cb-ico">💬</span><span class="cb-lbl">Chat with us</span></button>
+</div>
 <script src="config.js"></script>
 <script>
 /* ================= EDIT YOUR DETAILS HERE ================= */
 const CONFIG = Object.assign({
-  whatsapp: "917708783084",          // country code + number, no "+" or spaces
-  phoneDisplay: "+91 77087 83084",
+  whatsappCode: "NDgwMzg3ODA3NzE5",
+  phoneDisplay: "EDURO",
   email: "",                         // e.g. "hello@eduro.in" — leave "" to hide
   instagram: "https://www.instagram.com/eduro_global",
   instagram2: "https://www.instagram.com/pri_for_real",
@@ -1322,6 +1373,7 @@ const CONFIG = Object.assign({
   registerLink: "https://eduro.edumilestones.com/login/global-admissions/",
   psychometricLink: "https://eduro.edumilestones.com/",
   reviewsLink: "https://eduro.edumilestones.com/",
+  collegeFinder: "https://careertest.edumilestones.com/india-colleges/Mzk5Mw==",
   signupEndpoint: ""
 }, window.EDURO_CONFIG || {});
 /* Countries shown as cards (flag, name, short line) */
@@ -1344,7 +1396,8 @@ const UNI_NAMES = window.EDURO_NAMES || [];
 const LOGOS = {};
 /* ========================================================== */
 
-const waLink = (msg) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+const waNum = () => { try { return CONFIG.whatsappCode ? atob(CONFIG.whatsappCode).split("").reverse().join("") : (CONFIG.whatsapp || ""); } catch (e) { return CONFIG.whatsapp || ""; } };
+const waLink = (msg) => `https://wa.me/${waNum()}?text=${encodeURIComponent(msg)}`;
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const esc = (s) => String(s).replace(/[&<>"']/g, (m) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
@@ -1472,6 +1525,67 @@ document.addEventListener("DOMContentLoaded", () => {
       st++; if (st > 3) { st = 0; ti = (ti + 1) % T.length; setTimeout(() => { $("#trUni").textContent = T[ti][0]; $("#trFlag").textContent = T[ti][1]; }, 1300); }
     };
     setTimeout(() => { tick(); setInterval(tick, 1500); }, 2200);
+  }
+
+
+  // ===== Chat assistant (collects details, no number shown) =====
+  const cb = $("#chatBot");
+  if (cb) {
+    const log = $("#cbLog"), opts = $("#cbOpts"), form = $("#cbForm"), inp = $("#cbInput");
+    const FLOWS = {
+      "Study abroad": [["Which country are you interested in?", ["🇬🇧 UK","🇺🇸 USA","🇮🇪 Ireland","🇩🇪 Germany","🇰🇷 Korea","🇦🇪 Dubai","Not sure yet"]], ["What level?", ["Bachelor's","Master's","MBA","PhD"]], ["When do you want to start?", ["2027","2028","Not sure"]]],
+      "Scholarships": [["Which level are you applying for?", ["Bachelor's","Master's","PhD"]], ["Any country in mind?", ["🇰🇷 Korea (GKS)","🇬🇧 UK","🇪🇺 Europe","🇺🇸 USA","Any — fully funded"]]],
+      "Free IELTS demo": [["Which IELTS?", ["Academic","General Training","UKVI","Not sure"]], ["Your target band?", ["6.0","6.5","7.0","7.5+"]]],
+      "India admissions": [["Which course?", ["MBBS","Engineering","MBA / Management","Other"]], ["Which state are you from?", null]],
+      "Career test": [["Who is the test for?", ["Class 8–10","Class 11–12","Graduate","Working professional","My child"]]],
+      "Something else": [["Tell me briefly what you need help with.", null]]
+    };
+    let flow = [], step = 0, ans = {}, stage = "topic", started = false;
+    const say = (t, who = "bot") => new Promise((res) => {
+      if (who === "bot") { const ty = document.createElement("div"); ty.className = "cb-msg bot typing"; ty.innerHTML = "<i></i><i></i><i></i>"; log.appendChild(ty); log.scrollTop = log.scrollHeight;
+        setTimeout(() => { ty.remove(); const m = document.createElement("div"); m.className = "cb-msg bot"; m.innerHTML = t; log.appendChild(m); log.scrollTop = log.scrollHeight; res(); }, 650); }
+      else { const m = document.createElement("div"); m.className = "cb-msg me"; m.textContent = t; log.appendChild(m); log.scrollTop = log.scrollHeight; res(); }
+    });
+    const chips = (list) => { opts.innerHTML = ""; form.hidden = !!list; if (!list) { setTimeout(() => inp.focus(), 50); return; }
+      list.forEach((o) => { const b = document.createElement("button"); b.type = "button"; b.className = "cb-chip"; b.textContent = o; b.onclick = () => answer(o); opts.appendChild(b); }); };
+    const ask = async () => {
+      if (stage === "topic") { await say("👋 Hi! I'm the EDURO assistant. What can we help you with?"); chips(Object.keys(FLOWS)); return; }
+      if (stage === "flow") { const [q, o] = flow[step]; await say(q); chips(o); inp.placeholder = "Type your answer…"; inp.type = "text"; return; }
+      if (stage === "name") { await say("Great! What's your name?"); chips(null); inp.placeholder = "Your name"; inp.type = "text"; return; }
+      if (stage === "phone") { await say(`Thanks, ${esc(ans.name.split(" ")[0])}! Your WhatsApp number (with country code) so our counsellor can reach you?`); chips(null); inp.placeholder = "e.g. +91 98765 43210"; inp.type = "tel"; return; }
+    };
+    const answer = async (v) => {
+      v = String(v).trim(); if (!v) return;
+      if (stage === "phone") { const d = v.replace(/[^\d]/g, ""); if (d.length < 8 || d.length > 15) { inp.value = ""; await say(v, "me"); await say("Hmm, that number looks incomplete. Please include the country code, e.g. +91 98765 43210."); return; } }
+      await say(v, "me"); opts.innerHTML = ""; form.hidden = true; inp.value = "";
+      if (stage === "topic") { ans.topic = v; flow = FLOWS[v] || []; step = 0; stage = flow.length ? "flow" : "name"; }
+      else if (stage === "flow") { ans[flow[step][0]] = v; step++; if (step >= flow.length) stage = "name"; }
+      else if (stage === "name") { ans.name = v; stage = "phone"; }
+      else if (stage === "phone") { ans.phone = v; return finish(); }
+      ask();
+    };
+    const finish = async () => {
+      const details = Object.entries(ans).filter(([k]) => !["topic","name","phone"].includes(k)).map(([k, v]) => `${k} ${v}`).join(" | ");
+      const saved = sendLead({ type: "Chat", name: ans.name, phone: ans.phone, email: "", interest: ans.topic, level: "", details });
+      try { localStorage.setItem("eduroUser", JSON.stringify({ name: ans.name })); } catch (e) {}
+      if (saved) {
+        await say(`✅ Done! <b>Dr. Priyadarshini's team</b> will WhatsApp you within 24 hours about <b>${esc(ans.topic)}</b>.`);
+        await say(`Meanwhile, you can <a href="free-ielts-demo.html">book a free IELTS demo</a> or <a href="destinations.html">explore destinations</a>.`);
+      } else {
+        await say(`✅ Almost done! Tap below to send your details to our counsellor.`);
+        const msg = `Hi EDURO! 👋\n\nName: ${ans.name}\nWhatsApp: ${ans.phone}\nHelp with: ${ans.topic}\n${details}`;
+        const a = document.createElement("a"); a.className = "cb-send"; a.href = waLink(msg); a.target = "_blank"; a.rel = "noopener"; a.textContent = "Send to EDURO"; log.appendChild(a); log.scrollTop = log.scrollHeight;
+      }
+      opts.innerHTML = ""; const r = document.createElement("button"); r.type = "button"; r.className = "cb-chip"; r.textContent = "Start a new chat"; r.onclick = reset; opts.appendChild(r);
+    };
+    const reset = () => { log.innerHTML = ""; ans = {}; stage = "topic"; ask(); };
+    form.addEventListener("submit", (e) => { e.preventDefault(); answer(inp.value); });
+    const open = () => { cb.classList.add("open"); $("#cbToggle").setAttribute("aria-expanded", "true"); $(".cb-badge")?.remove(); if (!started) { started = true; ask(); } };
+    const close = () => { cb.classList.remove("open"); $("#cbToggle").setAttribute("aria-expanded", "false"); };
+    $("#cbToggle").addEventListener("click", () => cb.classList.contains("open") ? close() : open());
+    $("#cbClose").addEventListener("click", close);
+    $$("[data-chat]").forEach((b) => b.addEventListener("click", (e) => { e.preventDefault(); open(); }));
+    setTimeout(() => { if (!started && !cb.classList.contains("open")) cb.classList.add("nudge"); }, 8000);
   }
 
   // ===== Free IELTS demo booking =====
