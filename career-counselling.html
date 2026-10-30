@@ -1172,7 +1172,7 @@ html,body{overflow-x:clip}
 </div></section>
 <section style="padding-top:64px"><div class="wrap"><div class="cta-strip reveal">
   <div><h2>Confused about your career?</h2><p>Take the test and get a clear roadmap from a certified career counsellor.</p></div>
-  <div class="btn-row"><button class="btn btn-primary" type="button" data-shortlist>Get my free shortlist</button><a class="btn btn-ghost" data-wa="Hi EDURO! I'd like to book a career counselling session.">Chat on WhatsApp</a></div>
+  <div class="btn-row"><button class="btn btn-primary" type="button" data-shortlist>Get my free shortlist</button><a class="btn btn-ghost" data-wa="Hi EDURO! I'd like to book a career counselling session.">Chat with us</a></div>
 </div></div></section>
 <footer>
   <div class="wrap">
@@ -1204,7 +1204,7 @@ html,body{overflow-x:clip}
         <li><a href="#" data-shortlist>Free shortlist</a></li>
       </ul></div>
       <div><h4>Contact</h4><ul>
-        <li><a data-wa="Hi EDURO!">WhatsApp: <span data-phone></span></a></li>
+        <li><a data-wa="Hi EDURO!">Chat with EDURO</a></li>
         <li><a data-email></a></li>
         <li><a href="#" data-link="instagram2" target="_blank" rel="noopener">@pri_for_real</a></li>
         <li><a href="about.html#contact">Contact page</a></li>
@@ -1266,7 +1266,7 @@ html,body{overflow-x:clip}
         <div class="su-check"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
         <h3 id="suWelcome">Welcome aboard!</h3>
         <p id="suDoneMsg"></p>
-        <div class="su-actions"><button class="btn btn-primary" type="button" id="suToShortlist">Get my free shortlist</button><a class="btn btn-ghost" data-wa="Hi EDURO! I just created my profile.">Chat on WhatsApp</a></div>
+        <div class="su-actions"><button class="btn btn-primary" type="button" id="suToShortlist">Get my free shortlist</button><a class="btn btn-ghost" data-wa="Hi EDURO! I just created my profile.">Chat with us</a></div>
       </div>
     </div>
   </div>
@@ -1284,7 +1284,6 @@ html,body{overflow-x:clip}
 <script>
 /* ================= EDIT YOUR DETAILS HERE ================= */
 const CONFIG = Object.assign({
-  whatsappCode: "NDgwMzg3ODA3NzE5",
   phoneDisplay: "EDURO",
   email: "",                         // e.g. "hello@eduro.in" — leave "" to hide
   instagram: "https://www.instagram.com/eduro_global",
@@ -1317,8 +1316,11 @@ const UNI_NAMES = window.EDURO_NAMES || [];
 const LOGOS = {};
 /* ========================================================== */
 
-const waNum = () => { try { return CONFIG.whatsappCode ? atob(CONFIG.whatsappCode).split("").reverse().join("") : (CONFIG.whatsapp || ""); } catch (e) { return CONFIG.whatsapp || ""; } };
-const waLink = (msg) => `https://wa.me/${waNum()}?text=${encodeURIComponent(msg)}`;
+// No phone number anywhere: every "contact" link opens the on-site chat assistant instead
+const waLink = (msg) => "#chat:" + encodeURIComponent(msg || "");
+const openChat = (msg) => (window.EDURO_openChat ? window.EDURO_openChat(msg) : null);
+document.addEventListener("click", (e) => { const a = e.target.closest && e.target.closest('a[href^="#chat:"]'); if (!a) return; e.preventDefault(); openChat(decodeURIComponent(a.getAttribute("href").slice(6))); });
+const toast = (t) => { let el = document.getElementById("eduToast"); if (!el) { el = document.createElement("div"); el.id = "eduToast"; el.className = "edu-toast"; document.body.appendChild(el); } el.innerHTML = t; el.classList.add("show"); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove("show"), 4500); };
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const esc = (s) => String(s).replace(/[&<>"']/g, (m) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
@@ -1346,7 +1348,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // WhatsApp links (after dynamic content is added)
-  $$("[data-wa]").forEach((a) => { a.href = waLink(a.dataset.wa || "Hi EDURO, I'd like to book a consultation."); a.target = "_blank"; a.rel = "noopener"; });
+  $$("[data-wa]").forEach((a) => { a.href = waLink(a.dataset.wa || "I'd like to book a consultation."); a.removeAttribute("target"); });
 
   // Mobile nav
   const burger = $(".burger"), links = $(".nav-links");
@@ -1370,7 +1372,7 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#dreamForm")?.addEventListener("submit", (e) => {
     e.preventDefault();
     const u = new FormData(e.target).get("uni");
-    window.open(waLink(`Hi EDURO! My dream university is ${u}. Can you check if you can help me apply?`), "_blank");
+    openChat(`My dream university is ${u}. Can you help me apply?`);
   });
 
 
@@ -1398,7 +1400,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#suBar").style.width = (n / 3 * 100) + "%";
     if (n === 1 && suData.phone) { $("#suPhone").value = suData.phone; $("#suCC").value = suData.cc || "+91"; }
   }
-  $$("[data-signup]").forEach((b) => b.addEventListener("click", (e) => { e.preventDefault(); links?.classList.remove("open"); if (b.classList.contains("hi")) { window.open(waLink("Hi EDURO! I'd like to continue with my study plan."), "_blank"); return; } suOpen(1); }));
+  $$("[data-signup]").forEach((b) => b.addEventListener("click", (e) => { e.preventDefault(); links?.classList.remove("open"); if (b.classList.contains("hi")) { openChat("I'd like to continue with my study plan."); return; } suOpen(1); }));
   if (su) {
     $(".su-close", su).addEventListener("click", suClose);
     su.addEventListener("click", (e) => { if (e.target === su) suClose(); });
@@ -1414,8 +1416,7 @@ document.addEventListener("DOMContentLoaded", () => {
       try { localStorage.setItem("eduroUser", JSON.stringify({ name: d.name })); } catch (er) {}
       greet({ name: d.name });
       $("#suWelcome").textContent = `Welcome aboard, ${d.name.split(" ")[0]}!`;
-      $("#suDoneMsg").textContent = saved ? "Your profile is created. Our counsellor will message you on WhatsApp soon." : "Send the WhatsApp message that opened so our counsellor can reach you.";
-      if (!saved) window.open(waLink(`Hi EDURO! I just signed up 👋\n\nName: ${d.name}\nWhatsApp: ${d.phone}\nEmail: ${d.email || "-"}\nInterested in: ${interest}\nLevel: ${d.level}\nCountry: ${d.details || "-"}`), "_blank");
+      $("#suDoneMsg").textContent = "Your profile is created. Our counsellor will message you on WhatsApp soon.";
       suStep(3);
     });
     $("#suToShortlist").addEventListener("click", () => { suClose(); $("[data-shortlist]")?.click(); });
@@ -1489,15 +1490,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const details = Object.entries(ans).filter(([k]) => !["topic","name","phone"].includes(k)).map(([k, v]) => `${k} ${v}`).join(" | ");
       const saved = sendLead({ type: "Chat", name: ans.name, phone: ans.phone, email: "", interest: ans.topic, level: "", details });
       try { localStorage.setItem("eduroUser", JSON.stringify({ name: ans.name })); } catch (e) {}
-      if (saved) {
-        await say(`✅ Done! <b>Dr. Priyadarshini's team</b> will WhatsApp you within 24 hours about <b>${esc(ans.topic)}</b>.`);
+        await say(`✅ Done! <b>Dr. Priyadarshini's team</b> will WhatsApp you within 24 hours about:<br><b>${esc(ans.topic)}</b>`);
         await say(`Meanwhile, you can <a href="free-ielts-demo.html">book a free IELTS demo</a> or <a href="destinations.html">explore destinations</a>.`);
-      } else {
-        await say(`✅ Almost done! Tap below to send your details to our counsellor.`);
-        const msg = `Hi EDURO! 👋\n\nName: ${ans.name}\nWhatsApp: ${ans.phone}\nHelp with: ${ans.topic}\n${details}`;
-        const a = document.createElement("a"); a.className = "cb-send"; a.href = waLink(msg); a.target = "_blank"; a.rel = "noopener"; a.textContent = "Send to EDURO"; log.appendChild(a); log.scrollTop = log.scrollHeight;
-      }
       opts.innerHTML = ""; const r = document.createElement("button"); r.type = "button"; r.className = "cb-chip"; r.textContent = "Start a new chat"; r.onclick = reset; opts.appendChild(r);
+    };
+    window.EDURO_openChat = async (ctx) => {
+      if (!ctx) return open();
+      cb.classList.add("open"); $("#cbToggle").setAttribute("aria-expanded", "true"); $(".cb-badge")?.remove(); started = true;
+      log.innerHTML = ""; ans = { topic: ctx.replace(/^Hi EDURO[!,]?\s*/i, "").split("\n")[0].slice(0, 120) }; const extra = ctx.split("\n").slice(1).join(" ").trim(); if (extra) ans.details = extra;
+      await say("👋 Hi! I'll pass this to our counsellor:"); await say(ans.topic, "me"); stage = "name"; ask();
     };
     const reset = () => { log.innerHTML = ""; ans = {}; stage = "topic"; ask(); };
     form.addEventListener("submit", (e) => { e.preventDefault(); answer(inp.value); });
@@ -1534,9 +1535,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const d = { type: "IELTS demo", name: f.get("name"), phone: f.get("cc") + " " + ph, email: f.get("email"), interest: "IELTS demo class", level: f.get("type"), details: `${when} | target ${f.get("target") || "-"}` };
       const saved = sendLead(d);
       const msg = `Hi EDURO! I'd like to book a FREE IELTS demo class 🎧\n\nName: ${d.name}\nWhatsApp: ${d.phone}\nEmail: ${d.email || "-"}\nPreferred slot: ${when}\nTest: ${d.level}\nTarget band: ${f.get("target") || "-"}`;
-      if (!saved) window.open(waLink(msg), "_blank");
       const cal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("EDURO free IELTS demo class")}&details=${encodeURIComponent("Requested slot: " + when + ". The EDURO team will confirm on WhatsApp and send the joining link.")}`;
-      $("#demoBook").innerHTML = `<div class="dm-done"><div class="su-check"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div><h3>Demo requested!</h3><div class="dm-ticket"><small>Free IELTS demo class</small><b>${esc(when)}</b><small>For ${esc(d.name)} · ${esc(d.level)}</small></div><p>${saved ? "Our team will confirm your slot and send the joining link on WhatsApp." : "Send the WhatsApp message that opened — we'll confirm your slot and send the joining link."}</p><div class="qz-btns"><a class="btn btn-ghost" href="${cal}" target="_blank" rel="noopener">Add to Google Calendar</a><a class="btn btn-primary" href="${waLink(msg)}" target="_blank" rel="noopener">Message us on WhatsApp</a></div></div>`;
+      $("#demoBook").innerHTML = `<div class="dm-done"><div class="su-check"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div><h3>Demo requested!</h3><div class="dm-ticket"><small>Free IELTS demo class</small><b>${esc(when)}</b><small>For ${esc(d.name)} · ${esc(d.level)}</small></div><p>Our team will confirm your slot and send the joining link on WhatsApp.</p><div class="qz-btns"><a class="btn btn-ghost" href="${cal}" target="_blank" rel="noopener">Add to Google Calendar</a><a class="btn btn-primary" href="${waLink("Question about my IELTS demo booking")}">Chat with us</a></div></div>`;
     });
   }
 
@@ -1606,7 +1606,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const face = (n) => `${logoBadge(n, "", "wl-logo")}<span class="wl-name">${esc(n)}</span><span class="wl-flag">${flagOf[n] || ""}</span>`;
     let next = N;
     wall.innerHTML = pool.slice(0, N).map((n, i) => `<a class="wl-tile" style="--d:${i * 45}ms" data-wa="Hi EDURO! I'm interested in ${esc(n)}. Can you guide me on courses, fees and eligibility?"><span class="wl-inner"><span class="wl-face wl-front">${face(n)}</span><span class="wl-face wl-back"></span></span></a>`).join("");
-    $$(".wl-tile", wall).forEach((t) => { t.href = waLink(t.dataset.wa); t.target = "_blank"; t.rel = "noopener"; });
+    $$(".wl-tile", wall).forEach((t) => { t.href = waLink(t.dataset.wa); });
     const flip = () => {
       if (document.hidden || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       const tiles = $$(".wl-tile:not(:hover)", wall); if (!tiles.length) return;
@@ -1674,15 +1674,14 @@ document.addEventListener("DOMContentLoaded", () => {
           <div><label>Your name</label><input class="field" name="name" required placeholder="Full name"></div>
           <div><label>WhatsApp number</label><input class="field" name="phone" required inputmode="tel" placeholder="+91 98765 43210"></div>
           <div><label>Latest score / CGPA (optional)</label><input class="field" name="score" placeholder="e.g. 8.2 CGPA, 78%, IELTS 7"></div>
-          <button class="btn btn-primary" type="submit" style="justify-content:center">Get my shortlist on WhatsApp</button>
+          <button class="btn btn-primary" type="submit" style="justify-content:center">Get my shortlist</button>
         </form>`;
       $("#slForm").addEventListener("submit", (e) => {
         e.preventDefault();
         const f = new FormData(e.target), d = sl.data;
         const msg = `Hi EDURO! Please shortlist universities for me 🎯\n\nName: ${f.get("name")}\nWhatsApp: ${f.get("phone")}\nCountry: ${d.country}\nLevel: ${d.level}\nField: ${d.field}\nIntake: ${d.intake}\nBudget: ${d.budget}\nScore: ${f.get("score") || "-"}`;
         sendLead({ type: "Shortlist", name: f.get("name"), phone: f.get("phone"), email: "", interest: d.field, level: d.level, details: `${d.country} | ${d.intake} | ${d.budget} | score: ${f.get("score") || "-"}` });
-        window.open(waLink(msg), "_blank");
-        body.innerHTML = `<div class="sl-done"><div class="big">🎉</div><h3>You're all set, ${esc(f.get("name"))}!</h3><p>Send the WhatsApp message that just opened and our counsellor will share your shortlist soon.</p><button class="btn btn-primary" type="button" id="slOk">Done</button></div>`;
+        body.innerHTML = `<div class="sl-done"><div class="big">🎉</div><h3>You're all set, ${esc(f.get("name"))}!</h3><p>Our counsellor will WhatsApp you your shortlist soon.</p><button class="btn btn-primary" type="button" id="slOk">Done</button></div>`;
         $("#slBack").style.visibility = "hidden"; $("#slBar").style.width = "100%"; $("#slCount").textContent = "Completed";
         $("#slOk").addEventListener("click", slClose);
       });
@@ -1700,14 +1699,15 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#shortlistForm")?.addEventListener("submit", (e) => {
     e.preventDefault();
     const f = new FormData(e.target);
-    window.open(waLink(`Hi EDURO! I'd like a university shortlist.\n\nName: ${f.get("name")}\nCountry: ${f.get("country")}\nLevel: ${f.get("level")}\nField: ${f.get("field")}\nLatest score/CGPA: ${f.get("score") || "-"}\nIntake: ${f.get("intake")}`), "_blank");
+    openChat(`I\'d like a university shortlist.\n\nName: ${f.get("name")}\nCountry: ${f.get("country")}\nLevel: ${f.get("level")}\nField: ${f.get("field")}\nLatest score/CGPA: ${f.get("score") || "-"}\nIntake: ${f.get("intake")}`);
   });
 
   // Callback form -> WhatsApp
   $("#callbackForm")?.addEventListener("submit", (e) => {
     e.preventDefault();
     const f = new FormData(e.target);
-    window.open(waLink(`Hi EDURO! Please call me back.\n\nName: ${f.get("name")}\nPhone: ${f.get("phone")}\nInterested in: ${f.get("country")}`), "_blank");
+    sendLead({ type: "Call back", name: f.get("name"), phone: f.get("phone"), email: "", interest: f.get("country"), level: "", details: "" });
+    e.target.reset(); toast("✓ Thanks! Our counsellor will WhatsApp you within 24 hours.");
   });
 });
 </script>
