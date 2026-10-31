@@ -1250,25 +1250,20 @@ html,body{overflow-x:clip}
 <div class="sl-overlay" id="slotModal" aria-hidden="true">
   <div class="sl-box slot-box" role="dialog" aria-modal="true" aria-labelledby="slotTitle">
     <button class="sl-close" type="button" data-slot-close aria-label="Close">✕</button>
-    <div class="slot-head"><span class="dm-free">FREE</span><h3 id="slotTitle">Book your free IELTS demo</h3><p>Live online class with the EDURO IELTS team — level check, strategies &amp; speaking practice.</p></div>
+    <div class="slot-head"><span class="dm-free">FREE</span><h3 id="slotTitle">Interested in a free IELTS demo class?</h3><p>Leave your details and the EDURO IELTS team will WhatsApp you with the next demo date.</p></div>
     <form id="slotForm" class="slot-form">
       <label for="slName">Full name</label>
       <input class="field" id="slName" name="name" required autocomplete="name" placeholder="Your name">
       <label for="slPhone">WhatsApp number</label>
       <div class="su-phone"><select class="field" name="cc" data-cc aria-label="Country code"></select><input class="field" id="slPhone" name="phone" required inputmode="tel" placeholder="98765 43210"></div>
-      <label>Dates you're available <small>(tap one or more)</small></label>
-      <div class="slot-days" id="slotDays"></div>
-      <label>Preferred time <small id="slotTz"></small></label>
-      <div class="slot-times" id="slotTimes"></div>
       <small class="su-err" id="slotErr" role="alert"></small>
-      <button class="btn btn-primary" type="submit" style="justify-content:center">Book my free slot</button>
-      <small class="su-legal">We'll confirm your slot and send the joining link on WhatsApp.</small>
+      <button class="btn btn-primary" type="submit" style="justify-content:center">Yes, I'm interested</button>
+      <small class="su-legal">Free · No commitment · We'll only contact you about the demo.</small>
     </form>
     <div class="slot-done" id="slotDone" hidden>
       <div class="su-check"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
-      <h3 id="slotDoneTitle">You're booked in!</h3>
-      <div class="dm-ticket" id="slotTicket"></div>
-      <p>Our team will WhatsApp you to confirm the exact slot and send the joining link.</p>
+      <h3 id="slotDoneTitle">Thank you!</h3>
+      <p>Our IELTS team will WhatsApp you with the next demo class date and joining link.</p>
       <button class="btn btn-primary" type="button" data-slot-close>Done</button>
     </div>
   </div>
@@ -1567,42 +1562,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // ===== Quick IELTS slot popup =====
+  // ===== IELTS demo interest popup =====
   const slotM = $("#slotModal");
   if (slotM) {
-    const SLOTS = CONFIG.demoSlots || ["10:00 AM", "4:00 PM", "7:30 PM"], TZ = CONFIG.demoTimezone || "IST";
-    const CLOSED = CONFIG.demoClosedDays || [0], AHEAD = CONFIG.demoDaysAhead || 14;
-    const days = []; const t0 = new Date(); t0.setHours(0, 0, 0, 0);
-    for (let i = 1; days.length < AHEAD && i < 40; i++) { const d = new Date(t0); d.setDate(t0.getDate() + i); if (!CLOSED.includes(d.getDay())) days.push(d); }
-    const f = (d, o) => d.toLocaleDateString("en-IN", o);
-    $("#slotTz").textContent = `(${TZ})`;
-    $("#slotDays").innerHTML = days.map((d, i) => `<button type="button" class="dm-day" data-i="${i}" aria-pressed="false"><small>${f(d, { weekday: "short" })}</small><b>${d.getDate()}</b><small>${f(d, { month: "short" })}</small></button>`).join("");
-    $("#slotTimes").innerHTML = SLOTS.map((s) => `<button type="button" class="dm-slot" data-s="${s}" aria-pressed="false">${s}</button>`).join("") + `<button type="button" class="dm-slot" data-s="Any time" aria-pressed="false">Any time</button>`;
-    const tog = (b) => { b.classList.toggle("sel"); b.setAttribute("aria-pressed", b.classList.contains("sel")); };
-    $$("#slotDays .dm-day, #slotTimes .dm-slot").forEach((b) => b.addEventListener("click", () => tog(b)));
     const openSlot = () => { $("#slotForm").hidden = false; $("#slotDone").hidden = true; slotM.classList.add("open"); slotM.setAttribute("aria-hidden", "false"); document.body.classList.add("sl-lock"); setTimeout(() => $("#slName").focus({ preventScroll: true }), 200); };
     const closeSlot = () => { slotM.classList.remove("open"); slotM.setAttribute("aria-hidden", "true"); document.body.classList.remove("sl-lock"); };
-    $$("[data-slot]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); openSlot(); }));
+    $$('[data-slot], a[href="free-ielts-demo.html"]').forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); openSlot(); }));
     $$("[data-slot-close]").forEach((b) => b.addEventListener("click", closeSlot));
     slotM.addEventListener("click", (e) => { if (e.target === slotM) closeSlot(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape" && slotM.classList.contains("open")) closeSlot(); });
     $("#slotForm").addEventListener("submit", (e) => {
       e.preventDefault(); const fd = new FormData(e.target), err = $("#slotErr");
       const ph = String(fd.get("phone")).replace(/\D/g, "");
-      const ds = $$("#slotDays .dm-day.sel").map((b) => days[+b.dataset.i]);
-      const ts = $$("#slotTimes .dm-slot.sel").map((b) => b.dataset.s);
       if (ph.length < 6 || ph.length > 15) return (err.textContent = "Enter a valid WhatsApp number.");
-      if (!ds.length) return (err.textContent = "Tap at least one date you're available.");
-      if (!ts.length) return (err.textContent = "Tap a preferred time (or Any time).");
       err.textContent = "";
-      const dates = ds.map((d) => f(d, { weekday: "short", day: "numeric", month: "short" })).join(", ");
-      sendLead({ type: "IELTS demo", name: fd.get("name"), phone: fd.get("cc") + " " + ph, email: "", interest: "IELTS demo class", level: "", details: `Available: ${dates} | Time: ${ts.join(", ")} ${TZ}` });
-      $("#slotDoneTitle").textContent = `You're booked in, ${String(fd.get("name")).split(" ")[0]}!`;
-      $("#slotTicket").innerHTML = `<small>Free IELTS demo class</small><b>${esc(dates)}</b><small>${esc(ts.join(", "))} ${TZ}</small>`;
-      $("#slotForm").hidden = true; $("#slotDone").hidden = false;
-      e.target.reset(); $$("#slotModal .sel").forEach((b) => { b.classList.remove("sel"); b.setAttribute("aria-pressed", "false"); });
+      sendLead({ type: "IELTS demo interest", name: fd.get("name"), phone: fd.get("cc") + " " + ph, email: "", interest: "Free IELTS demo class", level: "", details: "Interested in the free IELTS demo class" });
+      $("#slotDoneTitle").textContent = `Thank you, ${String(fd.get("name")).split(" ")[0]}!`;
+      $("#slotForm").hidden = true; $("#slotDone").hidden = false; e.target.reset();
     });
   }
+
 
   // ===== Free IELTS demo booking =====
   const dmForm = $("#demoForm");
@@ -1616,8 +1595,8 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#dmDays").innerHTML = days.map((d, i) => `<button type="button" class="dm-day" data-i="${i}"><small>${fmt(d, { weekday: "short" })}</small><b>${d.getDate()}</b><small>${fmt(d, { month: "short" })}</small></button>`).join("");
     $("#dmSlots").innerHTML = SLOTS.map((s) => `<button type="button" class="dm-slot" data-s="${s}">${s}</button>`).join("");
     let day = null, slot = null;
-    $$(".dm-day").forEach((b) => b.addEventListener("click", () => { $$(".dm-day").forEach((x) => x.classList.remove("sel")); b.classList.add("sel"); day = days[+b.dataset.i]; }));
-    $$(".dm-slot").forEach((b) => b.addEventListener("click", () => { $$(".dm-slot").forEach((x) => x.classList.remove("sel")); b.classList.add("sel"); slot = b.dataset.s; }));
+    $$("#dmDays .dm-day").forEach((b) => b.addEventListener("click", () => { $$("#dmDays .dm-day").forEach((x) => x.classList.remove("sel")); b.classList.add("sel"); day = days[+b.dataset.i]; }));
+    $$("#dmSlots .dm-slot").forEach((b) => b.addEventListener("click", () => { $$("#dmSlots .dm-slot").forEach((x) => x.classList.remove("sel")); b.classList.add("sel"); slot = b.dataset.s; }));
     dmForm.addEventListener("submit", (e) => {
       e.preventDefault(); const f = new FormData(dmForm), err = $("#dmErr");
       if (!day) return (err.textContent = "Please choose a date.");
