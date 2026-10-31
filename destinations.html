@@ -1498,9 +1498,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== Lead capture (Google Sheet via Apps Script, WhatsApp fallback) =====
   const sendLead = (data) => {
-    data.page = location.pathname.split("/").pop() || "index.html"; data.time = new Date().toISOString();
-    if (!CONFIG.signupEndpoint) return false;
-    try { const fd = new FormData(); Object.entries(data).forEach(([k, v]) => fd.append(k, v || "")); fetch(CONFIG.signupEndpoint, { method: "POST", mode: "no-cors", body: fd }); return true; } catch (e) { return false; }
+    data.page = location.pathname.split("/").pop() || "index.html"; data.time = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) + " IST";
+    let sent = false;
+    // 1) Email (FormSubmit) — every enquiry arrives in your inbox
+    if (CONFIG.leadEmail) {
+      try {
+        const body = { _subject: `New EDURO enquiry: ${data.name || "Student"} — ${data.interest || data.type}`, _template: "table", _captcha: "false",
+          "Type": data.type, "Name": data.name, "WhatsApp": data.phone, "Email": data.email || "-", "Interested in": data.interest || "-", "Level": data.level || "-", "Details": data.details || "-", "Page": data.page, "Time": data.time,
+          "Open WhatsApp chat": data.phone ? "https://wa.me/" + String(data.phone).replace(/\D/g, "") : "-" };
+        fetch("https://formsubmit.co/ajax/" + CONFIG.leadEmail, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(body) });
+        sent = true;
+      } catch (e) {}
+    }
+    // 2) Optional Google Sheet log
+    if (CONFIG.signupEndpoint) {
+      try { const fd = new FormData(); Object.entries(data).forEach(([k, v]) => fd.append(k, v || "")); fetch(CONFIG.signupEndpoint, { method: "POST", mode: "no-cors", body: fd }); sent = true; } catch (e) {}
+    }
+    return sent;
   };
   window.EDURO_sendLead = sendLead;
   // ===== Country codes =====
